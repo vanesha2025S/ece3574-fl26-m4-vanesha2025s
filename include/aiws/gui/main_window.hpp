@@ -1,6 +1,10 @@
 #pragma once
 
 #include <QMainWindow>
+#include <atomic>
+#include <cstdint>
+#include <memory>
+#include <thread>
 
 #include "aiws/processing_core.hpp"
 #include "aiws/workspace.hpp"
@@ -43,6 +47,7 @@ public:
      * @param parent Optional Qt parent widget.
      */
     explicit MainWindow(QWidget* parent = nullptr);
+    ~MainWindow() override;
 
     /**
      * @brief Registers the callback invoked when the user requests Exit.
@@ -69,6 +74,7 @@ public:
     // change: add, remove, or redesign private members, slots, and helpers.
 
 private slots:
+    void build_finished();
     /** @brief Handles a request to select and add a document to the workspace. */
     void add_document();
 
@@ -146,6 +152,14 @@ private:
     ProcessingCore processing_core_;
     bool corpus_current_{false};
     ExitCallback exit_callback_{nullptr};
+
+    std::thread build_thread_;
+    std::atomic<bool> build_cancelled_{false};
+    std::uint64_t workspace_generation_{0};
+    std::uint64_t build_generation_{0};
+    int build_delay_ms_{0};
+    bool build_running_{false};
+    std::unique_ptr<ProcessingCore> pending_core_;
 
     WorkspaceWidget* workspace_widget_{nullptr};
     SearchWidget* search_widget_{nullptr};

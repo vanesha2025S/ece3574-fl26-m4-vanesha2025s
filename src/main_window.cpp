@@ -126,8 +126,9 @@ void MainWindow::set_exit_callback(ExitCallback callback) noexcept {
     exit_callback_ = callback;
 }
 
+
 void MainWindow::add_document() {
-     QString path = QFileDialog::getOpenFileName(
+    QString path = QFileDialog::getOpenFileName(
         this,
         "Add Document",
         QString(),
@@ -138,18 +139,27 @@ void MainWindow::add_document() {
         return;
     }
 
+    if (!add_document_file(path)) {
+        QMessageBox::warning(
+            this,
+            "File Error",
+            "Could not open the selected file."
+        );
+    }
+}
+
+bool MainWindow::add_document_file(const QString& path) {
     QFile file(path);
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QMessageBox::warning(
-            this, "File Error",
-            "Could not open the selected file."
-        );
-        return;
+        return false;
     }
 
     QString text = QString::fromUtf8(file.readAll());
-    file.close();
+
+    if (file.error() != QFileDevice::NoError) {
+        return false;
+    }
 
     QFileInfo info(path);
     QString absolute_path = info.absoluteFilePath();
@@ -166,6 +176,8 @@ void MainWindow::add_document() {
 
     invalidate_corpus();
     status_label_->setText("Document added: " + title);
+
+    return true;
 }
 
 void MainWindow::build_corpus() {
