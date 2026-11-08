@@ -160,6 +160,7 @@ private:
     int build_delay_ms_{0};
     bool build_running_{false};
     std::unique_ptr<ProcessingCore> pending_core_;
+    std::string pending_error_;
 
     WorkspaceWidget* workspace_widget_{nullptr};
     SearchWidget* search_widget_{nullptr};
