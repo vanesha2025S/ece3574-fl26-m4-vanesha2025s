@@ -3,6 +3,7 @@
 #include <sys/socket.h>
 #include <sys/un.h>
 #include <unistd.h>
+#include <filesystem>
 
 #include <cerrno>
 #include <cstdint>
@@ -165,6 +166,15 @@ int main(int argc, char* argv[]) {
     }
 
     file_path = argv[index + 1];
+    std::error_code error;
+    auto absolute_path = std::filesystem::absolute(file_path, error);
+
+    if (error) {
+        std::cerr << "Could not resolve file path.\n";
+        return 1;
+    }
+
+    file_path = absolute_path.string();
 
     if (file_path.empty()) {
         std::cerr << "File path cannot be empty.\n";

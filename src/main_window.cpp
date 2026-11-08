@@ -4,6 +4,7 @@
 #include "aiws/gui/term_inspector_widget.hpp"
 #include "aiws/gui/context_widget.hpp"
 #include "aiws/gui/resettable.hpp"
+#include "aiws/gui/remote_add_server.hpp"
 
 #include <QApplication>
 #include <QFile>
@@ -129,6 +130,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
 
 MainWindow::~MainWindow() {
+    if (remote_add_server_) {
+        remote_add_server_->stop();
+    }
+
     build_cancelled_.store(true);
 
     if (build_thread_.joinable()) {
@@ -138,6 +143,31 @@ MainWindow::~MainWindow() {
 
 void MainWindow::set_build_delay_ms(int ms_per_document) {
     build_delay_ms_ = std::max(0, ms_per_document);
+}
+
+
+// starts the remote add server using the provided socket path
+bool MainWindow::start_remote_add_server(const QString& socket_path) {
+    if (remote_add_server_) {
+        return false;
+    }
+
+    auto server = std::make_unique<RemoteAddServer>(
+        this,
+        socket_path.toUtf8().toStdString()
+    );
+
+    if (!server->start()) {
+        return false;
+    }
+
+    remote_add_server_ = std::move(server);
+    return true;
+}
+
+// adds a document received from the remote add server
+void MainWindow::remote_add_document(const QString& path) {
+    add_document_file(path);
 }
 
 

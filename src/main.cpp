@@ -7,6 +7,10 @@
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 
+#include <cstdlib>
+#include <string>
+#include <unistd.h>
+
 // Exit callback 
 void confirm_exit(QWidget* parent) {
     QMessageBox::StandardButton answer =
@@ -23,6 +27,17 @@ void confirm_exit(QWidget* parent) {
     }
 }
 
+// returns the default socket path for the current user
+QString default_socket_path() {
+    const char* user = std::getenv("USER");
+
+    if (user != nullptr && user[0] != '\0') {
+        return "/tmp/aiws-" + QString::fromLocal8Bit(user) + ".sock";
+    }
+
+    return "/tmp/aiws-" + QString::number(getuid()) + ".sock";
+}
+
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
 
@@ -36,7 +51,15 @@ int main(int argc, char* argv[]) {
         "0"
     );
 
+    QCommandLineOption ipc_socket_option(
+        "ipc-socket",
+        "Socket path for remote document addition.",
+        "PATH",
+        default_socket_path()
+    );
+
     parser.addOption(build_delay_option);
+    parser.addOption(ipc_socket_option);
     parser.process(app);
 
     bool valid_delay = false;
@@ -49,6 +72,12 @@ int main(int argc, char* argv[]) {
 
     aiws::gui::MainWindow window;
     window.set_build_delay_ms(delay);
+
+    if (!window.start_remote_add_server(
+            parser.value(ipc_socket_option))) {
+        qCritical("Could not start the remote add server.");
+        return 1;
+    }
 
     window.set_exit_callback(&confirm_exit);
     window.show();

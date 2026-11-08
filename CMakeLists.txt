@@ -29,12 +29,14 @@ target_compile_options(aiws_m2 PRIVATE -Wall -Wextra -Wpedantic)
 # Everything except main(), so tests can link the application code.
 add_library(aiws_app STATIC
     src/main_window.cpp
+    src/remote_add_server.cpp
     src/workspace_widget.cpp
     src/search_widget.cpp
     src/context_widget.cpp
     src/term_inspector_widget.cpp
     src/search_result_model.cpp
     include/aiws/gui/main_window.hpp
+    include/aiws/gui/remote_add_server.hpp
     include/aiws/gui/resettable.hpp
     include/aiws/gui/workspace_widget.hpp
     include/aiws/gui/search_widget.hpp
@@ -55,3 +57,7 @@ add_executable(student_tests tests/student_tests.cpp)
 target_link_libraries(student_tests PRIVATE aiws_app Qt6::Test)
 add_test(NAME student_tests COMMAND student_tests)
 set_tests_properties(student_tests PROPERTIES TIMEOUT 60 ENVIRONMENT QT_QPA_PLATFORM=offscreen)
+
+# builds the remote add command line client
+add_executable(aiws_send tools/aiws_send.cpp)
+target_compile_options(aiws_send PRIVATE -Wall -Wextra -Wpedantic)

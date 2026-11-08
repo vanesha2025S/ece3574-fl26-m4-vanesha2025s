@@ -20,6 +20,7 @@ class ContextWidget;
 class SearchWidget;
 class TermInspectorWidget;
 class WorkspaceWidget;
+class RemoteAddServer;
 
 /**
  * @brief Main application window and coordinator for the M3 AI Workspace GUI.
@@ -69,12 +70,14 @@ public:
      * @param ms_per_document Delay in milliseconds (the --build-delay-ms value).
      */
     void set_build_delay_ms(int ms_per_document);
+    bool start_remote_add_server(const QString& socket_path);
 
     // Everything below this line is the M3 design. In M4 it is yours to
     // change: add, remove, or redesign private members, slots, and helpers.
 
 private slots:
     void build_finished();
+    void remote_add_document(const QString& path);
     /** @brief Handles a request to select and add a document to the workspace. */
     void add_document();
 
@@ -161,6 +164,7 @@ private:
     bool build_running_{false};
     std::unique_ptr<ProcessingCore> pending_core_;
     std::string pending_error_;
+    std::unique_ptr<RemoteAddServer> remote_add_server_;
 
     WorkspaceWidget* workspace_widget_{nullptr};
     SearchWidget* search_widget_{nullptr};
