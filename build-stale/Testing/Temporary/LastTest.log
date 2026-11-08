@@ -1,0 +1,61 @@
+Start testing: Nov 08 21:08 UTC
+----------------------------------------------------------
+1/1 Testing: student_tests
+1/1 Test: student_tests
+Command: "/workspace/build-stale/student_tests"
+Directory: /workspace/build-stale
+"student_tests" start time: Nov 08 21:08 UTC
+Output:
+----------------------------------------------------------
+
+Testing Add Document...
+PASS: Unreadable file is rejected
+PASS: Invalid file does not change corpus status
+PASS: Valid document is added
+PASS: New document requires a corpus build
+
+Testing Background Build...
+PASS: Document added
+PASS: Build request accepted
+PASS: Building state appears immediately
+PASS: Background build finishes
+PASS: Completed build displays chunk count
+
+Testing Stale Build...
+PASS: First document added
+PASS: Build started
+PASS: Second document added during build
+PASS: Old build finishes
+FAIL: Outdated build is rejected
+
+Testing Reset During Build...
+PASS: Document added
+PASS: Build started
+PASS: Reset invoked
+FAIL: Old build completes after Reset
+FAIL: Reset prevents old corpus from becoming current
+
+Testing Build Failure...
+PASS: First document added
+PASS: Duplicate document added to trigger build failure
+PASS: Build started
+PASS: Failed build leaves Building state
+PASS: Build failure is reported to GUI
+
+Testing GUI Responsiveness...
+PASS: Document added
+PASS: Delayed build started
+PASS: GUI input exists
+PASS: GUI input remains editable during build
+PASS: Delayed background build completes
+
+Total failures: 3
+<end of output>
+Test time =   3.24 sec
+----------------------------------------------------------
+Test Failed.
+"student_tests" end time: Nov 08 21:08 UTC
+"student_tests" time elapsed: 00:00:03
+----------------------------------------------------------
+
+End testing: Nov 08 21:08 UTC
