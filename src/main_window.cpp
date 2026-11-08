@@ -224,10 +224,12 @@ void MainWindow::build_corpus() {
     status_label_->setText("Building corpus...");
     update_action_states();
 
+    
     build_thread_ = std::thread(
         [this, snapshot = std::move(snapshot), delay]() mutable {
             try {
                 auto core = std::make_unique<ProcessingCore>();
+                bool cancelled = false;
 
                 for (std::size_t i = 0; i < snapshot.documents().size(); ++i) {
                     int elapsed = 0;
@@ -241,16 +243,15 @@ void MainWindow::build_corpus() {
                     }
 
                     if (build_cancelled_.load()) {
-                        return;
+                        cancelled = true;
+                        break;
                     }
                 }
 
-                if (build_cancelled_.load()) {
-                    return;
+                if (!cancelled && !build_cancelled_.load()) {
+                    core->rebuild(snapshot);
+                    pending_core_ = std::move(core);
                 }
-
-                core->rebuild(snapshot);
-                pending_core_ = std::move(core);
 
             } catch (const std::exception& e) {
                 pending_error_ = e.what();
@@ -258,14 +259,26 @@ void MainWindow::build_corpus() {
                 pending_error_ = "Unknown build error.";
             }
 
+        #ifndef AIWS_FAULT_LOSE_FAILURE
             QMetaObject::invokeMethod(
                 this,
                 "build_finished",
                 Qt::QueuedConnection
             );
+        #else
+            if (pending_error_.empty()) {
+                QMetaObject::invokeMethod(
+                    this,
+                    "build_finished",
+                    Qt::QueuedConnection
+                );
+            }
+        #endif
         }
     );
+
 }
+
 
 void MainWindow::build_finished() {
     if (build_thread_.joinable()) {
@@ -273,6 +286,22 @@ void MainWindow::build_finished() {
     }
 
     build_running_ = false;
+
+    #ifndef AIWS_FAULT_ACCEPT_STALE
+        if (build_generation_ != workspace_generation_) {
+    #else
+        if (false) {
+    #endif
+        pending_core_.reset();
+        pending_error_.clear();
+        corpus_current_ = false;
+
+        workspace_widget_->set_corpus_status("Not built");
+        status_label_->setText("Workspace changed. Rebuild required.");
+
+        update_action_states();
+        return;
+    }
 
     if (!pending_error_.empty()) {
         pending_core_.reset();
@@ -282,17 +311,6 @@ void MainWindow::build_finished() {
         status_label_->setText(
             QString::fromStdString(pending_error_)
         );
-
-        update_action_states();
-        return;
-    }
-
-    if (build_generation_ != workspace_generation_) {
-        pending_core_.reset();
-        corpus_current_ = false;
-
-        workspace_widget_->set_corpus_status("Not built");
-        status_label_->setText("Workspace changed. Rebuild required.");
 
         update_action_states();
         return;
@@ -310,10 +328,15 @@ void MainWindow::build_finished() {
         );
 
         status_label_->setText("Corpus built.");
+    } else {
+        corpus_current_ = false;
+        workspace_widget_->set_corpus_status("Not built");
+        status_label_->setText("Build cancelled.");
     }
 
     update_action_states();
 }
+
 
 
 void MainWindow::document_selected(int row) {
