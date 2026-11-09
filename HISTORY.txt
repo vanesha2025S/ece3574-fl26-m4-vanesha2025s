@@ -1,3 +1,1211 @@
+commit 56711e689be8e40522d2967fa48d75d54966581d
+Author: Vanesha Hari <pid@vt.edu>
+Date:   2026-11-08 22:38:52 -0500
+
+    updated the design.md
+
+ DESIGN.md | 52 +++++++++++++++++++++++++++++-----------------------
+ 1 file changed, 29 insertions(+), 23 deletions(-)
+
+commit 1305106f3c08321f3561ecd4e4e50e59be4fc833
+Author: Vanesha Hari <pid@vt.edu>
+Date:   2026-11-08 22:34:16 -0500
+
+    This is me adding the history.txt and all the remote add features
+
+ .qtcreator/CMakeLists.txt.user                     |  115 +-
+ .qtcreator/CMakeLists.txt.user.7eece5b             |  380 ++
+ DESIGN.md                                          |  139 +
+ HISTORY.txt                                        |  315 +
+ build-failure/.qt/QtDeploySupport.cmake            |   45 +
+ build-failure/CMakeCache.txt                       | 1304 ++++
+ .../CMakeFiles/3.28.3/CMakeCXXCompiler.cmake       |   85 +
+ .../3.28.3/CMakeDetermineCompilerABI_CXX.bin       |  Bin 0 -> 15992 bytes
+ build-failure/CMakeFiles/3.28.3/CMakeSystem.cmake  |   15 +
+ .../3.28.3/CompilerIdCXX/CMakeCXXCompilerId.cpp    |  869 +++
+ .../CMakeFiles/3.28.3/CompilerIdCXX/a.out          |  Bin 0 -> 16096 bytes
+ build-failure/CMakeFiles/CMakeConfigureLog.yaml    |  353 +
+ .../CMakeFiles/CMakeDirectoryInformation.cmake     |   16 +
+ build-failure/CMakeFiles/CMakeRuleHashes.txt       |   16 +
+ build-failure/CMakeFiles/Makefile.cmake            |  244 +
+ build-failure/CMakeFiles/Makefile2                 |  504 ++
+ build-failure/CMakeFiles/TargetDirectories.txt     |   18 +
+ .../ai_workspace_m4.dir/DependInfo.cmake           |   25 +
+ .../mocs_compilation.cpp.o.d                       |    3 +
+ .../CMakeFiles/ai_workspace_m4.dir/build.make      |  139 +
+ .../ai_workspace_m4.dir/cmake_clean.cmake          |   18 +
+ .../ai_workspace_m4.dir/compiler_depend.internal   |  202 +
+ .../ai_workspace_m4.dir/compiler_depend.make       |  595 ++
+ .../ai_workspace_m4.dir/compiler_depend.ts         |    2 +
+ .../CMakeFiles/ai_workspace_m4.dir/depend.make     |    2 +
+ .../CMakeFiles/ai_workspace_m4.dir/flags.make      |   10 +
+ .../CMakeFiles/ai_workspace_m4.dir/link.txt        |    1 +
+ .../CMakeFiles/ai_workspace_m4.dir/progress.make   |    5 +
+ .../ai_workspace_m4.dir/src/main.cpp.o.d           |  375 ++
+ .../ai_workspace_m4_autogen.dir/AutogenInfo.json   |  329 +
+ .../ai_workspace_m4_autogen.dir/AutogenUsed.txt    |    1 +
+ .../ai_workspace_m4_autogen.dir/DependInfo.cmake   |   23 +
+ .../ai_workspace_m4_autogen.dir/ParseCache.txt     |    2 +
+ .../ai_workspace_m4_autogen.dir/build.make         |   93 +
+ .../ai_workspace_m4_autogen.dir/cmake_clean.cmake  |   10 +
+ .../compiler_depend.make                           |    2 +
+ .../ai_workspace_m4_autogen.dir/compiler_depend.ts |    2 +
+ .../ai_workspace_m4_autogen.dir/progress.make      |    2 +
+ .../DependInfo.cmake                               |   22 +
+ .../build.make                                     |   87 +
+ .../cmake_clean.cmake                              |    8 +
+ .../compiler_depend.make                           |    2 +
+ .../compiler_depend.ts                             |    2 +
+ .../progress.make                                  |    1 +
+ .../CMakeFiles/aiws_app.dir/DependInfo.cmake       |   31 +
+ .../aiws_app_autogen/mocs_compilation.cpp.o.d      |  371 ++
+ build-failure/CMakeFiles/aiws_app.dir/build.make   |  229 +
+ .../CMakeFiles/aiws_app.dir/cmake_clean.cmake      |   30 +
+ .../aiws_app.dir/cmake_clean_target.cmake          |    3 +
+ .../aiws_app.dir/compiler_depend.internal          |  635 ++
+ .../CMakeFiles/aiws_app.dir/compiler_depend.make   | 1894 ++++++
+ .../CMakeFiles/aiws_app.dir/compiler_depend.ts     |    2 +
+ build-failure/CMakeFiles/aiws_app.dir/depend.make  |    2 +
+ build-failure/CMakeFiles/aiws_app.dir/flags.make   |   10 +
+ build-failure/CMakeFiles/aiws_app.dir/link.txt     |    2 +
+ .../CMakeFiles/aiws_app.dir/progress.make          |   11 +
+ .../aiws_app.dir/src/context_widget.cpp.o.d        |  395 ++
+ .../aiws_app.dir/src/main_window.cpp.o.d           |  426 ++
+ .../aiws_app.dir/src/remote_add_server.cpp.o.d     |  342 +
+ .../aiws_app.dir/src/search_result_model.cpp.o.d   |  306 +
+ .../aiws_app.dir/src/search_widget.cpp.o.d         |  422 ++
+ .../aiws_app.dir/src/term_inspector_widget.cpp.o.d |  363 +
+ .../aiws_app.dir/src/workspace_widget.cpp.o.d      |  408 ++
+ .../aiws_app_autogen.dir/AutogenInfo.json          |  381 ++
+ .../aiws_app_autogen.dir/AutogenUsed.txt           |    1 +
+ .../aiws_app_autogen.dir/DependInfo.cmake          |   23 +
+ .../CMakeFiles/aiws_app_autogen.dir/ParseCache.txt | 2438 +++++++
+ .../CMakeFiles/aiws_app_autogen.dir/build.make     |   93 +
+ .../aiws_app_autogen.dir/cmake_clean.cmake         |   10 +
+ .../aiws_app_autogen.dir/compiler_depend.make      |    2 +
+ .../aiws_app_autogen.dir/compiler_depend.ts        |    2 +
+ .../CMakeFiles/aiws_app_autogen.dir/progress.make  |    2 +
+ .../DependInfo.cmake                               |   22 +
+ .../aiws_app_autogen_timestamp_deps.dir/build.make |   88 +
+ .../cmake_clean.cmake                              |    8 +
+ .../compiler_depend.make                           |    2 +
+ .../compiler_depend.ts                             |    2 +
+ .../progress.make                                  |    1 +
+ .../CMakeFiles/aiws_m2.dir/DependInfo.cmake        |   32 +
+ .../aiws_m2_autogen/mocs_compilation.cpp.o.d       |    3 +
+ build-failure/CMakeFiles/aiws_m2.dir/build.make    |  245 +
+ .../CMakeFiles/aiws_m2.dir/cmake_clean.cmake       |   32 +
+ .../aiws_m2.dir/cmake_clean_target.cmake           |    3 +
+ .../aiws_m2.dir/compiler_depend.internal           |  209 +
+ .../CMakeFiles/aiws_m2.dir/compiler_depend.make    |  616 ++
+ .../CMakeFiles/aiws_m2.dir/compiler_depend.ts      |    2 +
+ build-failure/CMakeFiles/aiws_m2.dir/depend.make   |    2 +
+ build-failure/CMakeFiles/aiws_m2.dir/flags.make    |   10 +
+ build-failure/CMakeFiles/aiws_m2.dir/link.txt      |    2 +
+ build-failure/CMakeFiles/aiws_m2.dir/progress.make |   12 +
+ .../CMakeFiles/aiws_m2.dir/src/chunker.cpp.o.d     |  134 +
+ .../aiws_m2.dir/src/context_builder.cpp.o.d        |  139 +
+ .../aiws_m2.dir/src/corpus_index.cpp.o.d           |  134 +
+ .../CMakeFiles/aiws_m2.dir/src/document.cpp.o.d    |  117 +
+ .../aiws_m2.dir/src/processing_core.cpp.o.d        |  179 +
+ .../aiws_m2.dir/src/retrieval_engine.cpp.o.d       |  167 +
+ .../aiws_m2.dir/src/text_processor.cpp.o.d         |  128 +
+ .../CMakeFiles/aiws_m2.dir/src/workspace.cpp.o.d   |  122 +
+ .../aiws_m2_autogen.dir/AutogenInfo.json           |  327 +
+ .../CMakeFiles/aiws_m2_autogen.dir/AutogenUsed.txt |    1 +
+ .../aiws_m2_autogen.dir/DependInfo.cmake           |   23 +
+ .../CMakeFiles/aiws_m2_autogen.dir/ParseCache.txt  |    9 +
+ .../CMakeFiles/aiws_m2_autogen.dir/build.make      |   93 +
+ .../aiws_m2_autogen.dir/cmake_clean.cmake          |   10 +
+ .../aiws_m2_autogen.dir/compiler_depend.make       |    2 +
+ .../aiws_m2_autogen.dir/compiler_depend.ts         |    2 +
+ .../CMakeFiles/aiws_m2_autogen.dir/progress.make   |    2 +
+ .../DependInfo.cmake                               |   22 +
+ .../aiws_m2_autogen_timestamp_deps.dir/build.make  |   86 +
+ .../cmake_clean.cmake                              |    8 +
+ .../compiler_depend.make                           |    2 +
+ .../compiler_depend.ts                             |    2 +
+ .../progress.make                                  |    1 +
+ .../CMakeFiles/aiws_send.dir/DependInfo.cmake      |   25 +
+ .../aiws_send_autogen/mocs_compilation.cpp.o.d     |    3 +
+ build-failure/CMakeFiles/aiws_send.dir/build.make  |  132 +
+ .../CMakeFiles/aiws_send.dir/cmake_clean.cmake     |   18 +
+ .../aiws_send.dir/compiler_depend.internal         |  202 +
+ .../CMakeFiles/aiws_send.dir/compiler_depend.make  |  595 ++
+ .../CMakeFiles/aiws_send.dir/compiler_depend.ts    |    2 +
+ build-failure/CMakeFiles/aiws_send.dir/depend.make |    2 +
+ build-failure/CMakeFiles/aiws_send.dir/flags.make  |   10 +
+ build-failure/CMakeFiles/aiws_send.dir/link.txt    |    1 +
+ .../CMakeFiles/aiws_send.dir/progress.make         |    5 +
+ .../aiws_send.dir/tools/aiws_send.cpp.o.d          |  203 +
+ .../aiws_send_autogen.dir/AutogenInfo.json         |  325 +
+ .../aiws_send_autogen.dir/AutogenUsed.txt          |    1 +
+ .../aiws_send_autogen.dir/DependInfo.cmake         |   23 +
+ .../aiws_send_autogen.dir/ParseCache.txt           |    2 +
+ .../CMakeFiles/aiws_send_autogen.dir/build.make    |   93 +
+ .../aiws_send_autogen.dir/cmake_clean.cmake        |   10 +
+ .../aiws_send_autogen.dir/compiler_depend.make     |    2 +
+ .../aiws_send_autogen.dir/compiler_depend.ts       |    2 +
+ .../CMakeFiles/aiws_send_autogen.dir/progress.make |    2 +
+ .../DependInfo.cmake                               |   22 +
+ .../build.make                                     |   86 +
+ .../cmake_clean.cmake                              |    8 +
+ .../compiler_depend.make                           |    2 +
+ .../compiler_depend.ts                             |    2 +
+ .../progress.make                                  |    1 +
+ build-failure/CMakeFiles/cmake.check_cache         |    1 +
+ build-failure/CMakeFiles/progress.marks            |    1 +
+ .../CMakeFiles/student_tests.dir/DependInfo.cmake  |   25 +
+ .../CMakeFiles/student_tests.dir/build.make        |  140 +
+ .../CMakeFiles/student_tests.dir/cmake_clean.cmake |   18 +
+ .../student_tests.dir/compiler_depend.internal     |  202 +
+ .../student_tests.dir/compiler_depend.make         |  595 ++
+ .../student_tests.dir/compiler_depend.ts           |    2 +
+ .../CMakeFiles/student_tests.dir/depend.make       |    2 +
+ .../CMakeFiles/student_tests.dir/flags.make        |   10 +
+ .../CMakeFiles/student_tests.dir/link.txt          |    1 +
+ .../CMakeFiles/student_tests.dir/progress.make     |    5 +
+ .../student_tests_autogen/mocs_compilation.cpp.o.d |    3 +
+ .../student_tests.dir/tests/student_tests.cpp.o.d  |  532 ++
+ .../student_tests_autogen.dir/AutogenInfo.json     |  340 +
+ .../student_tests_autogen.dir/AutogenUsed.txt      |    1 +
+ .../student_tests_autogen.dir/DependInfo.cmake     |   23 +
+ .../student_tests_autogen.dir/ParseCache.txt       |    2 +
+ .../student_tests_autogen.dir/build.make           |   93 +
+ .../student_tests_autogen.dir/cmake_clean.cmake    |   10 +
+ .../student_tests_autogen.dir/compiler_depend.make |    2 +
+ .../student_tests_autogen.dir/compiler_depend.ts   |    2 +
+ .../student_tests_autogen.dir/progress.make        |    2 +
+ .../DependInfo.cmake                               |   22 +
+ .../build.make                                     |   88 +
+ .../cmake_clean.cmake                              |    8 +
+ .../compiler_depend.make                           |    2 +
+ .../compiler_depend.ts                             |    2 +
+ .../progress.make                                  |    1 +
+ build-failure/CTestTestfile.cmake                  |    8 +
+ build-failure/Makefile                             |  982 +++
+ build-failure/Testing/Temporary/CTestCostData.txt  |    3 +
+ build-failure/Testing/Temporary/LastTest.log       |   94 +
+ .../Testing/Temporary/LastTestsFailed.log          |    1 +
+ build-failure/ai_workspace_m4                      |  Bin 0 -> 670744 bytes
+ build-failure/ai_workspace_m4_autogen/deps         |  198 +
+ .../ai_workspace_m4_autogen/moc_predefs.h          |  466 ++
+ .../ai_workspace_m4_autogen/mocs_compilation.cpp   |    3 +
+ build-failure/ai_workspace_m4_autogen/timestamp    |    0
+ .../YHJIA4DBD4/moc_context_widget.cpp              |  174 +
+ .../YHJIA4DBD4/moc_context_widget.cpp.d            |  407 ++
+ .../YHJIA4DBD4/moc_main_window.cpp                 |  249 +
+ .../YHJIA4DBD4/moc_main_window.cpp.d               |  416 ++
+ .../YHJIA4DBD4/moc_search_result_model.cpp         |   99 +
+ .../YHJIA4DBD4/moc_search_result_model.cpp.d       |  373 ++
+ .../YHJIA4DBD4/moc_search_widget.cpp               |  257 +
+ .../YHJIA4DBD4/moc_search_widget.cpp.d             |  407 ++
+ .../YHJIA4DBD4/moc_term_inspector_widget.cpp       |  166 +
+ .../YHJIA4DBD4/moc_term_inspector_widget.cpp.d     |  407 ++
+ .../YHJIA4DBD4/moc_workspace_widget.cpp            |  192 +
+ .../YHJIA4DBD4/moc_workspace_widget.cpp.d          |  406 ++
+ build-failure/aiws_app_autogen/deps                |  631 ++
+ build-failure/aiws_app_autogen/moc_predefs.h       |  466 ++
+ .../aiws_app_autogen/mocs_compilation.cpp          |    7 +
+ build-failure/aiws_app_autogen/timestamp           |    0
+ build-failure/aiws_m2_autogen/deps                 |  205 +
+ build-failure/aiws_m2_autogen/moc_predefs.h        |  462 ++
+ build-failure/aiws_m2_autogen/mocs_compilation.cpp |    3 +
+ build-failure/aiws_m2_autogen/timestamp            |    0
+ build-failure/aiws_send                            |  Bin 0 -> 39120 bytes
+ build-failure/aiws_send_autogen/deps               |  198 +
+ build-failure/aiws_send_autogen/moc_predefs.h      |  462 ++
+ .../aiws_send_autogen/mocs_compilation.cpp         |    3 +
+ build-failure/aiws_send_autogen/timestamp          |    0
+ build-failure/cmake_install.cmake                  |   54 +
+ build-failure/libaiws_app.a                        |  Bin 0 -> 817642 bytes
+ build-failure/libaiws_m2.a                         |  Bin 0 -> 1520774 bytes
+ build-failure/student_tests                        |  Bin 0 -> 1196280 bytes
+ build-failure/student_tests_autogen/deps           |  198 +
+ build-failure/student_tests_autogen/moc_predefs.h  |  469 ++
+ .../student_tests_autogen/mocs_compilation.cpp     |    3 +
+ build-failure/student_tests_autogen/timestamp      |    0
+ build-stale/CMakeFiles/CMakeRuleHashes.txt         |    3 +
+ build-stale/CMakeFiles/Makefile.cmake              |   66 +-
+ build-stale/CMakeFiles/Makefile2                   |  109 +-
+ build-stale/CMakeFiles/TargetDirectories.txt       |    3 +
+ .../ai_workspace_m4.dir/compiler_depend.internal   |  488 +-
+ .../ai_workspace_m4.dir/compiler_depend.make       | 1516 ++++-
+ .../ai_workspace_m4.dir/src/main.cpp.o.d           |    9 +-
+ .../ai_workspace_m4_autogen.dir/AutogenInfo.json   |   65 -
+ .../compiler_depend.internal                       |  202 +
+ .../compiler_depend.make                           |  597 +-
+ .../CMakeFiles/aiws_app.dir/DependInfo.cmake       |    1 +
+ build-stale/CMakeFiles/aiws_app.dir/build.make     |   28 +-
+ .../CMakeFiles/aiws_app.dir/cmake_clean.cmake      |    2 +
+ .../aiws_app.dir/compiler_depend.internal          | 3118 ++++++++-
+ .../CMakeFiles/aiws_app.dir/compiler_depend.make   | 3567 +++++++++-
+ build-stale/CMakeFiles/aiws_app.dir/link.txt       |    2 +-
+ build-stale/CMakeFiles/aiws_app.dir/progress.make  |    1 +
+ .../aiws_app.dir/src/main_window.cpp.o.d           |    3 +
+ .../aiws_app.dir/src/remote_add_server.cpp.o.d     |  342 +
+ .../aiws_app_autogen.dir/AutogenInfo.json          |   72 +-
+ .../CMakeFiles/aiws_app_autogen.dir/ParseCache.txt |  122 +-
+ .../aiws_app_autogen.dir/compiler_depend.internal  |  633 ++
+ .../aiws_app_autogen.dir/compiler_depend.make      | 1890 +++++-
+ .../CMakeFiles/aiws_app_autogen.dir/progress.make  |    2 +-
+ .../aiws_m2.dir/compiler_depend.internal           | 1419 +++-
+ .../CMakeFiles/aiws_m2.dir/compiler_depend.make    | 2170 +++++-
+ build-stale/CMakeFiles/aiws_m2.dir/progress.make   |   22 +-
+ .../aiws_m2_autogen.dir/AutogenInfo.json           |   65 -
+ .../aiws_m2_autogen.dir/compiler_depend.internal   |  209 +
+ .../aiws_m2_autogen.dir/compiler_depend.make       |  618 +-
+ .../CMakeFiles/aiws_m2_autogen.dir/progress.make   |    2 +-
+ .../CMakeFiles/aiws_send.dir/DependInfo.cmake      |   25 +
+ .../aiws_send_autogen/mocs_compilation.cpp.o.d     |    3 +
+ build-stale/CMakeFiles/aiws_send.dir/build.make    |  132 +
+ .../CMakeFiles/aiws_send.dir/cmake_clean.cmake     |   18 +
+ .../aiws_send.dir/compiler_depend.internal         |  143 +
+ .../CMakeFiles/aiws_send.dir/compiler_depend.make  |  418 ++
+ .../CMakeFiles/aiws_send.dir/compiler_depend.ts    |    2 +
+ build-stale/CMakeFiles/aiws_send.dir/depend.make   |    2 +
+ build-stale/CMakeFiles/aiws_send.dir/flags.make    |   10 +
+ build-stale/CMakeFiles/aiws_send.dir/link.txt      |    1 +
+ build-stale/CMakeFiles/aiws_send.dir/progress.make |    5 +
+ .../aiws_send.dir/tools/aiws_send.cpp.o.d          |  203 +
+ .../aiws_send_autogen.dir/AutogenInfo.json         |  260 +
+ .../aiws_send_autogen.dir/AutogenUsed.txt          |    1 +
+ .../aiws_send_autogen.dir/DependInfo.cmake         |   23 +
+ .../aiws_send_autogen.dir/ParseCache.txt           |    2 +
+ .../CMakeFiles/aiws_send_autogen.dir/build.make    |   93 +
+ .../aiws_send_autogen.dir/cmake_clean.cmake        |   10 +
+ .../aiws_send_autogen.dir/compiler_depend.make     |    2 +
+ .../aiws_send_autogen.dir/compiler_depend.ts       |    2 +
+ .../CMakeFiles/aiws_send_autogen.dir/progress.make |    2 +
+ .../DependInfo.cmake                               |   22 +
+ .../build.make                                     |   86 +
+ .../cmake_clean.cmake                              |    8 +
+ .../compiler_depend.make                           |    2 +
+ .../compiler_depend.ts                             |    2 +
+ .../progress.make                                  |    1 +
+ build-stale/CMakeFiles/progress.marks              |    2 +-
+ .../student_tests.dir/compiler_depend.internal     |  603 +-
+ .../student_tests.dir/compiler_depend.make         | 1943 +++++-
+ .../CMakeFiles/student_tests.dir/progress.make     |    8 +-
+ .../student_tests.dir/tests/student_tests.cpp.o.d  |   66 +-
+ .../student_tests_autogen.dir/AutogenInfo.json     |   65 -
+ .../compiler_depend.internal                       |  202 +
+ .../student_tests_autogen.dir/compiler_depend.make |  597 +-
+ .../student_tests_autogen.dir/progress.make        |    2 +-
+ build-stale/CTestTestfile.cmake                    |    2 +-
+ build-stale/Makefile                               |  123 +
+ build-stale/Testing/Temporary/LastTest.log         |   47 +-
+ build-stale/ai_workspace_m4                        |  Bin 639912 -> 670744 bytes
+ build-stale/ai_workspace_m4_autogen/deps           |   59 -
+ .../YHJIA4DBD4/moc_main_window.cpp                 |  144 +-
+ build-stale/aiws_app_autogen/deps                  |   61 +-
+ build-stale/aiws_m2_autogen/deps                   |   59 -
+ build-stale/aiws_send                              |  Bin 0 -> 39120 bytes
+ build-stale/aiws_send_autogen/deps                 |  139 +
+ build-stale/aiws_send_autogen/moc_predefs.h        |  462 ++
+ build-stale/aiws_send_autogen/mocs_compilation.cpp |    3 +
+ build-stale/aiws_send_autogen/timestamp            |    0
+ build-stale/libaiws_app.a                          |  Bin 696942 -> 816802 bytes
+ build-stale/student_tests                          |  Bin 716064 -> 1196280 bytes
+ build-stale/student_tests_autogen/deps             |   59 -
+ build-wsl/.cmake/api/v1/query/cache-v2             |    0
+ build-wsl/.cmake/api/v1/query/cmakeFiles-v1        |    0
+ build-wsl/.cmake/api/v1/query/codemodel-v2         |    0
+ .../v1/reply/cache-v2-0494d5182368f7b398df.json    | 7031 ++++++++++++++++++++
+ .../reply/cmakeFiles-v1-fd962644633ad96d96af.json  | 1389 ++++
+ .../reply/codemodel-v2-d1d8ef8bfdd20f42428a.json   |  672 ++
+ .../directory-.-Debug-9ad1a58d4644cf6543fa.json    |   19 +
+ .../v1/reply/index-2026-11-09T02-54-02-0104.json   |   89 +
+ ...rget-OpenGL__GL-Debug-0cc4af3de34d3ec69225.json |  200 +
+ ...get-OpenGL__GLX-Debug-b036fedbfc6e80efe729.json |  185 +
+ ...-OpenGL__OpenGL-Debug-6de1c2ec246b8494ad6f.json |  164 +
+ ...arget-Qt6__Core-Debug-441963f06afb9cf505d7.json |  159 +
+ ...arget-Qt6__DBus-Debug-339ad1f17092f190e86a.json |  191 +
+ ...6__GlobalConfig-Debug-df7c463485de1fcf3302.json |   67 +
+ ...alConfigPrivate-Debug-e16cb76256c66308781e.json |   88 +
+ ...target-Qt6__Gui-Debug-9ae8e35edc0818f2e073.json |  167 +
+ ...t-Qt6__Platform-Debug-5ae927fd1129e4b26550.json |   88 +
+ ...formAppInternal-Debug-67b093095aaef1b61a55.json |   88 +
+ ...mCommonInternal-Debug-822ee68c88c8c4033612.json |   88 +
+ ...ExampleInternal-Debug-43439b52dbf4cd2ee3d8.json |   67 +
+ ...mModuleInternal-Debug-47fddb304f524c4e17ea.json |   88 +
+ ...mPluginInternal-Debug-e482963df7c885dd3184.json |   88 +
+ ...ormToolInternal-Debug-ced5c426e05fd876be3a.json |   88 +
+ ...arget-Qt6__Test-Debug-c321c682d7a8710a9fbc.json |  106 +
+ ...et-Qt6__Widgets-Debug-2133a6f711f35f233730.json |  114 +
+ ...androiddeployqt-Debug-b89a0c04abc8d9cf0c70.json |  142 +
+ ...droidtestrunner-Debug-af1d446571a5ab8d87ec.json |  142 +
+ ..._automoc_parser-Debug-ab814033a0ea887f6be7.json |  142 +
+ ...target-Qt6__moc-Debug-5f0c3137901b9c88b9a1.json |  142 +
+ ...6__qdbuscpp2xml-Debug-1772aaa6aad016b40817.json |  198 +
+ ...6__qdbusxml2cpp-Debug-0467290e533c39805a06.json |  198 +
+ ...rget-Qt6__qlalr-Debug-d75ca5ec7b270e71cde5.json |  142 +
+ ...rget-Qt6__qmake-Debug-1250b97c8e0b5721a797.json |  142 +
+ ...et-Qt6__qtpaths-Debug-f89f36d1fa5a926c665d.json |  142 +
+ ...get-Qt6__qvkgen-Debug-e9285e66cad74553d89d.json |  142 +
+ ...target-Qt6__rcc-Debug-9549a26edec5f060755b.json |  142 +
+ ...get-Qt6__syncqt-Debug-e2b2a38c3e5a1b0dd72f.json |  142 +
+ ...t-Qt6__tracegen-Debug-ea2d18a021cd3b68fac9.json |  142 +
+ ...__tracepointgen-Debug-ce53882b9ae4d4f85f60.json |  142 +
+ ...target-Qt6__uic-Debug-231264ea3238e2654fb7.json |  114 +
+ ...androiddeployqt-Debug-b2290f0cdbbc3cffa2a3.json |  142 +
+ ...droidtestrunner-Debug-6e26d55877be0e6415d4.json |  142 +
+ ..._automoc_parser-Debug-dff69b1707848ee55d08.json |  142 +
+ .../target-Qt__moc-Debug-30d6d3ceb1cc42a81d63.json |  142 +
+ ...t__qdbuscpp2xml-Debug-d51b4d14c901e4030125.json |  198 +
+ ...t__qdbusxml2cpp-Debug-32b7c63fc9330dfee7f1.json |  198 +
+ ...arget-Qt__qlalr-Debug-69d9b3d86f7c37e84e3d.json |  142 +
+ ...arget-Qt__qmake-Debug-3ed8f0df041494f019cb.json |  142 +
+ ...get-Qt__qtpaths-Debug-eed792b373675c03f836.json |  142 +
+ ...rget-Qt__qvkgen-Debug-7f95484413ce8eb01c8c.json |  142 +
+ .../target-Qt__rcc-Debug-3b2600e845f2d27c802d.json |  142 +
+ ...rget-Qt__syncqt-Debug-6c823593151454a3972b.json |  142 +
+ ...et-Qt__tracegen-Debug-60973a5364b762cf9514.json |  142 +
+ ...__tracepointgen-Debug-3efad13d07c5ab64d91e.json |  142 +
+ .../target-Qt__uic-Debug-9ac03c16a9c8391dc901.json |  114 +
+ ...hreads__Threads-Debug-dbf1ad3c199a0275a538.json |   55 +
+ ...Vulkan__Headers-Debug-5689ac8d0fa19fc28a26.json |  152 +
+ ...-Vulkan__Vulkan-Debug-f3c0aac10ca7d334e00e.json |  152 +
+ ...mic__WrapAtomic-Debug-a3cfe4478558d3c3bc91.json |  153 +
+ ...nGL__WrapOpenGL-Debug-5c0e32f5214b70832740.json |  174 +
+ ...apVulkanHeaders-Debug-2ece7bc351c86f3d2c9f.json |  141 +
+ ...ai_workspace_m4-Debug-b8dc45afbffdf6450779.json |  451 ++
+ ...pace_m4_autogen-Debug-c74225720c295db892f0.json |   85 +
+ ..._timestamp_deps-Debug-b418b0c5d08985b666a6.json |   50 +
+ ...target-aiws_app-Debug-1a6cc414bb8e3d21fd2b.json |  383 ++
+ ...iws_app_autogen-Debug-785b7ac71781c396a391.json |   85 +
+ ..._timestamp_deps-Debug-042055047a08a6e09a33.json |   54 +
+ .../target-aiws_m2-Debug-5242e058547403aa4984.json |  276 +
+ ...aiws_m2_autogen-Debug-23a6a389f87d481a937a.json |   85 +
+ ..._timestamp_deps-Debug-74c10d85e3c0c2a06a97.json |   43 +
+ ...arget-aiws_send-Debug-e89899c7543897e75b84.json |  184 +
+ ...ws_send_autogen-Debug-d60948ac15a974efcf49.json |   85 +
+ ..._timestamp_deps-Debug-4588c05e23c01a6a26db.json |   39 +
+ ...t-student_tests-Debug-c9433bae29debb1264ce.json |  490 ++
+ ...t_tests_autogen-Debug-405a63c3b2283389c333.json |   85 +
+ ..._timestamp_deps-Debug-d9804a9758383cede514.json |   54 +
+ build-wsl/.ninja_deps                              |  Bin 0 -> 119792 bytes
+ build-wsl/.ninja_log                               |   49 +
+ build-wsl/.qt/QtDeploySupport.cmake                |   71 +
+ build-wsl/.qt/QtDeployTargets.cmake                |   10 +
+ build-wsl/.qtc/package-manager/LICENSE.conan       |   21 +
+ build-wsl/.qtc/package-manager/auto-setup.cmake    |  413 ++
+ build-wsl/.qtc/package-manager/conan.cmake         | 1026 +++
+ .../.qtc/package-manager/conan_provider.cmake      |  657 ++
+ .../maintenance_tool_provider.cmake                |  347 +
+ .../package-manager/maintenance_tool_provider.qs   |   60 +
+ .../clangd/index/FILE.h.79AEFC497861DFC5.idx       |  Bin 0 -> 288 bytes
+ .../index/QAbstractItemView.CA9B5D9EDF25DDD7.idx   |  Bin 0 -> 186 bytes
+ .../index/QAbstractTableModel.2DE9E56556056E11.idx |  Bin 0 -> 186 bytes
+ .../clangd/index/QApplication.06858525D6C56C95.idx |  Bin 0 -> 174 bytes
+ .../index/QCommandLineOption.CD4AC97C66F4D8FD.idx  |  Bin 0 -> 184 bytes
+ .../index/QCommandLineParser.DA8305FDF6784B4C.idx  |  Bin 0 -> 184 bytes
+ .../.cache/clangd/index/QDir.958A0F0A34FEA55E.idx  |  Bin 0 -> 164 bytes
+ .../index/QElapsedTimer.45E4E89B32945717.idx       |  Bin 0 -> 176 bytes
+ .../clangd/index/QEvent.E9D8F1F788572BD8.idx       |  Bin 0 -> 168 bytes
+ .../.cache/clangd/index/QFile.9DF549A49D1CC142.idx |  Bin 0 -> 162 bytes
+ .../clangd/index/QFileDevice.B35986D3D0E450FE.idx  |  Bin 0 -> 172 bytes
+ .../clangd/index/QFileDialog.8BC321127E783FE3.idx  |  Bin 0 -> 174 bytes
+ .../clangd/index/QFileInfo.9412FAE94A084D69.idx    |  Bin 0 -> 170 bytes
+ .../clangd/index/QHBoxLayout.E1A3AED82DBE9E36.idx  |  Bin 0 -> 176 bytes
+ .../clangd/index/QHeaderView.0FEDA42AE3B7DBA1.idx  |  Bin 0 -> 176 bytes
+ .../index/QItemSelectionModel.0D574B8EB2715015.idx |  Bin 0 -> 186 bytes
+ .../clangd/index/QLabel.B73DEDF3AC24D9F9.idx       |  Bin 0 -> 168 bytes
+ .../clangd/index/QLineEdit.4CF6B953EF1B0287.idx    |  Bin 0 -> 174 bytes
+ .../.cache/clangd/index/QList.F0B9E767C2C23159.idx |  Bin 0 -> 164 bytes
+ .../clangd/index/QListWidget.6723967C6528597B.idx  |  Bin 0 -> 172 bytes
+ .../clangd/index/QMainWindow.C1E1EBABE642B9B3.idx  |  Bin 0 -> 176 bytes
+ .../clangd/index/QMargins.C8BEDBC072CF6DCB.idx     |  Bin 0 -> 168 bytes
+ .../clangd/index/QMessageBox.4BB3C8E590043C38.idx  |  Bin 0 -> 176 bytes
+ .../clangd/index/QMetaEnum.D1E970311E095943.idx    |  Bin 0 -> 174 bytes
+ .../clangd/index/QMetaObject.84892EC44F8953EE.idx  |  Bin 0 -> 174 bytes
+ .../clangd/index/QObject.CBFF36E363298BC6.idx      |  Bin 0 -> 166 bytes
+ .../index/QPlainTextEdit.F73F07686910F806.idx      |  Bin 0 -> 182 bytes
+ .../clangd/index/QProcess.DB568D6859249AD1.idx     |  Bin 0 -> 168 bytes
+ .../clangd/index/QPushButton.C752AF1D9607A19D.idx  |  Bin 0 -> 176 bytes
+ .../.cache/clangd/index/QRect.82A1518B7A9FA24E.idx |  Bin 0 -> 164 bytes
+ .../index/QSignalBlocker.E6889F74B3EEE275.idx      |  Bin 0 -> 176 bytes
+ .../.cache/clangd/index/QSize.466E2C4EBD7C3A9B.idx |  Bin 0 -> 164 bytes
+ .../clangd/index/QSizeF.10EE34D0F5815EAE.idx       |  Bin 0 -> 166 bytes
+ .../clangd/index/QSizePolicy.E18E04796C32057A.idx  |  Bin 0 -> 176 bytes
+ .../clangd/index/QSlider.D541E9D474294345.idx      |  Bin 0 -> 170 bytes
+ .../clangd/index/QSpinBox.F8FE65ACA9501DB3.idx     |  Bin 0 -> 174 bytes
+ .../clangd/index/QString.1B6E5A752126DB34.idx      |  Bin 0 -> 166 bytes
+ .../clangd/index/QTableView.D09D6495B28D32B0.idx   |  Bin 0 -> 176 bytes
+ .../index/QTemporaryDir.CFEBBDACEAC11358.idx       |  Bin 0 -> 176 bytes
+ .../.cache/clangd/index/QTest.5E7F5AD241A2269B.idx |  Bin 0 -> 162 bytes
+ .../clangd/index/QTransform.3B4B49B56C5825DD.idx   |  Bin 0 -> 168 bytes
+ .../clangd/index/QVBoxLayout.2BEA015C73B97CAC.idx  |  Bin 0 -> 176 bytes
+ .../clangd/index/QWidget.EA4961DAC76DFB9C.idx      |  Bin 0 -> 166 bytes
+ .../clangd/index/__FILE.h.3324F85E382E036A.idx     |  Bin 0 -> 170 bytes
+ .../clangd/index/__fpos64_t.h.23C43F442076149A.idx |  Bin 0 -> 210 bytes
+ .../clangd/index/__fpos_t.h.ECFBE9EEDAAB6648.idx   |  Bin 0 -> 210 bytes
+ .../clangd/index/__locale_t.h.40EA38A2DCA58618.idx |  Bin 0 -> 174 bytes
+ .../index/__mbstate_t.h.6C32CF66236653D7.idx       |  Bin 0 -> 174 bytes
+ .../clangd/index/__sigset_t.h.72131E8056C7E284.idx |  Bin 0 -> 208 bytes
+ .../__stdarg___gnuc_va_list.h.A74B6A78649ACF2D.idx |  Bin 0 -> 176 bytes
+ .../__stdarg___va_copy.h.DEB43B9F037301EA.idx      |  Bin 0 -> 174 bytes
+ .../__stdarg_header_macro.h.C9C0096265808772.idx   |  Bin 0 -> 176 bytes
+ .../index/__stdarg_va_arg.h.CDB15C9657EEC720.idx   |  Bin 0 -> 216 bytes
+ .../index/__stdarg_va_copy.h.04BA9A966FA95FA3.idx  |  Bin 0 -> 172 bytes
+ .../index/__stdarg_va_list.h.22F12D6B460A4F95.idx  |  Bin 0 -> 194 bytes
+ .../__stddef_header_macro.h.69CDDB3006593647.idx   |  Bin 0 -> 176 bytes
+ .../__stddef_max_align_t.h.33D0532D5ADDA447.idx    |  Bin 0 -> 276 bytes
+ .../index/__stddef_null.h.E01B7C875F7C4CE6.idx     |  Bin 0 -> 184 bytes
+ .../__stddef_nullptr_t.h.E6C43156421CCFE2.idx      |  Bin 0 -> 188 bytes
+ .../index/__stddef_offsetof.h.77BE00F69378F619.idx |  Bin 0 -> 188 bytes
+ .../__stddef_ptrdiff_t.h.C092F070DC2DAA94.idx      |  Bin 0 -> 254 bytes
+ .../index/__stddef_size_t.h.2E3BC72EF83904E4.idx   |  Bin 0 -> 250 bytes
+ .../index/__stddef_wchar_t.h.293E470A3BCC0F18.idx  |  Bin 0 -> 148 bytes
+ .../index/aiws_send.cpp.33F00948817661A9.idx       |  Bin 0 -> 3158 bytes
+ .../clangd/index/algorithm.BB1DD98A0283BBD2.idx    |  Bin 0 -> 572 bytes
+ .../index/algorithmfwd.h.BAFC720F76AE0D66.idx      |  Bin 0 -> 21390 bytes
+ .../clangd/index/align.h.F538AF5501CF5C99.idx      |  Bin 0 -> 800 bytes
+ .../index/aligned_buffer.h.EF40936234B53958.idx    |  Bin 0 -> 250 bytes
+ .../index/alloc_traits.h.3F20844836B92A92.idx      |  Bin 0 -> 8676 bytes
+ .../index/alloc_traits.h.AA4FE26E446B6537.idx      |  Bin 0 -> 670 bytes
+ .../clangd/index/alloca.h.793370BF9878CFB6.idx     |  Bin 0 -> 488 bytes
+ .../index/allocated_ptr.h.3AE783F1E0C3EEEE.idx     |  Bin 0 -> 1116 bytes
+ .../clangd/index/allocator.h.78872CA87148A759.idx  |  Bin 0 -> 4100 bytes
+ .../.cache/clangd/index/array.75025A6CC92D7005.idx |  Bin 0 -> 11452 bytes
+ .../clangd/index/assert.h.9895EEC17E1D2A2B.idx     |  Bin 0 -> 790 bytes
+ .../clangd/index/assertions.h.1A28C16DCCBB9FAF.idx |  Bin 0 -> 368 bytes
+ .../clangd/index/atomic.E2087D4778A6BCBA.idx       |  Bin 0 -> 32972 bytes
+ .../index/atomic_base.h.D53C548BA8BCAB95.idx       |  Bin 0 -> 7936 bytes
+ .../index/atomic_futex.h.497B93D6E3F1F945.idx      |  Bin 0 -> 4298 bytes
+ .../atomic_lockfree_defines.h.C0F25667B591B578.idx |  Bin 0 -> 404 bytes
+ .../atomic_wide_counter.h.397D66B6BECC0AA2.idx     |  Bin 0 -> 174 bytes
+ .../index/atomic_word.h.A29017D9E7F3291A.idx       |  Bin 0 -> 224 bytes
+ .../clangd/index/atomicity.h.54F003D10E2AD619.idx  |  Bin 0 -> 460 bytes
+ .../clangd/index/auto_ptr.h.DA028A6E3E20C44E.idx   |  Bin 0 -> 5858 bytes
+ .../clangd/index/basic_ios.h.3F96DBF72E1E9186.idx  |  Bin 0 -> 11280 bytes
+ .../index/basic_ios.tcc.DD1C817138D19CD8.idx       |  Bin 0 -> 7022 bytes
+ .../index/basic_string.h.C9633CFCF816289A.idx      |  Bin 0 -> 92636 bytes
+ .../index/basic_string.tcc.978F9F7C1DF18622.idx    |  Bin 0 -> 50258 bytes
+ .../index/bessel_function.tcc.827D74622018EA1A.idx |  Bin 0 -> 14704 bytes
+ .../index/beta_function.tcc.5548F9CCC3A0F5B0.idx   |  Bin 0 -> 1690 bytes
+ .../clangd/index/binders.h.135FCA0EE8FB7493.idx    |  Bin 0 -> 2442 bytes
+ .../.cache/clangd/index/bit.28B2F856B1DB85EA.idx   |  Bin 0 -> 2168 bytes
+ .../index/bitsperlong.h.6E74E6215C6106E0.idx       |  Bin 0 -> 216 bytes
+ .../index/bitsperlong.h.B267C684FE143FB5.idx       |  Bin 0 -> 206 bytes
+ .../clangd/index/byteswap.h.E57FF553A16DFAFC.idx   |  Bin 0 -> 392 bytes
+ .../index/c++allocator.h.A4D928DAE285FFAF.idx      |  Bin 0 -> 200 bytes
+ .../clangd/index/c++config.h.E55A0FAFEAE7A158.idx  |  Bin 0 -> 9772 bytes
+ .../clangd/index/c++locale.h.2618C896A1896386.idx  |  Bin 0 -> 540 bytes
+ .../clangd/index/cassert.1992136BCC80A5C9.idx      |  Bin 0 -> 192 bytes
+ .../clangd/index/cctype.EAC08B603DD03C24.idx       |  Bin 0 -> 1414 bytes
+ .../clangd/index/cdefs.h.E4D450DF98C1338F.idx      |  Bin 0 -> 3288 bytes
+ .../clangd/index/cerrno.1D1A36417D84D43E.idx       |  Bin 0 -> 236 bytes
+ .../index/char_traits.h.B275C9D19643BC12.idx       |  Bin 0 -> 11030 bytes
+ .../clangd/index/charconv.h.F641103DCF1F42B1.idx   |  Bin 0 -> 4100 bytes
+ .../clangd/index/chrono.7A460892D7C2396D.idx       |  Bin 0 -> 352 bytes
+ .../clangd/index/chrono.h.836A7D82EB499E6D.idx     |  Bin 0 -> 29696 bytes
+ .../clangd/index/chunker.cpp.8E3B4349B7A4E72F.idx  |  Bin 0 -> 2332 bytes
+ .../clangd/index/chunker.hpp.69D4A7B571D8804E.idx  |  Bin 0 -> 950 bytes
+ .../chunking_strategy.hpp.4534557464094C0A.idx     |  Bin 0 -> 568 bytes
+ .../clangd/index/climits.DDA7E9B0A751AC0F.idx      |  Bin 0 -> 302 bytes
+ .../clangd/index/clocale.FA601010F856C9C7.idx      |  Bin 0 -> 476 bytes
+ .../clangd/index/clock_t.h.65AFE5BA7329BCD4.idx    |  Bin 0 -> 274 bytes
+ .../clangd/index/clockid_t.h.5545878511E5BAF1.idx  |  Bin 0 -> 282 bytes
+ .../index/close_range.h.68EB8BD04293AE47.idx       |  Bin 0 -> 200 bytes
+ .../.cache/clangd/index/cmath.1FB8F65D19048A2F.idx |  Bin 0 -> 37346 bytes
+ .../clangd/index/codecvt.1AB9A4A962A3088E.idx      |  Bin 0 -> 3802 bytes
+ .../clangd/index/codecvt.h.339B274DE87EA6C9.idx    |  Bin 0 -> 10248 bytes
+ .../clangd/index/compare.B8406D52DC001E10.idx      |  Bin 0 -> 202 bytes
+ .../index/concept_check.h.9FA668F44F92F11C.idx     |  Bin 0 -> 320 bytes
+ .../clangd/index/concepts.0076187433244A88.idx     |  Bin 0 -> 202 bytes
+ .../index/concurrence.h.C9FC2A8163370AFC.idx       |  Bin 0 -> 1112 bytes
+ .../index/condition_variable.58AA954A883076E8.idx  |  Bin 0 -> 12306 bytes
+ .../clangd/index/confname.h.ACD47B58EFD02DD6.idx   |  Bin 0 -> 7750 bytes
+ .../index/context_builder.cpp.BCB1AFB8E7D274DD.idx |  Bin 0 -> 1526 bytes
+ .../index/context_builder.hpp.97D4AAF8B46E7FDE.idx |  Bin 0 -> 488 bytes
+ .../context_strategy.hpp.F7A6F1BF1C194130.idx      |  Bin 0 -> 564 bytes
+ .../index/context_widget.cpp.486F4DC6E4FD0683.idx  |  Bin 0 -> 4402 bytes
+ .../index/context_widget.hpp.B9922C6EAD56A398.idx  |  Bin 0 -> 2182 bytes
+ .../cookie_io_functions_t.h.5A08066DC7F05542.idx   |  Bin 0 -> 1056 bytes
+ .../index/corpus_index.cpp.307BE065CE3CEE9F.idx    |  Bin 0 -> 2926 bytes
+ .../index/corpus_index.hpp.D56423A5E6A69B17.idx    |  Bin 0 -> 1576 bytes
+ .../index/cpp_type_traits.h.E10BE2C4CA45C8EE.idx   |  Bin 0 -> 700 bytes
+ .../clangd/index/cpu-set.h.B40F3E2869BE4FF9.idx    |  Bin 0 -> 892 bytes
+ .../index/cpu_defines.h.8B227B6531C4DEEE.idx       |  Bin 0 -> 178 bytes
+ .../clangd/index/cstddef.533DFD42AE9DF6A3.idx      |  Bin 0 -> 2268 bytes
+ .../clangd/index/cstdint.60074C3C51C51FCB.idx      |  Bin 0 -> 2584 bytes
+ .../clangd/index/cstdio.005601FBE291F299.idx       |  Bin 0 -> 4386 bytes
+ .../clangd/index/cstdlib.91A0639FE71A041B.idx      |  Bin 0 -> 4478 bytes
+ .../clangd/index/cstring.6476FE0177F75035.idx      |  Bin 0 -> 2268 bytes
+ .../.cache/clangd/index/ctime.D80ED26B7EFB6367.idx |  Bin 0 -> 1402 bytes
+ .../clangd/index/ctype.h.B268CEA0CECCFC59.idx      |  Bin 0 -> 3934 bytes
+ .../clangd/index/ctype_base.h.53270CC07DAA347E.idx |  Bin 0 -> 1272 bytes
+ .../index/ctype_inline.h.093E57B495F70250.idx      |  Bin 0 -> 1024 bytes
+ .../clangd/index/cwchar.9BBFFEFB1B47793B.idx       |  Bin 0 -> 6790 bytes
+ .../clangd/index/cwctype.F7BAF964220657F5.idx      |  Bin 0 -> 2060 bytes
+ .../index/cxxabi_forced.h.39654E71E8A80657.idx     |  Bin 0 -> 164 bytes
+ .../cxxabi_init_exception.h.3992AA317DDA00A7.idx   |  Bin 0 -> 420 bytes
+ .../clangd/index/debug.h.487B6441ED001EE6.idx      |  Bin 0 -> 686 bytes
+ .../clangd/index/document.cpp.58F7512AF6B63280.idx |  Bin 0 -> 1332 bytes
+ .../clangd/index/document.hpp.3B1C110B28DDAC04.idx |  Bin 0 -> 908 bytes
+ .../index/ell_integral.tcc.B2ED73CE8B8E2958.idx    |  Bin 0 -> 15860 bytes
+ .../enable_special_members.h.C067023764851CA2.idx  |  Bin 0 -> 284 bytes
+ .../clangd/index/endian.h.1FC6A4D6D2846204.idx     |  Bin 0 -> 698 bytes
+ .../clangd/index/endian.h.20F8E286A486EE09.idx     |  Bin 0 -> 336 bytes
+ .../clangd/index/endianness.h.F2D2CC6251A4EAFA.idx |  Bin 0 -> 214 bytes
+ .../index/environments.h.AA09E46153D7F6D9.idx      |  Bin 0 -> 492 bytes
+ .../clangd/index/erase_if.h.CE2BA3A5A917F3AC.idx   |  Bin 0 -> 660 bytes
+ .../clangd/index/errno-base.h.23FC55A99C73A727.idx |  Bin 0 -> 940 bytes
+ .../clangd/index/errno.h.063064A523A47758.idx      |  Bin 0 -> 342 bytes
+ .../clangd/index/errno.h.10013861918E601A.idx      |  Bin 0 -> 2496 bytes
+ .../clangd/index/errno.h.19BCCCD58DA5623E.idx      |  Bin 0 -> 620 bytes
+ .../clangd/index/errno.h.33F6986A3C61A3BF.idx      |  Bin 0 -> 164 bytes
+ .../clangd/index/errno.h.3F8ECD84FB880B64.idx      |  Bin 0 -> 156 bytes
+ .../index/error_constants.h.4FA778F20895A791.idx   |  Bin 0 -> 7540 bytes
+ .../clangd/index/error_t.h.58D3895A591B592D.idx    |  Bin 0 -> 230 bytes
+ .../clangd/index/exception.6B89E2FE29CCB363.idx    |  Bin 0 -> 2306 bytes
+ .../clangd/index/exception.h.419F08EE1A528659.idx  |  Bin 0 -> 1652 bytes
+ .../index/exception_defines.h.D5DD63B05A609061.idx |  Bin 0 -> 236 bytes
+ .../index/exception_ptr.h.9B06C068E0F33DA4.idx     |  Bin 0 -> 1552 bytes
+ .../index/execution_defs.h.E953920960A97FBB.idx    |  Bin 0 -> 528 bytes
+ .../index/exp_integral.tcc.9562AE068E8C915F.idx    |  Bin 0 -> 7642 bytes
+ .../index/features-time64.h.BFBA8D3CA0316037.idx   |  Bin 0 -> 264 bytes
+ .../clangd/index/features.h.5A4ED7C80201A723.idx   |  Bin 0 -> 2774 bytes
+ .../clangd/index/filesystem.87BB53D3495C350D.idx   |  Bin 0 -> 324 bytes
+ .../index/floatn-common.h.0FE8C4DDCB84E088.idx     |  Bin 0 -> 1904 bytes
+ .../clangd/index/floatn.h.DA21C738CC1B6ABF.idx     |  Bin 0 -> 654 bytes
+ .../index/flt-eval-method.h.8058951BDB657B4B.idx   |  Bin 0 -> 194 bytes
+ .../clangd/index/fp-fast.h.72CDF40E7648EF43.idx    |  Bin 0 -> 188 bytes
+ .../clangd/index/fp-logb.h.EA7AC5545F14BC26.idx    |  Bin 0 -> 212 bytes
+ .../clangd/index/fs_dir.h.26505C8349C4DC41.idx     |  Bin 0 -> 14488 bytes
+ .../clangd/index/fs_fwd.h.99A2068986E492DE.idx     |  Bin 0 -> 11498 bytes
+ .../clangd/index/fs_ops.h.04896CE11A4980DC.idx     |  Bin 0 -> 10892 bytes
+ .../clangd/index/fs_path.h.C14DC9492B212A2C.idx    |  Bin 0 -> 24550 bytes
+ .../index/functexcept.h.6A2E89F17310DE95.idx       |  Bin 0 -> 324 bytes
+ .../clangd/index/functional.EBD8D92EE2685F2E.idx   |  Bin 0 -> 31344 bytes
+ .../index/functional_hash.h.7C1C671B84E9A052.idx   |  Bin 0 -> 4218 bytes
+ .../clangd/index/future.920A5FDE69D2420D.idx       |  Bin 0 -> 22922 bytes
+ .../clangd/index/gamma.tcc.0AC377AF59DD67EC.idx    |  Bin 0 -> 6532 bytes
+ .../index/getopt_core.h.D7307CF3828B57B6.idx       |  Bin 0 -> 1578 bytes
+ .../index/getopt_posix.h.EAB1D9CAA7EB87EE.idx      |  Bin 0 -> 304 bytes
+ .../glue_algorithm_defs.h.1B2AB35F3BCAAE9B.idx     |  Bin 0 -> 8374 bytes
+ .../index/glue_memory_defs.h.1478E023BF4E859A.idx  |  Bin 0 -> 1166 bytes
+ .../index/glue_numeric_defs.h.6F482C50EB69C213.idx |  Bin 0 -> 1590 bytes
+ .../index/gthr-default.h.B4399EDA94C1DBA8.idx      |  Bin 0 -> 2668 bytes
+ .../clangd/index/gthr.h.163104A5B09814C3.idx       |  Bin 0 -> 220 bytes
+ .../clangd/index/hash_bytes.h.5DA111BE3DBDA86B.idx |  Bin 0 -> 342 bytes
+ .../clangd/index/hashtable.h.81FE3D6C6B9929F8.idx  |  Bin 0 -> 21366 bytes
+ .../index/hashtable_policy.h.1845EBBCBD7913D2.idx  |  Bin 0 -> 7124 bytes
+ .../index/hypergeometric.tcc.DBB697EDF574792C.idx  |  Bin 0 -> 19912 bytes
+ .../.cache/clangd/index/in.h.DD8EEBCAE3CEB61A.idx  |  Bin 0 -> 17486 bytes
+ .../.cache/clangd/index/in.h.ECEBD552F5E1F102.idx  |  Bin 0 -> 4292 bytes
+ .../clangd/index/inet.h.E8FF95FEFD8277CB.idx       |  Bin 0 -> 2454 bytes
+ .../index/initializer_list.0F8FB75E68F1322D.idx    |  Bin 0 -> 1434 bytes
+ .../clangd/index/int-ll64.h.AE74C618A4956C59.idx   |  Bin 0 -> 200 bytes
+ .../clangd/index/invoke.h.4DE14F00D80C8CB5.idx     |  Bin 0 -> 760 bytes
+ .../clangd/index/iomanip.CDA664675158F75A.idx      |  Bin 0 -> 6702 bytes
+ .../.cache/clangd/index/ios.F814CA2CC37C485B.idx   |  Bin 0 -> 364 bytes
+ .../clangd/index/ios_base.h.29FE44CB0EBD9887.idx   |  Bin 0 -> 14866 bytes
+ .../clangd/index/iosfwd.D1495D7D8DC7F071.idx       |  Bin 0 -> 3506 bytes
+ .../clangd/index/iostream.03B35AFC016BAA03.idx     |  Bin 0 -> 1130 bytes
+ .../index/iscanonical.h.C53E44E13856FCEA.idx       |  Bin 0 -> 638 bytes
+ .../clangd/index/istream.D57E10FDB0F98F04.idx      |  Bin 0 -> 12274 bytes
+ .../clangd/index/istream.tcc.3A5B94B32DCFC411.idx  |  Bin 0 -> 19566 bytes
+ .../clangd/index/iterator.AD004068EF8F8235.idx     |  Bin 0 -> 548 bytes
+ .../legendre_function.tcc.FE5ECA8045ACF33F.idx     |  Bin 0 -> 2814 bytes
+ .../index/libc-header-start.h.E88219B53B0B0BF5.idx |  Bin 0 -> 506 bytes
+ .../clangd/index/libintl.h.929023AD77A09335.idx    |  Bin 0 -> 1600 bytes
+ .../libm-simd-decl-stubs.h.06B70A57602EA3C8.idx    |  Bin 0 -> 10026 bytes
+ .../clangd/index/limits.F1E01A923CBD84EA.idx       |  Bin 0 -> 59224 bytes
+ .../clangd/index/limits.h.1DFE7D0FE6434B13.idx     |  Bin 0 -> 884 bytes
+ .../clangd/index/limits.h.9D933402B3AA819E.idx     |  Bin 0 -> 792 bytes
+ .../clangd/index/limits.h.C293B8934AC926BB.idx     |  Bin 0 -> 444 bytes
+ .../.cache/clangd/index/list.CD88FE111C2D2B92.idx  |  Bin 0 -> 704 bytes
+ .../clangd/index/list.tcc.F828FFC74BE3C6B9.idx     |  Bin 0 -> 30310 bytes
+ .../clangd/index/local_lim.h.2CFD657F256B117E.idx  |  Bin 0 -> 626 bytes
+ .../clangd/index/locale.D346B965B0BBD9BE.idx       |  Bin 0 -> 280 bytes
+ .../clangd/index/locale.h.E3C63D05A4E78516.idx     |  Bin 0 -> 486 bytes
+ .../clangd/index/locale.h.F1B51844858762D2.idx     |  Bin 0 -> 3700 bytes
+ .../index/locale_classes.h.78EEDF5119140059.idx    |  Bin 0 -> 8578 bytes
+ .../index/locale_classes.tcc.ECD52E05F047CAC6.idx  |  Bin 0 -> 12564 bytes
+ .../index/locale_conv.h.3350A87A5080F7D4.idx       |  Bin 0 -> 20160 bytes
+ .../index/locale_facets.h.AB77484D55AA9729.idx     |  Bin 0 -> 32782 bytes
+ .../index/locale_facets.tcc.31137666C322AAAB.idx   |  Bin 0 -> 72742 bytes
+ .../locale_facets_nonio.h.462182D41E3B345B.idx     |  Bin 0 -> 19648 bytes
+ .../locale_facets_nonio.tcc.E76885F262EE6A53.idx   |  Bin 0 -> 88198 bytes
+ .../clangd/index/locale_t.h.557516A6B361170F.idx   |  Bin 0 -> 250 bytes
+ .../clangd/index/localefwd.h.BD8637AD0ECADD37.idx  |  Bin 0 -> 3204 bytes
+ .../index/long-double.h.ACD735A1862B6BF8.idx       |  Bin 0 -> 170 bytes
+ .../clangd/index/main.cpp.7615337F40E36A43.idx     |  Bin 0 -> 2448 bytes
+ .../index/main_window.cpp.9496BE374C124E2B.idx     |  Bin 0 -> 13508 bytes
+ .../index/main_window.hpp.F8F083F426D0967B.idx     |  Bin 0 -> 5576 bytes
+ .../.cache/clangd/index/map.DE97978A3D328246.idx   |  Bin 0 -> 906 bytes
+ .../index/math-vector.h.B3EAC58DA1700969.idx       |  Bin 0 -> 200 bytes
+ .../clangd/index/math.h.DE4D39AAF5AC2C76.idx       |  Bin 0 -> 10926 bytes
+ ...thcalls-helper-functions.h.934C8C52064E404C.idx |  Bin 0 -> 382 bytes
+ .../index/mathcalls-macros.h.768282BB7A7E48E3.idx  |  Bin 0 -> 404 bytes
+ .../index/mathcalls-narrow.h.EF4B0E9378BD4EE1.idx  |  Bin 0 -> 5176 bytes
+ .../clangd/index/mathcalls.h.655A2220FF0677F8.idx  |  Bin 0 -> 5590 bytes
+ .../clangd/index/mbstate_t.h.F9237FB65FF84D5A.idx  |  Bin 0 -> 250 bytes
+ .../clangd/index/memory.4C32146D9B4E31E4.idx       |  Bin 0 -> 2060 bytes
+ .../index/memory_resource.h.D6E8FB3BE6377562.idx   |  Bin 0 -> 9126 bytes
+ .../clangd/index/memoryfwd.h.2916FFF118FE7461.idx  |  Bin 0 -> 362 bytes
+ .../index/messages_members.h.D40E959B2D68C3A2.idx  |  Bin 0 -> 3552 bytes
+ .../modified_bessel_func.tcc.D6FDB56C1B7B99CC.idx  |  Bin 0 -> 7666 bytes
+ .../clangd/index/monostate.h.A9ED8D82399203B1.idx  |  Bin 0 -> 1276 bytes
+ .../clangd/index/move.h.F68CE1A1252A72E2.idx       |  Bin 0 -> 2348 bytes
+ .../.cache/clangd/index/mutex.8FB456ACA0898AF6.idx |  Bin 0 -> 9114 bytes
+ .../index/nested_exception.h.A121E9D338080312.idx  |  Bin 0 -> 2116 bytes
+ .../.cache/clangd/index/new.887BB2C83B5C2EC3.idx   |  Bin 0 -> 5608 bytes
+ .../index/new_allocator.h.EA4A6D67D72040EF.idx     |  Bin 0 -> 1580 bytes
+ .../index/node_handle.h.66ADE5E25F866D36.idx       |  Bin 0 -> 3380 bytes
+ .../clangd/index/numeric.DDB77E73C6A4241A.idx      |  Bin 0 -> 22654 bytes
+ .../index/numeric_traits.h.DBEB651AF0B4D178.idx    |  Bin 0 -> 464 bytes
+ .../clangd/index/optional.70817A28CDE8555F.idx     |  Bin 0 -> 17420 bytes
+ .../clangd/index/os_defines.h.F9186670C5153E45.idx |  Bin 0 -> 402 bytes
+ .../clangd/index/ostream.24D537B442EB644F.idx      |  Bin 0 -> 1066 bytes
+ .../clangd/index/ostream.h.7A40D9456CF08219.idx    |  Bin 0 -> 12600 bytes
+ .../clangd/index/ostream.tcc.27EB1145F2AD662F.idx  |  Bin 0 -> 9838 bytes
+ .../index/ostream_insert.h.AD996E301A7D9206.idx    |  Bin 0 -> 1358 bytes
+ .../index/parse_numbers.h.9EB9A233B7E5240D.idx     |  Bin 0 -> 1306 bytes
+ .../clangd/index/poll.h.295B310A4C3C1084.idx       |  Bin 0 -> 530 bytes
+ .../clangd/index/poll.h.45BAEAD5681DF8F5.idx       |  Bin 0 -> 1372 bytes
+ .../clangd/index/poll.h.B8348D00F7FAFBAD.idx       |  Bin 0 -> 152 bytes
+ .../index/poly_hermite.tcc.BE450385D148C405.idx    |  Bin 0 -> 362 bytes
+ .../index/poly_laguerre.tcc.68AA80AC6E442574.idx   |  Bin 0 -> 4270 bytes
+ .../clangd/index/posix1_lim.h.D94E4687FC9359FF.idx |  Bin 0 -> 1218 bytes
+ .../clangd/index/posix2_lim.h.430DA38A1F301F29.idx |  Bin 0 -> 582 bytes
+ .../clangd/index/posix_opt.h.1A6B676984A189EC.idx  |  Bin 0 -> 1642 bytes
+ .../index/posix_types.h.109D032764DE7736.idx       |  Bin 0 -> 162 bytes
+ .../index/posix_types.h.825B0F552923DCCC.idx       |  Bin 0 -> 346 bytes
+ .../index/posix_types.h.8EBBF1FC83D6AE77.idx       |  Bin 0 -> 324 bytes
+ .../index/posix_types_64.h.A12FDCD6ECB1FBD9.idx    |  Bin 0 -> 244 bytes
+ .../clangd/index/postypes.h.A34B9F6AE501999F.idx   |  Bin 0 -> 2692 bytes
+ .../index/predefined_ops.h.C255C666336A3121.idx    |  Bin 0 -> 1508 bytes
+ .../index/processing_core.cpp.3177E9619938E4F0.idx |  Bin 0 -> 5108 bytes
+ .../index/processing_core.hpp.8669C5460C4D46AD.idx |  Bin 0 -> 2288 bytes
+ .../processing_types.hpp.607F6C9B9C34F2ED.idx      |  Bin 0 -> 1904 bytes
+ .../index/pstl_config.h.667922AC93F6D702.idx       |  Bin 0 -> 1158 bytes
+ .../clangd/index/pthread.h.022320E0CE01A46D.idx    |  Bin 0 -> 24736 bytes
+ ...thread_stack_min-dynamic.h.6F432801F0DF58B7.idx |  Bin 0 -> 308 bytes
+ .../index/pthreadtypes-arch.h.9E138C411BE448A0.idx |  Bin 0 -> 474 bytes
+ .../index/pthreadtypes.h.BAA8217B62BB6E86.idx      |  Bin 0 -> 1564 bytes
+ .../clangd/index/ptr_traits.h.B3383B435CA2BEB5.idx |  Bin 0 -> 1020 bytes
+ .../clangd/index/q17memory.h.4299C6A23ACA29E2.idx  |  Bin 0 -> 480 bytes
+ .../index/q20functional.h.8EAF48DAF4ECCA6E.idx     |  Bin 0 -> 520 bytes
+ .../index/q20iterator.h.C6DEF4EC3894AD18.idx       |  Bin 0 -> 882 bytes
+ .../clangd/index/q20memory.h.B99A606A4AB12C27.idx  |  Bin 0 -> 1796 bytes
+ .../index/q20type_traits.h.B339064C1ECC6FCE.idx    |  Bin 0 -> 1544 bytes
+ .../clangd/index/q20utility.h.C32D105BE2ECFE42.idx |  Bin 0 -> 1482 bytes
+ .../index/q23functional.h.2D7FC1CE2456F7A4.idx     |  Bin 0 -> 684 bytes
+ .../index/q23type_traits.h.5FA39BF63E9F3FD0.idx    |  Bin 0 -> 720 bytes
+ .../clangd/index/q23utility.h.4D9CEDCBD665C573.idx |  Bin 0 -> 920 bytes
+ .../index/qabstractbutton.h.F2A42478C676DEC8.idx   |  Bin 0 -> 5152 bytes
+ ...qabstracteventdispatcher.h.70B6B59128F68775.idx |  Bin 0 -> 6932 bytes
+ .../qabstractitemdelegate.h.C91637C13DB42965.idx   |  Bin 0 -> 3472 bytes
+ .../qabstractitemmodel.h.B8974961D0ADD940.idx      |  Bin 0 -> 31648 bytes
+ .../index/qabstractitemview.h.54D64C243ABD0B71.idx |  Bin 0 -> 19400 bytes
+ .../qabstractscrollarea.h.ED879D5C061D4D68.idx     |  Bin 0 -> 6436 bytes
+ .../index/qabstractslider.h.C964AA8D5F72C691.idx   |  Bin 0 -> 5156 bytes
+ .../index/qabstractspinbox.h.6551A8D240A3D35A.idx  |  Bin 0 -> 8322 bytes
+ ...stracttextdocumentlayout.h.D00C3A7789DFB95F.idx |  Bin 0 -> 6000 bytes
+ .../clangd/index/qaction.h.8FC1D3116692D24F.idx    |  Bin 0 -> 9472 bytes
+ .../index/qalgorithms.h.75349F7ACCAAC713.idx       |  Bin 0 -> 5972 bytes
+ .../clangd/index/qalloc.h.11EB41D1F13B781E.idx     |  Bin 0 -> 2320 bytes
+ .../index/qanystringview.h.0286EE48A6B8DB5B.idx    |  Bin 0 -> 15054 bytes
+ .../index/qapplication.h.FCB39B4354A80864.idx      |  Bin 0 -> 6160 bytes
+ .../clangd/index/qarraydata.h.A27AC85B15E36F90.idx |  Bin 0 -> 6044 bytes
+ .../index/qarraydataops.h.BAB80E1123386B20.idx     |  Bin 0 -> 21352 bytes
+ .../index/qarraydatapointer.h.BBC3571E979E8D9C.idx |  Bin 0 -> 14368 bytes
+ .../clangd/index/qassert.h.29CEC269D9D1CF80.idx    |  Bin 0 -> 1406 bytes
+ .../clangd/index/qatomic.h.ED3F27C76CD4D385.idx    |  Bin 0 -> 1852 bytes
+ .../index/qatomic_cxx11.h.CC96AA0A31C42094.idx     |  Bin 0 -> 7692 bytes
+ .../index/qbasicatomic.h.C0174F7F91A3A3D7.idx      |  Bin 0 -> 12554 bytes
+ .../index/qbasictimer.h.0B4D7CE2426B347D.idx       |  Bin 0 -> 3016 bytes
+ .../clangd/index/qbenchmark.h.5DC127EF12BFD835.idx |  Bin 0 -> 1292 bytes
+ .../index/qbenchmarkmetric.h.23399458ADEF49A8.idx  |  Bin 0 -> 2266 bytes
+ .../index/qbindingstorage.h.7CE21D861352F9DC.idx   |  Bin 0 -> 2956 bytes
+ .../clangd/index/qbitarray.h.76B4113FE2DC511F.idx  |  Bin 0 -> 8850 bytes
+ .../clangd/index/qbitmap.h.D886DDA090F869D8.idx    |  Bin 0 -> 2630 bytes
+ .../clangd/index/qboxlayout.h.1C48AD74BED8B443.idx |  Bin 0 -> 6236 bytes
+ .../clangd/index/qbrush.h.323F5B3EB34F2433.idx     |  Bin 0 -> 30648 bytes
+ .../clangd/index/qbytearray.h.F55798101ED209F9.idx |  Bin 0 -> 41424 bytes
+ .../qbytearrayalgorithms.h.2AAB478FDEE20859.idx    |  Bin 0 -> 5764 bytes
+ .../index/qbytearraylist.h.DA81D93288BDF4FA.idx    |  Bin 0 -> 2188 bytes
+ .../index/qbytearrayview.h.4E048893BDE412F5.idx    |  Bin 0 -> 17660 bytes
+ .../clangd/index/qcalendar.h.C06EF0C108357E71.idx  |  Bin 0 -> 6554 bytes
+ .../clangd/index/qcborarray.h.EF9886094D8F5659.idx |  Bin 0 -> 21728 bytes
+ .../index/qcborcommon.h.63C4416EE5C888EE.idx       |  Bin 0 -> 6312 bytes
+ .../clangd/index/qcbormap.h.594A69C3810F121B.idx   |  Bin 0 -> 28324 bytes
+ .../clangd/index/qcborvalue.h.5B0B523BD53304F0.idx |  Bin 0 -> 34706 bytes
+ .../clangd/index/qchar.h.DA06D428D248F5D5.idx      |  Bin 0 -> 40702 bytes
+ .../index/qcheckedint_impl.h.F2D7D7048ACDBB9C.idx  |  Bin 0 -> 16134 bytes
+ .../clangd/index/qcolor.h.BC9EC05D163D120B.idx     |  Bin 0 -> 36028 bytes
+ .../qcommandlineoption.h.9A72D3F73108E9FF.idx      |  Bin 0 -> 3762 bytes
+ .../qcommandlineparser.h.0690EC83C09F7205.idx      |  Bin 0 -> 3660 bytes
+ .../clangd/index/qcompare.h.D6322363C8C4241A.idx   |  Bin 0 -> 20086 bytes
+ .../index/qcompare_impl.h.BA3353CD3760E999.idx     |  Bin 0 -> 766 bytes
+ .../index/qcomparehelpers.h.5B355948BE9FFE9E.idx   |  Bin 0 -> 41774 bytes
+ .../qcompilerdetection.h.1B5D7C36B492FEC2.idx      |  Bin 0 -> 4532 bytes
+ .../clangd/index/qconfig.h.4D8267AD9B713B44.idx    |  Bin 0 -> 1574 bytes
+ .../qconstructormacros.h.5A893057B01C9BF5.idx      |  Bin 0 -> 272 bytes
+ .../index/qcontainerfwd.h.CC8FD4B9E1795856.idx     |  Bin 0 -> 1918 bytes
+ .../index/qcontainerinfo.h.88C373EEBA7B9382.idx    |  Bin 0 -> 5666 bytes
+ .../qcontainertools_impl.h.71CC0413658E99C4.idx    |  Bin 0 -> 8056 bytes
+ .../index/qcontiguouscache.h.0B458CAA01599434.idx  |  Bin 0 -> 61072 bytes
+ .../index/qcoreapplication.h.127053239B517D89.idx  |  Bin 0 -> 8568 bytes
+ ...coreapplication_platform.h.A676724C2B211184.idx |  Bin 0 -> 294 bytes
+ .../clangd/index/qcoreevent.h.B3ED4A5AB996E73F.idx |  Bin 0 -> 22028 bytes
+ .../clangd/index/qcursor.h.389C3E3F11D9549D.idx    |  Bin 0 -> 4004 bytes
+ .../index/qdarwinhelpers.h.240CE09F97BCC4B4.idx    |  Bin 0 -> 292 bytes
+ .../index/qdatastream.h.435C94AB8E5DF52A.idx       |  Bin 0 -> 23764 bytes
+ .../clangd/index/qdatetime.h.7BAD98DDDEE792AD.idx  |  Bin 0 -> 26812 bytes
+ .../index/qdeadlinetimer.h.A0BB3136532FB929.idx    |  Bin 0 -> 13500 bytes
+ .../clangd/index/qdebug.h.6E12752C244135D4.idx     |  Bin 0 -> 59306 bytes
+ .../clangd/index/qdialog.h.B97A4B9BF0D8412F.idx    |  Bin 0 -> 3904 bytes
+ .../index/qdialogbuttonbox.h.0E9D87042E1631E6.idx  |  Bin 0 -> 6790 bytes
+ .../clangd/index/qdir.h.6E6585E1F22C9488.idx       |  Bin 0 -> 13442 bytes
+ .../index/qdirlisting.h.DA7FAEDAF505CB79.idx       |  Bin 0 -> 9182 bytes
+ .../index/qelapsedtimer.h.9E0E6140E9A0300E.idx     |  Bin 0 -> 3074 bytes
+ .../clangd/index/qendian.h.2043BD875D772E23.idx    |  Bin 0 -> 19810 bytes
+ .../clangd/index/qevent.h.9C1D55FF8AD97C2D.idx     |  Bin 0 -> 61156 bytes
+ .../clangd/index/qeventloop.h.42EE4350C0B01285.idx |  Bin 0 -> 5362 bytes
+ .../index/qeventpoint.h.4937DFE7B58FCDB1.idx       |  Bin 0 -> 7094 bytes
+ .../qexceptionhandling.h.649EDC79D35A5687.idx      |  Bin 0 -> 412 bytes
+ .../clangd/index/qfile.h.13C4BED405838EE2.idx      |  Bin 0 -> 8540 bytes
+ .../index/qfiledevice.h.B223AA3715C131A6.idx       |  Bin 0 -> 8220 bytes
+ .../index/qfiledialog.h.183896DF99F81975.idx       |  Bin 0 -> 13044 bytes
+ .../clangd/index/qfileinfo.h.B3BFC37A8F41DCD7.idx  |  Bin 0 -> 9910 bytes
+ .../clangd/index/qflags.h.6916BF8EA26136DF.idx     |  Bin 0 -> 53218 bytes
+ .../clangd/index/qfloat16.h.46AF5761D6974ED9.idx   |  Bin 0 -> 24506 bytes
+ .../clangd/index/qfont.h.C1CFBA7BD89EA6AB.idx      |  Bin 0 -> 20112 bytes
+ .../index/qfontdatabase.h.EA1AF6BC1E0D4EF6.idx     |  Bin 0 -> 6976 bytes
+ .../clangd/index/qfontinfo.h.52ADAF6B21B6D4DF.idx  |  Bin 0 -> 2730 bytes
+ .../index/qfontmetrics.h.4B28C16C1E717F84.idx      |  Bin 0 -> 8286 bytes
+ .../index/qfontvariableaxis.h.546B82915F5AE806.idx |  Bin 0 -> 3432 bytes
+ .../clangd/index/qforeach.h.3124830C73DCF5ED.idx   |  Bin 0 -> 2038 bytes
+ .../clangd/index/qframe.h.20EA3CDF35DFCEB5.idx     |  Bin 0 -> 4674 bytes
+ .../qfunctionaltools_impl.h.44B016EBAABEC255.idx   |  Bin 0 -> 1642 bytes
+ .../index/qfunctionpointer.h.7D25535F87DC783F.idx  |  Bin 0 -> 316 bytes
+ .../index/qgenericatomic.h.32C10E2BA0851DDD.idx    |  Bin 0 -> 884 bytes
+ .../clangd/index/qglobal.h.22884CA8489D25BA.idx    |  Bin 0 -> 978 bytes
+ .../index/qglobalstatic.h.35DF38F6D70C7426.idx     |  Bin 0 -> 2998 bytes
+ .../clangd/index/qglyphrun.h.61B279ECFB63488F.idx  |  Bin 0 -> 4372 bytes
+ .../index/qgridlayout.h.3F06BA0CD7538733.idx       |  Bin 0 -> 4692 bytes
+ .../index/qguiapplication.h.7125C2111C47BBC6.idx   |  Bin 0 -> 8004 bytes
+ ...qguiapplication_platform.h.76CDFC68AF259AD1.idx |  Bin 0 -> 2594 bytes
+ .../clangd/index/qhash.h.82BD82A46CB283E3.idx      |  Bin 0 -> 111678 bytes
+ .../index/qhashfunctions.h.1711D4D442E56B91.idx    |  Bin 0 -> 28072 bytes
+ .../index/qheaderview.h.561BCF867D5D031D.idx       |  Bin 0 -> 11292 bytes
+ .../clangd/index/qicon.h.431628FA0F05D44D.idx      |  Bin 0 -> 19276 bytes
+ .../clangd/index/qimage.h.A301065801D9EE5B.idx     |  Bin 0 -> 19650 bytes
+ .../index/qinputdevice.h.7DB8F78A4A36708F.idx      |  Bin 0 -> 6396 bytes
+ .../index/qinputmethod.h.53F92790672514FE.idx      |  Bin 0 -> 3764 bytes
+ .../clangd/index/qiodevice.h.6E1C692616EC7834.idx  |  Bin 0 -> 7218 bytes
+ .../index/qiodevicebase.h.EDC287ADFB225AF1.idx     |  Bin 0 -> 1300 bytes
+ .../qitemselectionmodel.h.7DCE3DCCCFCCE866.idx     |  Bin 0 -> 12294 bytes
+ .../clangd/index/qiterable.h.C97BAAD587AE80D1.idx  |  Bin 0 -> 15378 bytes
+ .../clangd/index/qiterator.h.435A3D82597C3525.idx  |  Bin 0 -> 11204 bytes
+ .../index/qkeysequence.h.04FB0E9B6435C159.idx      |  Bin 0 -> 10688 bytes
+ .../clangd/index/qlabel.h.32BE8D384B2B19B1.idx     |  Bin 0 -> 6044 bytes
+ .../index/qlatin1stringview.h.93A0C9B67B93F85E.idx |  Bin 0 -> 18624 bytes
+ .../clangd/index/qlayout.h.A069636DE98E598F.idx    |  Bin 0 -> 7282 bytes
+ .../index/qlayoutitem.h.B34604A978198DA7.idx       |  Bin 0 -> 7306 bytes
+ .../clangd/index/qline.h.0DC5E12AC7753AEF.idx      |  Bin 0 -> 13750 bytes
+ .../clangd/index/qlineedit.h.47C5E8292FEE538C.idx  |  Bin 0 -> 10746 bytes
+ .../clangd/index/qlist.h.A2B9F73A0B9E2040.idx      |  Bin 0 -> 74006 bytes
+ .../clangd/index/qlistview.h.EEB26A05A9BB911C.idx  |  Bin 0 -> 9362 bytes
+ .../index/qlistwidget.h.40E3180A70DB69AB.idx       |  Bin 0 -> 14002 bytes
+ .../clangd/index/qlocale.h.AEFC3736A43411A0.idx    |  Bin 0 -> 87116 bytes
+ .../clangd/index/qlogging.h.3119F64B2166F804.idx   |  Bin 0 -> 6788 bytes
+ .../index/qmainwindow.h.DDD3B44F6E81FE40.idx       |  Bin 0 -> 8428 bytes
+ .../clangd/index/qmalloc.h.0528B12C8DF45E8E.idx    |  Bin 0 -> 770 bytes
+ .../clangd/index/qmap.h.C299C9DC872BF4A1.idx       |  Bin 0 -> 55282 bytes
+ .../clangd/index/qmargins.h.7C38BC05179BFA6A.idx   |  Bin 0 -> 19856 bytes
+ .../clangd/index/qmath.h.94930DC3B1913AA6.idx      |  Bin 0 -> 9764 bytes
+ .../index/qmessagebox.h.5B018140A628634C.idx       |  Bin 0 -> 14880 bytes
+ .../index/qmetacontainer.h.63FA7EDA3A2D87E6.idx    |  Bin 0 -> 29252 bytes
+ .../index/qmetaobject.h.EA90D459B365A292.idx       |  Bin 0 -> 23208 bytes
+ .../clangd/index/qmetatype.h.943EB07EF402D8B9.idx  |  Bin 0 -> 121804 bytes
+ .../clangd/index/qminmax.h.23AC81C5CECA03C3.idx    |  Bin 0 -> 1326 bytes
+ .../clangd/index/qnamespace.h.B799B9EBDE8DFE5C.idx |  Bin 0 -> 137002 bytes
+ .../index/qnativeinterface.h.20C0C3D34ACF0EBF.idx  |  Bin 0 -> 4978 bytes
+ .../clangd/index/qnumeric.h.7222572EDD06C6DC.idx   |  Bin 0 -> 8554 bytes
+ .../clangd/index/qobject.h.8FF75D5ED72947C3.idx    |  Bin 0 -> 19264 bytes
+ .../index/qobject_impl.h.42BA6A74E6E9E744.idx      |  Bin 0 -> 1510 bytes
+ .../index/qobjectdefs.h.21B7EE368BFF9021.idx       |  Bin 0 -> 24554 bytes
+ .../index/qobjectdefs.h.598B10433A0B063A.idx       |  Bin 0 -> 540 bytes
+ .../index/qobjectdefs_impl.h.09484FEBBC15C589.idx  |  Bin 0 -> 21550 bytes
+ .../clangd/index/qoverload.h.ACDD4F55D82B66DA.idx  |  Bin 0 -> 1496 bytes
+ .../index/qpaintdevice.h.08037154E68F309D.idx      |  Bin 0 -> 3916 bytes
+ .../clangd/index/qpair.h.906F76D016C8252B.idx      |  Bin 0 -> 548 bytes
+ .../clangd/index/qpalette.h.3D64B90B7BB5C40B.idx   |  Bin 0 -> 10868 bytes
+ .../clangd/index/qpen.h.FA3BF7F7AA4C7531.idx       |  Bin 0 -> 5836 bytes
+ .../clangd/index/qpicture.h.78D74FB9629E17B1.idx   |  Bin 0 -> 3700 bytes
+ .../index/qpixelformat.h.4B01EB39066FA901.idx      |  Bin 0 -> 15652 bytes
+ .../clangd/index/qpixmap.h.6DBC541AB657341C.idx    |  Bin 0 -> 8692 bytes
+ .../index/qplaintextedit.h.166FAB8631F2AF35.idx    |  Bin 0 -> 14454 bytes
+ .../clangd/index/qpoint.h.32AF628BAB1FB0F7.idx     |  Bin 0 -> 15620 bytes
+ .../clangd/index/qpointer.h.AD9383BD16900ED8.idx   |  Bin 0 -> 4714 bytes
+ .../index/qpointingdevice.h.022E60543C749DF4.idx   |  Bin 0 -> 6824 bytes
+ .../clangd/index/qpolygon.h.E557EA4FE906C2F5.idx   |  Bin 0 -> 7898 bytes
+ .../clangd/index/qprocess.h.356E755F2A2408F8.idx   |  Bin 0 -> 14226 bytes
+ .../qprocessordetection.h.DD47F060D6BA6F06.idx     |  Bin 0 -> 398 bytes
+ .../index/qpushbutton.h.76738F7C937DDDEC.idx       |  Bin 0 -> 3406 bytes
+ .../clangd/index/qrawfont.h.21B060BE89D3B68F.idx   |  Bin 0 -> 7274 bytes
+ .../clangd/index/qrect.h.11FE946F786D77FE.idx      |  Bin 0 -> 35790 bytes
+ .../clangd/index/qrefcount.h.F45D777AA5BF468F.idx  |  Bin 0 -> 1066 bytes
+ .../clangd/index/qregion.h.8953A0FC45EF4592.idx    |  Bin 0 -> 7764 bytes
+ .../qregularexpression.h.769099DFF89A6045.idx      |  Bin 0 -> 17776 bytes
+ .../clangd/index/qrgb.h.5D3015D442855D87.idx       |  Bin 0 -> 1738 bytes
+ .../clangd/index/qrgba64.h.0E3686C9CB5FA67D.idx    |  Bin 0 -> 7150 bytes
+ .../index/qrubberband.h.936ADC8581E47D1F.idx       |  Bin 0 -> 3054 bytes
+ .../index/qscopedpointer.h.62811119474710BD.idx    |  Bin 0 -> 5218 bytes
+ .../index/qscopeguard.h.3ED4BE4B75E43B86.idx       |  Bin 0 -> 1610 bytes
+ .../clangd/index/qscreen.h.B9645E5E71AA45EF.idx    |  Bin 0 -> 5834 bytes
+ .../index/qscreen_platform.h.213558505FE25277.idx  |  Bin 0 -> 1010 bytes
+ .../clangd/index/qset.h.86BC856F2F08CD40.idx       |  Bin 0 -> 21650 bytes
+ .../index/qshareddata.h.C24FC4E4755BB267.idx       |  Bin 0 -> 16268 bytes
+ .../index/qshareddata_impl.h.14F74ECC6F6D6C8E.idx  |  Bin 0 -> 5194 bytes
+ .../index/qsharedpointer.h.05BF75A0D69D13CF.idx    |  Bin 0 -> 254 bytes
+ .../qsharedpointer_impl.h.D884CA5AD36E9ED2.idx     |  Bin 0 -> 40624 bytes
+ .../clangd/index/qsize.h.200C61518AE4A70A.idx      |  Bin 0 -> 17278 bytes
+ .../index/qsizepolicy.h.B3388C7D30321129.idx       |  Bin 0 -> 9226 bytes
+ .../clangd/index/qslider.h.7D37F7B12BD53C5F.idx    |  Bin 0 -> 3230 bytes
+ .../clangd/index/qspan.h.ECBA07C5C549FA9E.idx      |  Bin 0 -> 27284 bytes
+ .../clangd/index/qspinbox.h.E9A9FDFB92ECD54B.idx   |  Bin 0 -> 6038 bytes
+ .../index/qstdlibdetection.h.8E7200B1D7979435.idx  |  Bin 0 -> 250 bytes
+ .../clangd/index/qstring.h.9535F32A70D90572.idx    |  Bin 0 -> 79644 bytes
+ .../index/qstringalgorithms.h.6A1FA0608F0828AA.idx |  Bin 0 -> 11364 bytes
+ .../index/qstringbuilder.h.68B8AA450E934AF8.idx    |  Bin 0 -> 17848 bytes
+ .../index/qstringconverter.h.E9F168028B4DEB22.idx  |  Bin 0 -> 6556 bytes
+ .../qstringconverter_base.h.B7B741B7199BB82B.idx   |  Bin 0 -> 7456 bytes
+ .../clangd/index/qstringfwd.h.218C324281281023.idx |  Bin 0 -> 1298 bytes
+ .../index/qstringlist.h.030A364257FE0CC7.idx       |  Bin 0 -> 8232 bytes
+ .../index/qstringmatcher.h.490DFC25088B26BD.idx    |  Bin 0 -> 2440 bytes
+ .../index/qstringtokenizer.h.079F3F12D47DA89F.idx  |  Bin 0 -> 15288 bytes
+ .../index/qstringview.h.3520AB49E2D9272E.idx       |  Bin 0 -> 24634 bytes
+ .../clangd/index/qstyle.h.1864BBD455173C5C.idx     |  Bin 0 -> 52652 bytes
+ .../index/qstyleoption.h.73A8B1247E9ACB59.idx      |  Bin 0 -> 57152 bytes
+ .../clangd/index/qsurface.h.51EFD09DDEFAA099.idx   |  Bin 0 -> 3186 bytes
+ .../index/qsurfaceformat.h.5BB1F389AEA9B85E.idx    |  Bin 0 -> 7500 bytes
+ .../clangd/index/qswap.h.041D29F16CC0C09A.idx      |  Bin 0 -> 788 bytes
+ .../clangd/index/qsysinfo.h.BBB3D5078D6236E7.idx   |  Bin 0 -> 1748 bytes
+ .../index/qsystemdetection.h.C943A11C96F65B44.idx  |  Bin 0 -> 442 bytes
+ .../clangd/index/qtabbar.h.EE4C7B0FE27D7964.idx    |  Bin 0 -> 8990 bytes
+ .../clangd/index/qtableview.h.72569C5635C5D25F.idx |  Bin 0 -> 7382 bytes
+ .../clangd/index/qtabwidget.h.1604394DC62FD208.idx |  Bin 0 -> 7314 bytes
+ .../index/qtaggedpointer.h.075072311A508ED3.idx    |  Bin 0 -> 6230 bytes
+ .../qtclasshelpermacros.h.864293B0A3781055.idx     |  Bin 0 -> 10322 bytes
+ .../index/qtconfiginclude.h.E9A9E329821C2468.idx   |  Bin 0 -> 242 bytes
+ .../index/qtconfigmacros.h.5D433BBADBEE1BC4.idx    |  Bin 0 -> 762 bytes
+ .../index/qtcore-config.h.01CE96BAAC7CBFC8.idx     |  Bin 0 -> 1208 bytes
+ .../index/qtcoreexports.h.C61361074CC5AE6E.idx     |  Bin 0 -> 392 bytes
+ .../index/qtcoreglobal.h.46BA20B83F3059D5.idx      |  Bin 0 -> 244 bytes
+ ...qtdeprecationdefinitions.h.20C4F329857120F8.idx |  Bin 0 -> 294 bytes
+ .../qtdeprecationmarkers.h.DBA276305A8A7C2E.idx    |  Bin 0 -> 3112 bytes
+ .../index/qtemporarydir.h.D05BBF79A42F2C8B.idx     |  Bin 0 -> 1858 bytes
+ .../qtenvironmentvariables.h.03A2ACC7250DA917.idx  |  Bin 0 -> 1434 bytes
+ .../clangd/index/qtest.h.1AFB0D5FF726ED6C.idx      |  Bin 0 -> 25408 bytes
+ .../clangd/index/qtest_gui.h.1689454E04898071.idx  |  Bin 0 -> 4304 bytes
+ .../index/qtest_widgets.h.E6EC1B8DF217B7AC.idx     |  Bin 0 -> 2202 bytes
+ .../index/qtestassert.h.B8949CAF51EC65D3.idx       |  Bin 0 -> 292 bytes
+ .../clangd/index/qtestcase.h.85737612D42EE6DA.idx  |  Bin 0 -> 20104 bytes
+ .../clangd/index/qtestdata.h.804F42E496C31A3D.idx  |  Bin 0 -> 3586 bytes
+ .../clangd/index/qtestevent.h.F0DB7598D7F2F1B0.idx |  Bin 0 -> 8846 bytes
+ .../index/qtestkeyboard.h.7E68CE895B5E99FC.idx     |  Bin 0 -> 10844 bytes
+ .../clangd/index/qtestmouse.h.34C8998CC4E2D230.idx |  Bin 0 -> 8036 bytes
+ .../qtestspontaneevent.h.714CD873BF8A098E.idx      |  Bin 0 -> 432 bytes
+ .../index/qtestsupport_core.h.FB150DE485CFE51C.idx |  Bin 0 -> 1640 bytes
+ .../index/qtestsupport_gui.h.F09B652DEAF8EDB4.idx  |  Bin 0 -> 6072 bytes
+ .../qtestsupport_widgets.h.2426454C82568C3A.idx    |  Bin 0 -> 2174 bytes
+ .../index/qtestsystem.h.132BA83596B94952.idx       |  Bin 0 -> 320 bytes
+ .../index/qtesttostring.h.6E03B80481DD62CD.idx     |  Bin 0 -> 24590 bytes
+ .../clangd/index/qtesttouch.h.02491CB3FA205D10.idx |  Bin 0 -> 880 bytes
+ .../clangd/index/qtestwheel.h.D73DD906E4F24326.idx |  Bin 0 -> 2122 bytes
+ .../index/qtextcursor.h.7FB43ED44ED6AC8B.idx       |  Bin 0 -> 10106 bytes
+ .../index/qtextdocument.h.80817D9F6EDB2BA7.idx     |  Bin 0 -> 14526 bytes
+ .../clangd/index/qtextedit.h.C7B35A14CCA6923B.idx  |  Bin 0 -> 14888 bytes
+ .../index/qtextformat.h.AF9B98100657800A.idx       |  Bin 0 -> 60168 bytes
+ .../index/qtextlayout.h.19933759E092827A.idx       |  Bin 0 -> 12238 bytes
+ .../index/qtextoption.h.52ADDD950AD2CCB7.idx       |  Bin 0 -> 6662 bytes
+ .../index/qtextstream.h.CEC8A9730816CF96.idx       |  Bin 0 -> 14506 bytes
+ .../index/qtformat_impl.h.F897F6F2A211FF44.idx     |  Bin 0 -> 228 bytes
+ .../index/qtgui-config.h.A67ACAAB6FEDDB53.idx      |  Bin 0 -> 1508 bytes
+ .../index/qtguiexports.h.7A61CDD500FA2D90.idx      |  Bin 0 -> 398 bytes
+ .../index/qtguiglobal.h.8ACE60043AFA63E7.idx       |  Bin 0 -> 238 bytes
+ .../clangd/index/qthread.h.E3C2C87E2F3E888F.idx    |  Bin 0 -> 6396 bytes
+ .../clangd/index/qtimezone.h.97B13FEA6BCD6CC9.idx  |  Bin 0 -> 11844 bytes
+ .../index/qtmetamacros.h.FB91ADB9C245954A.idx      |  Bin 0 -> 35376 bytes
+ .../clangd/index/qtnoop.h.80B3D9FCBAE4C0DE.idx     |  Bin 0 -> 242 bytes
+ .../qtpreprocessorsupport.h.223AB2D71EDD37F7.idx   |  Bin 0 -> 276 bytes
+ .../clangd/index/qtransform.h.E0F5FA29F026D5C9.idx |  Bin 0 -> 13786 bytes
+ .../clangd/index/qtresource.h.881A2BC96475D022.idx |  Bin 0 -> 248 bytes
+ .../index/qttestexports.h.A87D070792D9194C.idx     |  Bin 0 -> 398 bytes
+ .../index/qttestglobal.h.B84D77B8BC7A52A2.idx      |  Bin 0 -> 1176 bytes
+ .../index/qttestlib-config.h.913CF8D0BE88104B.idx  |  Bin 0 -> 270 bytes
+ .../index/qttranslation.h.1C984ACCB9E9BFB0.idx     |  Bin 0 -> 804 bytes
+ .../index/qttypetraits.h.6D00271E2CB02DCC.idx      |  Bin 0 -> 9490 bytes
+ .../clangd/index/qtversion.h.4AC3F774B70E048D.idx  |  Bin 0 -> 462 bytes
+ .../index/qtversionchecks.h.198E08712C29DCF5.idx   |  Bin 0 -> 492 bytes
+ .../index/qtwidgets-config.h.0C53DC7A4DB08E78.idx  |  Bin 0 -> 1852 bytes
+ .../index/qtwidgetsexports.h.DABF8565C28D72B5.idx  |  Bin 0 -> 402 bytes
+ .../index/qtwidgetsglobal.h.FB7F3387C11864EC.idx   |  Bin 0 -> 244 bytes
+ .../clangd/index/qtypeinfo.h.92480597F92C7D4B.idx  |  Bin 0 -> 23854 bytes
+ .../clangd/index/qtypes.h.8AA9ED2DF9415EA9.idx     |  Bin 0 -> 3804 bytes
+ .../index/quoted_string.h.717A2A4D2456AF8F.idx     |  Bin 0 -> 6932 bytes
+ .../clangd/index/qurl.h.5E133EC2719CCFDD.idx       |  Bin 0 -> 26250 bytes
+ .../index/qutf8stringview.h.A3B82391BCEF25C7.idx   |  Bin 0 -> 20946 bytes
+ .../clangd/index/quuid.h.1EDC5D071817793A.idx      |  Bin 0 -> 9342 bytes
+ .../clangd/index/qvalidator.h.E6EAEDC52DFD8FBC.idx |  Bin 0 -> 8352 bytes
+ .../clangd/index/qvariant.h.AD5C418A0307F840.idx   |  Bin 0 -> 44446 bytes
+ .../index/qvarlengtharray.h.66BE1FF33E52306A.idx   |  Bin 0 -> 80304 bytes
+ .../clangd/index/qvector2d.h.BA1128B8BF8C65FD.idx  |  Bin 0 -> 166 bytes
+ .../clangd/index/qvector3d.h.4692513FCD467F56.idx  |  Bin 0 -> 166 bytes
+ .../clangd/index/qvector4d.h.0664DAC2B65B2FB5.idx  |  Bin 0 -> 166 bytes
+ .../clangd/index/qvectornd.h.0E0CB2A5D11C5B28.idx  |  Bin 0 -> 34750 bytes
+ .../index/qversiontagging.h.D5571ABC3D07D36B.idx   |  Bin 0 -> 1162 bytes
+ .../clangd/index/qwidget.h.39B5A4F8CA594FFA.idx    |  Bin 0 -> 40124 bytes
+ .../clangd/index/qwindow.h.D356A29EF7FF1A55.idx    |  Bin 0 -> 16822 bytes
+ .../index/qwindowdefs.h.6A88C2356E70AA49.idx       |  Bin 0 -> 1774 bytes
+ .../index/qxpfunctional.h.46935FA1C966729C.idx     |  Bin 0 -> 4078 bytes
+ .../index/qxptype_traits.h.93D0BA70CDADD0BB.idx    |  Bin 0 -> 2324 bytes
+ .../clangd/index/qyieldcpu.h.7DDD4FECA4E6B430.idx  |  Bin 0 -> 450 bytes
+ .../index/range_access.h.0774A268C1E21ADB.idx      |  Bin 0 -> 5056 bytes
+ .../.cache/clangd/index/ratio.79E904F0AD06E0DF.idx |  Bin 0 -> 24762 bytes
+ .../clangd/index/refwrap.h.6A39B8A186163A76.idx    |  Bin 0 -> 3108 bytes
+ .../remote_add_server.cpp.6D9F66ED1202F3A0.idx     |  Bin 0 -> 4620 bytes
+ .../remote_add_server.hpp.02C4160F299126E7.idx     |  Bin 0 -> 1268 bytes
+ .../index/requires_hosted.h.EFA849A463F299CF.idx   |  Bin 0 -> 230 bytes
+ .../index/resettable.hpp.B9FC366139F52C74.idx      |  Bin 0 -> 654 bytes
+ .../retrieval_engine.cpp.6EB0B5FFBF194022.idx      |  Bin 0 -> 2618 bytes
+ .../retrieval_engine.hpp.43359976EBD34EEE.idx      |  Bin 0 -> 578 bytes
+ .../retrieval_strategy.hpp.D854D5C804F43EBD.idx    |  Bin 0 -> 610 bytes
+ .../index/riemann_zeta.tcc.152772F07C5897F1.idx    |  Bin 0 -> 6766 bytes
+ .../clangd/index/sched.h.A585A48500495348.idx      |  Bin 0 -> 2476 bytes
+ .../clangd/index/sched.h.E8530EF262253892.idx      |  Bin 0 -> 2246 bytes
+ .../search_result_model.cpp.7110C9E2B1C71807.idx   |  Bin 0 -> 3238 bytes
+ .../search_result_model.hpp.8FDFCCCF9DF26932.idx   |  Bin 0 -> 2518 bytes
+ .../index/search_widget.cpp.2B8A08A8C6610E64.idx   |  Bin 0 -> 6550 bytes
+ .../index/search_widget.hpp.1B3B9C0B7BFD815C.idx   |  Bin 0 -> 3006 bytes
+ .../clangd/index/select.h.BA57472D13519767.idx     |  Bin 0 -> 256 bytes
+ .../clangd/index/select.h.E19325D0BE3592A0.idx     |  Bin 0 -> 1390 bytes
+ .../.cache/clangd/index/set.15FBFED9173229F0.idx   |  Bin 0 -> 812 bytes
+ .../clangd/index/setjmp.h.71DEFB3DCC800794.idx     |  Bin 0 -> 234 bytes
+ .../clangd/index/shared_ptr.h.7BBE4D20A8FEB01E.idx |  Bin 0 -> 16930 bytes
+ .../index/shared_ptr_atomic.h.7E22A741D516A08B.idx |  Bin 0 -> 6638 bytes
+ .../index/shared_ptr_base.h.F831AC839E2ACB54.idx   |  Bin 0 -> 23454 bytes
+ .../clangd/index/sigset_t.h.32273C537A103809.idx   |  Bin 0 -> 292 bytes
+ .../index/single_threaded.h.918E7314A6EC8DC0.idx   |  Bin 0 -> 240 bytes
+ .../clangd/index/sockaddr.h.9CA21C5F89358D89.idx   |  Bin 0 -> 362 bytes
+ .../clangd/index/socket.h.04EB1A43278AEF57.idx     |  Bin 0 -> 8914 bytes
+ .../clangd/index/socket.h.AEE20B1C32168942.idx     |  Bin 0 -> 2588 bytes
+ .../clangd/index/socket.h.EC1958727F5628B5.idx     |  Bin 0 -> 164 bytes
+ .../clangd/index/socket.h.F690A131FE4E6720.idx     |  Bin 0 -> 4772 bytes
+ .../index/socket_type.h.F297E4C9AB857715.idx       |  Bin 0 -> 1242 bytes
+ .../clangd/index/sockios.h.51FEA1F9C917CA52.idx    |  Bin 0 -> 316 bytes
+ .../clangd/index/sockios.h.A634DAD93F5F4A89.idx    |  Bin 0 -> 166 bytes
+ .../clangd/index/specfun.h.C33479C3A96D5E3F.idx    |  Bin 0 -> 8494 bytes
+ .../special_function_util.h.624BAD35A87464F8.idx   |  Bin 0 -> 394 bytes
+ .../clangd/index/sstream.F13DA026A0CC0BA1.idx      |  Bin 0 -> 20124 bytes
+ .../clangd/index/sstream.tcc.554AC754923DBB4E.idx  |  Bin 0 -> 17672 bytes
+ .../clangd/index/std_abs.h.C0886288BA2C0B45.idx    |  Bin 0 -> 958 bytes
+ .../index/std_function.h.59116F6C185B90E3.idx      |  Bin 0 -> 6114 bytes
+ .../clangd/index/std_mutex.h.9934CF9880BF2A14.idx  |  Bin 0 -> 3256 bytes
+ .../clangd/index/std_thread.h.9A2E0C49F4153B81.idx |  Bin 0 -> 4980 bytes
+ .../clangd/index/stdarg.h.349AB7FB7F1E937D.idx     |  Bin 0 -> 470 bytes
+ .../clangd/index/stdbool.h.C5761687D5192FE7.idx    |  Bin 0 -> 186 bytes
+ .../index/stdc-predef.h.9EA93D70716BF84B.idx       |  Bin 0 -> 262 bytes
+ .../clangd/index/stddef.h.573E230AE7BF71F3.idx     |  Bin 0 -> 354 bytes
+ .../clangd/index/stddef.h.773E5359D533926B.idx     |  Bin 0 -> 656 bytes
+ .../clangd/index/stdexcept.65C5A6293DB475E2.idx    |  Bin 0 -> 8266 bytes
+ .../index/stdint-intn.h.EE0939E700184847.idx       |  Bin 0 -> 434 bytes
+ .../index/stdint-least.h.A0CB5BC401DAC650.idx      |  Bin 0 -> 690 bytes
+ .../index/stdint-uintn.h.B3EA113168048B57.idx      |  Bin 0 -> 436 bytes
+ .../clangd/index/stdint.h.0812A38B2D93FB42.idx     |  Bin 0 -> 298 bytes
+ .../clangd/index/stdint.h.22B451C129B23D79.idx     |  Bin 0 -> 3744 bytes
+ .../clangd/index/stdio.h.6919C07CB89D47AD.idx      |  Bin 0 -> 17498 bytes
+ .../clangd/index/stdio_lim.h.09E79B5FC5C8DF86.idx  |  Bin 0 -> 214 bytes
+ .../index/stdlib-float.h.126E8959FAE2A511.idx      |  Bin 0 -> 170 bytes
+ .../clangd/index/stdlib.h.61AA7B9EED10C430.idx     |  Bin 0 -> 26340 bytes
+ .../clangd/index/stdlib.h.B8DCE457E3619A0A.idx     |  Bin 0 -> 3106 bytes
+ .../clangd/index/stl_algo.h.59FD8545765E537E.idx   |  Bin 0 -> 57386 bytes
+ .../index/stl_algobase.h.AB9590E9F48BE0F9.idx      |  Bin 0 -> 16488 bytes
+ .../index/stl_bvector.h.CD3CD6C7584E6B76.idx       |  Bin 0 -> 26826 bytes
+ .../index/stl_construct.h.7315C52DAB15556E.idx     |  Bin 0 -> 1260 bytes
+ .../index/stl_function.h.01F1D612B15DA15C.idx      |  Bin 0 -> 28988 bytes
+ .../clangd/index/stl_heap.h.88E34651FBAA1756.idx   |  Bin 0 -> 7174 bytes
+ .../index/stl_iterator.h.F0D8C774B50F004F.idx      |  Bin 0 -> 18502 bytes
+ .../stl_iterator_base_funcs.h.F9092E60F2D2E40D.idx |  Bin 0 -> 2012 bytes
+ .../stl_iterator_base_types.h.EB1A61C6BBEC2835.idx |  Bin 0 -> 3118 bytes
+ .../clangd/index/stl_list.h.60A07D9C4D2B1141.idx   |  Bin 0 -> 49974 bytes
+ .../clangd/index/stl_map.h.F3D08576AE6A2834.idx    |  Bin 0 -> 30182 bytes
+ .../index/stl_multimap.h.1B6D9788DD7D07DD.idx      |  Bin 0 -> 17982 bytes
+ .../index/stl_multiset.h.3D9B389F88A49127.idx      |  Bin 0 -> 17022 bytes
+ .../index/stl_numeric.h.5523D89033F7E412.idx       |  Bin 0 -> 13006 bytes
+ .../clangd/index/stl_pair.h.ABC47F820F129412.idx   |  Bin 0 -> 12004 bytes
+ .../stl_raw_storage_iter.h.B6F3D1B2AA10F664.idx    |  Bin 0 -> 1070 bytes
+ .../clangd/index/stl_relops.h.24BFDE02B00E3621.idx |  Bin 0 -> 748 bytes
+ .../clangd/index/stl_set.h.8BB339BCAB6CDD22.idx    |  Bin 0 -> 17864 bytes
+ .../index/stl_tempbuf.h.AE733D0801C156D7.idx       |  Bin 0 -> 2352 bytes
+ .../clangd/index/stl_tree.h.BE2F1A89DED77BC9.idx   |  Bin 0 -> 76452 bytes
+ .../index/stl_uninitialized.h.7FC5838335418811.idx |  Bin 0 -> 11148 bytes
+ .../clangd/index/stl_vector.h.36C1AB8BB6AC3AF3.idx |  Bin 0 -> 25890 bytes
+ .../index/stream_iterator.h.B2666EF6CEB449A8.idx   |  Bin 0 -> 4352 bytes
+ .../clangd/index/streambuf.E7F6935DB46FD4B8.idx    |  Bin 0 -> 14460 bytes
+ .../index/streambuf.tcc.13CF298819F0CF69.idx       |  Bin 0 -> 1662 bytes
+ .../streambuf_iterator.h.5699D874BFFFDB9E.idx      |  Bin 0 -> 10042 bytes
+ .../clangd/index/string.D37ED2A68566F1D5.idx       |  Bin 0 -> 1360 bytes
+ .../clangd/index/string.h.979B97B48AB27554.idx     |  Bin 0 -> 10174 bytes
+ .../string_conversions.h.75A058B07D5B6058.idx      |  Bin 0 -> 998 bytes
+ .../clangd/index/string_view.3EE419A7DE7E7D8B.idx  |  Bin 0 -> 24962 bytes
+ .../index/string_view.tcc.50BF117907489E30.idx     |  Bin 0 -> 3684 bytes
+ .../clangd/index/stringfwd.h.6B3FAF8075248E7D.idx  |  Bin 0 -> 846 bytes
+ .../clangd/index/strings.h.9EB46A34EB89BB5D.idx    |  Bin 0 -> 2260 bytes
+ .../index/struct_FILE.h.2B6C435DE91D3DF8.idx       |  Bin 0 -> 412 bytes
+ .../struct___jmp_buf_tag.h.C41AC0386D4A06C8.idx    |  Bin 0 -> 222 bytes
+ .../index/struct_iovec.h.2D76C8EFEB1B5ED0.idx      |  Bin 0 -> 478 bytes
+ .../index/struct_itimerspec.h.7F2AA6FE7224B30F.idx |  Bin 0 -> 486 bytes
+ .../index/struct_mutex.h.A62EF32C01DB3505.idx      |  Bin 0 -> 216 bytes
+ .../index/struct_osockaddr.h.C6204468B73866A2.idx  |  Bin 0 -> 438 bytes
+ .../index/struct_rwlock.h.76DF445C3AA414C9.idx     |  Bin 0 -> 194 bytes
+ .../struct_sched_param.h.B3F662015F7067C8.idx      |  Bin 0 -> 340 bytes
+ .../index/struct_timespec.h.0E09B6677A8D6A08.idx   |  Bin 0 -> 580 bytes
+ .../index/struct_timeval.h.4A17C4CCB9EE5883.idx    |  Bin 0 -> 434 bytes
+ .../clangd/index/struct_tm.h.472DDF26D5924DB0.idx  |  Bin 0 -> 976 bytes
+ .../clangd/index/stubs-64.h.C743FD695F310B00.idx   |  Bin 0 -> 322 bytes
+ .../clangd/index/stubs.h.07D09A29AEBA877C.idx      |  Bin 0 -> 156 bytes
+ .../index/student_tests.cpp.06710D081AF7644B.idx   |  Bin 0 -> 11774 bytes
+ .../clangd/index/system_error.B42E23DBEA5ED881.idx |  Bin 0 -> 10276 bytes
+ .../term_inspector_widget.cpp.D5309A539D2CDD15.idx |  Bin 0 -> 3874 bytes
+ .../term_inspector_widget.hpp.2B89AD7CC6AF55E9.idx |  Bin 0 -> 2210 bytes
+ .../index/text_processor.cpp.D20020A1C3A33A83.idx  |  Bin 0 -> 2790 bytes
+ .../index/text_processor.hpp.64D2575CCD0B2F58.idx  |  Bin 0 -> 1238 bytes
+ .../index/this_thread_sleep.h.289EB3C4FA4D2A06.idx |  Bin 0 -> 3118 bytes
+ .../thread-shared-types.h.D988ADBA7666A8DD.idx     |  Bin 0 -> 338 bytes
+ .../clangd/index/thread.8887DCEED29CA17C.idx       |  Bin 0 -> 1636 bytes
+ .../clangd/index/time.h.E3714B647728C2FE.idx       |  Bin 0 -> 848 bytes
+ .../clangd/index/time.h.EDC06F0AFB6EC7EC.idx       |  Bin 0 -> 7298 bytes
+ .../clangd/index/time64.h.1807D6F5124100A2.idx     |  Bin 0 -> 232 bytes
+ .../index/time_members.h.373A4A15331ADD6D.idx      |  Bin 0 -> 470 bytes
+ .../clangd/index/time_t.h.CAA645D29A7A0EF9.idx     |  Bin 0 -> 250 bytes
+ .../clangd/index/timer_t.h.3EFB88CBA2B5B801.idx    |  Bin 0 -> 278 bytes
+ .../clangd/index/timesize.h.44719E86E09400E4.idx   |  Bin 0 -> 186 bytes
+ .../clangd/index/timex.h.F2D36E17192C32F0.idx      |  Bin 0 -> 2500 bytes
+ .../.cache/clangd/index/tuple.EA25F1157ED7DA3D.idx |  Bin 0 -> 25244 bytes
+ .../clangd/index/type_traits.B5260392D7506FDF.idx  |  Bin 0 -> 36328 bytes
+ .../index/type_traits.h.1107E36AFD96CC43.idx       |  Bin 0 -> 362 bytes
+ .../clangd/index/typeinfo.8B4361F429E21213.idx     |  Bin 0 -> 2598 bytes
+ .../clangd/index/types.h.14B4CD5C32014264.idx      |  Bin 0 -> 164 bytes
+ .../clangd/index/types.h.21D9DEB46A9E0272.idx      |  Bin 0 -> 2414 bytes
+ .../clangd/index/types.h.BB07396DFADEEB89.idx      |  Bin 0 -> 464 bytes
+ .../clangd/index/types.h.CAF4DC91124A326D.idx      |  Bin 0 -> 176 bytes
+ .../clangd/index/types.h.E5A59583DBE28918.idx      |  Bin 0 -> 2198 bytes
+ .../clangd/index/types.h.E5E7FE6DA0F78AF5.idx      |  Bin 0 -> 3752 bytes
+ .../clangd/index/typesizes.h.A6E116B64E63B90B.idx  |  Bin 0 -> 1134 bytes
+ .../index/uintn-identity.h.CB86545C6FF94BB3.idx    |  Bin 0 -> 214 bytes
+ .../clangd/index/uio_lim.h.DF584C6AE54BEA07.idx    |  Bin 0 -> 188 bytes
+ .../.cache/clangd/index/un.h.968F1AE9695C22EE.idx  |  Bin 0 -> 680 bytes
+ .../index/uniform_int_dist.h.537A0A4438989FF3.idx  |  Bin 0 -> 6464 bytes
+ .../index/unique_lock.h.01D81E87B65D6907.idx       |  Bin 0 -> 4182 bytes
+ .../clangd/index/unique_ptr.h.4355FA4900B65F20.idx |  Bin 0 -> 21756 bytes
+ .../clangd/index/unistd.h.4957E2CBEF0B97CE.idx     |  Bin 0 -> 22854 bytes
+ .../clangd/index/unistd_ext.h.19E02BEC0B72F7D2.idx |  Bin 0 -> 678 bytes
+ .../index/unordered_map.A760230F8D2220D9.idx       |  Bin 0 -> 950 bytes
+ .../index/unordered_map.h.7C5598CFB03069C4.idx     |  Bin 0 -> 26434 bytes
+ .../index/unordered_set.380965C92158E271.idx       |  Bin 0 -> 856 bytes
+ .../index/unordered_set.h.97FA8B051DEF998F.idx     |  Bin 0 -> 26702 bytes
+ .../index/uses_allocator.h.ABD29684E1303EF9.idx    |  Bin 0 -> 1326 bytes
+ .../uses_allocator_args.h.21CDDC0FE4C83329.idx     |  Bin 0 -> 192 bytes
+ .../clangd/index/utility.0191A478BB7CF219.idx      |  Bin 0 -> 1248 bytes
+ .../clangd/index/utility.h.AAFC7DB6DCE683E3.idx    |  Bin 0 -> 3538 bytes
+ .../clangd/index/variant.DF2542EEBE1F8C34.idx      |  Bin 0 -> 30418 bytes
+ .../clangd/index/vector.19A0304396FDE700.idx       |  Bin 0 -> 778 bytes
+ .../clangd/index/vector.tcc.EB92608F25B88A68.idx   |  Bin 0 -> 24822 bytes
+ .../clangd/index/version.A7FABC6992BE1FDD.idx      |  Bin 0 -> 196 bytes
+ .../clangd/index/version.h.8B5F774406BC230E.idx    |  Bin 0 -> 7852 bytes
+ .../clangd/index/waitflags.h.8046C5530CD87302.idx  |  Bin 0 -> 420 bytes
+ .../clangd/index/waitstatus.h.D7C4F06852D51050.idx |  Bin 0 -> 464 bytes
+ .../clangd/index/wchar.h.27C0562D93BBAA12.idx      |  Bin 0 -> 210 bytes
+ .../clangd/index/wchar.h.83BD995621576773.idx      |  Bin 0 -> 16312 bytes
+ .../index/wctype-wchar.h.D8CFC0DAB89A1342.idx      |  Bin 0 -> 2746 bytes
+ .../clangd/index/wctype.h.CC12045E6059335C.idx     |  Bin 0 -> 3274 bytes
+ .../clangd/index/wint_t.h.DAC5928CF0BA7895.idx     |  Bin 0 -> 252 bytes
+ .../clangd/index/wordsize.h.23D8030BEC81E6F1.idx   |  Bin 0 -> 212 bytes
+ .../index/workspace.cpp.117EAA1B72A20878.idx       |  Bin 0 -> 1128 bytes
+ .../index/workspace.hpp.EA599A0547D92038.idx       |  Bin 0 -> 610 bytes
+ .../workspace_widget.cpp.229CF75AD31FB2E7.idx      |  Bin 0 -> 3720 bytes
+ .../workspace_widget.hpp.FBAAAF5C417CF56A.idx      |  Bin 0 -> 2442 bytes
+ .../clangd/index/xopen_lim.h.E4E4BC8C11167D14.idx  |  Bin 0 -> 510 bytes
+ build-wsl/.qtc_clangd/compile_commands.json        |    1 +
+ build-wsl/CMakeCache.txt                           | 1433 ++++
+ build-wsl/CMakeFiles/4.2.3/CMakeCXXCompiler.cmake  |  108 +
+ .../4.2.3/CMakeDetermineCompilerABI_CXX.bin        |  Bin 0 -> 16040 bytes
+ build-wsl/CMakeFiles/4.2.3/CMakeSystem.cmake       |   15 +
+ .../4.2.3/CompilerIdCXX/CMakeCXXCompilerId.cpp     |  949 +++
+ build-wsl/CMakeFiles/4.2.3/CompilerIdCXX/a.out     |  Bin 0 -> 16088 bytes
+ build-wsl/CMakeFiles/CMakeConfigureLog.yaml        | 6336 ++++++++++++++++++
+ build-wsl/CMakeFiles/InstallScripts.json           |    7 +
+ build-wsl/CMakeFiles/TargetDirectories.txt         |   18 +
+ .../ai_workspace_m4_autogen.dir/AutogenInfo.json   |  395 ++
+ .../ai_workspace_m4_autogen.dir/AutogenUsed.txt    |    1 +
+ .../ai_workspace_m4_autogen.dir/ParseCache.txt     |    2 +
+ .../aiws_app_autogen.dir/AutogenInfo.json          |  474 ++
+ .../aiws_app_autogen.dir/AutogenUsed.txt           |    1 +
+ .../CMakeFiles/aiws_app_autogen.dir/ParseCache.txt | 2650 ++++++++
+ .../aiws_m2_autogen.dir/AutogenInfo.json           |  421 ++
+ .../CMakeFiles/aiws_m2_autogen.dir/AutogenUsed.txt |    1 +
+ .../CMakeFiles/aiws_m2_autogen.dir/ParseCache.txt  |    9 +
+ .../aiws_send_autogen.dir/AutogenInfo.json         |  391 ++
+ .../aiws_send_autogen.dir/AutogenUsed.txt          |    1 +
+ .../aiws_send_autogen.dir/ParseCache.txt           |    2 +
+ build-wsl/CMakeFiles/clean_additional.cmake        |   22 +
+ build-wsl/CMakeFiles/cmake.check_cache             |    1 +
+ build-wsl/CMakeFiles/rules.ninja                   |  154 +
+ .../student_tests_autogen.dir/AutogenInfo.json     |  405 ++
+ .../student_tests_autogen.dir/AutogenUsed.txt      |    1 +
+ .../student_tests_autogen.dir/ParseCache.txt       |    2 +
+ build-wsl/CTestTestfile.cmake                      |    8 +
+ build-wsl/Testing/Temporary/LastTest.log           |    3 +
+ build-wsl/ai_workspace_m4                          |  Bin 0 -> 5466336 bytes
+ build-wsl/ai_workspace_m4_autogen/deps             |  233 +
+ build-wsl/ai_workspace_m4_autogen/moc_predefs.h    |  477 ++
+ .../ai_workspace_m4_autogen/mocs_compilation.cpp   |    3 +
+ build-wsl/ai_workspace_m4_autogen/timestamp        |    0
+ .../YHJIA4DBD4/moc_context_widget.cpp              |  134 +
+ .../YHJIA4DBD4/moc_context_widget.cpp.d            |  443 ++
+ .../YHJIA4DBD4/moc_main_window.cpp                 |  174 +
+ .../YHJIA4DBD4/moc_main_window.cpp.d               |  454 ++
+ .../YHJIA4DBD4/moc_search_result_model.cpp         |   90 +
+ .../YHJIA4DBD4/moc_search_result_model.cpp.d       |  403 ++
+ .../YHJIA4DBD4/moc_search_widget.cpp               |  180 +
+ .../YHJIA4DBD4/moc_search_widget.cpp.d             |  443 ++
+ .../YHJIA4DBD4/moc_term_inspector_widget.cpp       |  128 +
+ .../YHJIA4DBD4/moc_term_inspector_widget.cpp.d     |  443 ++
+ .../YHJIA4DBD4/moc_workspace_widget.cpp            |  147 +
+ .../YHJIA4DBD4/moc_workspace_widget.cpp.d          |  442 ++
+ build-wsl/aiws_app_autogen/deps                    |  704 ++
+ build-wsl/aiws_app_autogen/moc_predefs.h           |  477 ++
+ build-wsl/aiws_app_autogen/mocs_compilation.cpp    |    7 +
+ build-wsl/aiws_app_autogen/timestamp               |    0
+ build-wsl/aiws_m2_autogen/deps                     |  240 +
+ build-wsl/aiws_m2_autogen/moc_predefs.h            |  474 ++
+ build-wsl/aiws_m2_autogen/mocs_compilation.cpp     |    3 +
+ build-wsl/aiws_m2_autogen/timestamp                |    0
+ build-wsl/aiws_send                                |  Bin 0 -> 263872 bytes
+ build-wsl/aiws_send_autogen/deps                   |  233 +
+ build-wsl/aiws_send_autogen/moc_predefs.h          |  474 ++
+ build-wsl/aiws_send_autogen/mocs_compilation.cpp   |    3 +
+ build-wsl/aiws_send_autogen/timestamp              |    0
+ build-wsl/build.ninja                              |  692 ++
+ build-wsl/cmake_install.cmake                      |   66 +
+ build-wsl/libaiws_app.a                            |  Bin 0 -> 9535928 bytes
+ build-wsl/libaiws_m2.a                             |  Bin 0 -> 4774336 bytes
+ build-wsl/qtcsettings.cmake                        |   11 +
+ build-wsl/student_tests                            |  Bin 0 -> 6689416 bytes
+ build-wsl/student_tests_autogen/deps               |  233 +
+ build-wsl/student_tests_autogen/moc_predefs.h      |  480 ++
+ .../student_tests_autogen/mocs_compilation.cpp     |    3 +
+ build-wsl/student_tests_autogen/timestamp          |    0
+ tests/student_tests.cpp                            |  320 +-
+ 1191 files changed, 96113 insertions(+), 1975 deletions(-)
+
 commit ad4f7006ce9b818a53dd59ee03310af6e513353f
 Author: Vanesha Hari <pid@vt.edu>
 Date:   2026-11-08 16:50:21 -0500

@@ -6,143 +6,98 @@ See specification Section 8.
 
 ## 1. Threads, Ownership, and Shared Data
 
-The main Qt thread owns `MainWindow`, the GUI widgets, `workspace_`, and the current `processing_core_`. I kept changes to the workspace and GUI on this thread so that the application would not try to update widgets from a background thread.
+`MainWindow`, `workspace_`, `processing_core_`, and the widgets belong to the GUI thread. `build_corpus()` copies the workspace and starts a `std::thread`; that worker creates a temporary `ProcessingCore`, waits `--build-delay-ms` per document, and calls `rebuild()`. `QMetaObject::invokeMethod(..., Qt::QueuedConnection)` schedules `build_finished()` on the GUI thread. The main thread joins the worker before reading its result and either accepts or discards its `std::unique_ptr`-owned temporary core. Threads are never detached.
 
-When the user clicks Build Corpus, `MainWindow::build_corpus()` takes a copy of the workspace and starts a `std::thread`. The worker builds a separate `ProcessingCore` using that snapshot instead of reading the workspace while it might be changing. The build delay is applied for testing, and the worker calls `rebuild()` without directly updating any widgets. When the work finishes, it uses `QMetaObject::invokeMethod()` with `Qt::QueuedConnection` to notify the main thread. `build_finished()` handles the result on the GUI thread.
+**Shared mutable data (constraint 5):** The GUI writes `build_cancelled_`, and the worker reads it atomically. The worker writes `pending_core_` and `pending_error_`; the GUI accesses them only **after joining** the worker. `workspace_`, generations, current-corpus status, and widgets remain GUI-thread-only. The worker owns its workspace snapshot. The `RemoteAddServer` listener thread uses an atomic `running_` flag and posts document paths to the GUI, never modifying widgets directly. Both worker threads are joined on shutdown.
 
-There are a few pieces of data shared between the threads. The GUI updates the atomic `build_cancelled_` flag, which the worker can check. The worker prepares `pending_core_` and `pending_error_`; the GUI reads them after joining the completed build thread. The workspace snapshot belongs to the worker while it builds. The generation counters, corpus status, and widgets are handled by the GUI thread. A completed pending core is stored through `std::unique_ptr` until it is either accepted or discarded.
+## 2. Validity and States
 
-Remote Add has its own `RemoteAddServer` and listener `std::thread`. That thread handles socket requests but does not change the workspace or widgets directly. Instead, it queues the document path to the GUI thread. The main window joins the build thread on shutdown, and the server stops and joins its listener thread.
+States are Not Built, Building, Current, and Failed. At build start, `build_generation_` records `workspace_generation_`. Adding a document or Reset increments the workspace generation and invalidates the corpus. `build_finished()` accepts a successful result **only if the generations match**. Otherwise it discards the old result; failure is reported to the GUI. Search, Inspector, and Context require a current corpus.
 
-## 2. Corpus States and Build Validity
+## 3. Changes Since the Checkpoint
 
-I used four main corpus states: **Not Built**, **Building**, **Current**, and **Failed**. Search, Inspect, and Build Context should only be available when the corpus is current for the documents in the workspace.
+`DESIGN_NOTE.md` proposed separate `BuildJob` objects and possibly overlapping builds. The final implementation instead manages one `build_thread_`, an atomic cancellation flag, and pending output in `MainWindow`. It prevents another build from starting while one is running. The workspace snapshot, queued completion, generation check, and safe cleanup remain.
 
-When a build starts, the application saves the current `workspace_generation_` as `build_generation_`. Adding a document or resetting the workspace increases the workspace generation and makes the previous corpus invalid. When the worker finishes, `build_finished()` checks whether the build generation still matches the current workspace generation. A successful build is only accepted when those values match.
+## 4. CR-1 Remote Add
 
-For example, if the user starts building the corpus and then adds another document, the original build is now based on an older workspace. Even if the worker finishes successfully, that result should not replace the current state. Reset works the same way: a build that started before Reset cannot bring back old data after the workspace has been cleared.
+CR-1 added `RemoteAddServer`, `start_remote_add_server()`, `remote_add_document()`, `--ipc-socket` in `main.cpp`, and `tools/aiws_send.cpp`. Client syntax is `aiws_send [--socket PATH] add FILE`; relative paths are resolved in the client's working directory. The default socket is `/tmp/aiws-$USER.sock`, or the numeric UID if `USER` is absent. Both processes use POSIX Unix-domain **stream** sockets. A request is **four bytes of unsigned length in network byte order, then exactly that many UTF-8 filename bytes** (no terminator). The server handles partial reads, checks readability, and replies immediately with ASCII `0` (accepted) or `1` (rejected), without waiting for the GUI. Client exit codes are 0, 1, or 2 (success, rejection, or communication failure). A queued GUI call uses `add_document_file()`, preserving M3 behavior and corpus invalidation without changing the backend.
 
-Build failures are also handled on the GUI thread so the application does not get stuck showing Building. During Exit, the application handles cancellation and thread cleanup instead of leaving detached workers running.
+## 5. Tests and Fault Switches
 
-## 3. Changes From the Design Checkpoint
+`student_tests` covers background builds, responsiveness, stale builds, Reset, failures, and CR-1 requests including unusual filenames, split writes, rejection, and cleanup. Normal Docker CTest passed. `AIWS_FAULT_ACCEPT_STALE` changes the generation decision in `MainWindow::build_finished()`; stale-build/Reset tests detect it. `AIWS_FAULT_LOSE_FAILURE` suppresses the failed-build completion notification in `build_corpus()`; failure-state tests detect it. Both faulted configurations failed within 60 seconds.
 
-The initial design checkpoint outlined the need for nonblocking corpus building, workspace generation checks, and safe shutdown. In the final implementation, I added the actual background `std::thread`, the copied workspace snapshot, and queued build-completion handling. I also added `set_build_delay_ms()` and the `--build-delay-ms` argument so I could test the interface with slower builds.
+## 6. AI Use
 
-The CR-1 change request added a second thread for the socket server and a separate command-line client named `aiws_send`. It also added the `--ipc-socket` option and the `remote_add_document()` GUI method. Both the Add Document button and Remote Add use `add_document_file()`. That keeps the behavior consistent without changing the existing processing APIs or the main M3 interface.
+I used ChatGPT to discuss requirements, draft and review parts of the thread/socket/test implementation, troubleshoot Qt and Docker, and edit this document. I tested the program and remain responsible for understanding the submitted code.
 
-## 4. Remote Add Document IPC
+## 7. Pair programming log
 
-Remote Add allows an external command-line program to add a file to the running AI Workspace. The client is called using `aiws_send [--socket PATH] add FILE`. The main application accepts an optional `--ipc-socket PATH` argument. By default, it uses `/tmp/aiws-$USER.sock`, or the numeric user ID if `USER` is not set. Relative file paths are resolved from the client's working directory.
-
-The client and server communicate through a POSIX Unix-domain stream socket. A request starts with a four-byte unsigned length in network byte order, followed by that number of UTF-8 bytes containing the path. It does not depend on a newline or a null terminator. Because the server reads the expected number of bytes, it can handle paths containing spaces, Unicode characters, and newlines, as well as messages that arrive in several smaller reads.
-
-The server checks whether the file can be read and sends a one-byte response without waiting for a corpus build. ASCII `0` means the request was accepted, while ASCII `1` means it was rejected. The client uses exit codes `0` for accepted, `1` for rejected, and `2` for a connection or communication error.
-
-After accepting a request, the server queues the file path to the GUI thread. `remote_add_document()` calls `add_document_file()`, which updates the workspace and invalidates a corpus build if one is in progress. When the application exits, the server stops and removes its socket file.
-
-## 5. Testing and Fault Injection
-
-I built the application and ran `student_tests` in the course Docker environment using Qt's offscreen platform. The normal test configuration passed. I also ran the two fault-injection configurations separately and confirmed that the tests failed as expected within the required time limit.
-
-`AIWS_FAULT_ACCEPT_STALE` is located around the generation check in `MainWindow::build_finished()`. It allows an outdated build to be accepted. The stale-build and Reset-during-build tests are meant to catch this because the corpus would incorrectly become current after a workspace change.
-
-`AIWS_FAULT_LOSE_FAILURE` is located where the worker queues its completion notification. It prevents the failed-build notification from reaching the GUI. The failure tests detect this because the interface can remain stuck in the Building state instead of reporting the error.
-
-Other tests cover a normal successful build, GUI responsiveness during a delayed build, adding documents, resetting, remote additions, paths with special characters, requests sent in small pieces, client error codes, and socket cleanup. I also opened the M4 GUI in Linux Qt Creator through WSL to check that the application window launched correctly. The automated tests separately covered the Remote Add behavior.
-
-## 6. AI Tool Use
-
-I used ChatGPT to help understand the requirements, discuss the threading and socket design, review parts of the code and tests, troubleshoot the Linux Qt and Docker setup, and improve the wording of this document. I reviewed the suggestions against the assignment and ran the builds and tests myself. I am responsible for understanding and explaining the code I submit.
-
-## 7. Partner Programming Work
-
-**Project:** ECE 3574, Milestone 4: Responsive AI Workspace  
 **Partners:** Vanesha Hari and Raushan Gouredddy
 
 ### Session 1: Responsive Corpus Building
 
 **Date:** Sunday, November 8, 2026  
-**Time:** 2:30 PM to 3:00 PM  
-**Codebase:** Vanesha Hari's M4 project
+**Start:** 2:30 PM  
+**End:** 3:00 PM  
+**Codebase:** Vanesha Hari's M4 project  
+**Focus:** Background corpus building, generation checks, and delayed-build tests
 
 #### Work Completed
 
-For this session, we focused on making the corpus-building process run in the background instead of blocking the GUI. In the previous milestone, corpus building happened on the main GUI thread, so the application could become unresponsive until processing finished.
-
-We went through the implementation using `std::thread` and reviewed how the `--build-delay-ms` option could simulate a slower build. We also looked at how generation counters track changes to the workspace. If a document is added or the workspace is reset while a build is running, the generation changes so the old result will not be accepted.
-
-We also reviewed how build results and errors get passed back to the main Qt thread, along with how the worker thread is cleaned up during Exit.
+This session focused on moving corpus building off the main Qt thread so the GUI could stay responsive. We looked at the `std::thread` build path, the `--build-delay-ms` option, and the generation counter used to detect when the workspace changes during a build. We also looked at how the worker reports its result back to the main Qt thread and what should happen during Reset or Exit.
 
 #### Driver and Navigator Roles
 
-**2:30 PM to 2:45 PM**
+##### 2:30 PM to 2:45 PM
 
-Driver: Vanesha Hari  
-Navigator: Raushan Gouredddy
+- **Driver:** Vanesha Hari
+- **Navigator:** Raushan Gouredddy
 
-Vanesha reviewed the background-building and generation-check code while Raushan focused on cases where the workspace changes during a build. One important edge case was what should happen if another document is added before the worker finishes.
+Vanesha worked through the background-build and generation-check logic. Raushan's navigator contribution was identifying the need to handle a document being added before the worker finishes, so an old result cannot become current.
 
-**2:45 PM to 3:00 PM**
+##### 2:45 PM to 3:00 PM
 
-Driver: Raushan Gouredddy  
-Navigator: Vanesha Hari
+- **Driver:** Raushan Gouredddy
+- **Navigator:** Vanesha Hari
 
-Raushan reviewed the delayed-build and Reset testing cases while Vanesha checked the expected GUI behavior, including whether Search, Inspect, and Build Context stayed disabled when the corpus was no longer current.
+Raushan went through delayed-build and Reset testing. Vanesha's navigator contribution was checking the expected interface state, especially that Search, Inspect, and Build Context remain disabled when the workspace has changed.
 
-#### Testing and Verification
+#### Testing and Challenges
 
-The testing for this part covered normal builds, delayed builds, adding a document during processing, and resetting during a build. We also checked the automated fault configurations to see whether the tests could detect outdated results being accepted or a build failure not being reported.
-
-#### Technical Challenges
-
-The main challenge was making sure the GUI stayed responsive without using outdated data. Moving the build to another thread helped with responsiveness, but the workspace could still change before the worker finished. Using generation counters helped keep the results consistent with the current documents.
+The relevant tests cover normal builds, simulated slow builds, adding documents during a build, Reset during a build, and failure reporting. The tricky part was that moving work to a thread prevents freezing but does not automatically keep the corpus current. Generation checks handle that problem.
 
 ### Session 2: Remote Add Document IPC
 
 **Date:** Sunday, November 8, 2026  
-**Time:** 3:00 PM to 3:30 PM  
-**Codebase:** Raushan Gouredddy's M4 project
+**Start:** 6:10 PM  
+**End:** 6:40 PM  
+**Codebase:** Raushan Gouredddy's M4 project  
+**Focus:** Unix-domain socket requests, message framing, and workspace integration
 
 #### Work Completed
 
-For this session, we focused on the Remote Add Document feature. The goal was to allow the `aiws_send` command-line program to send a document path to the running AI Workspace without using the Add Document button.
-
-We reviewed the Unix-domain socket communication between the client and server. The request uses a four-byte length followed by the UTF-8 document path, which allows the program to handle filenames containing spaces, Unicode characters, and newlines.
-
-The socket server reads the complete request, checks the file, and queues the document addition to the main Qt thread. We also reviewed how Remote Add uses the same document-addition logic as the normal GUI so that a remotely added document invalidates any outdated corpus build.
+This session focused on allowing `aiws_send` to send a document path to the running application. We reviewed how the server reads a four-byte length and the UTF-8 path, handles a request sent in multiple pieces, checks file readability, and passes the accepted path to the GUI. We also looked at how Remote Add should invalidate a build in progress just like the Add Document button.
 
 #### Driver and Navigator Roles
 
-**3:00 PM to 3:15 PM**
+##### 6:10 PM to 6:25 PM
 
-Driver: Raushan Gouredddy  
-Navigator: Vanesha Hari
+- **Driver:** Raushan Gouredddy
+- **Navigator:** Vanesha Hari
 
-Raushan reviewed the socket server and `aiws_send` implementation while Vanesha focused on the message format and how requests are received. One important edge case was testing a request sent in small pieces rather than assuming the entire message would arrive at once.
+Raushan worked through the socket server and client communication. Vanesha's navigator contribution was calling out the need to test partial socket reads rather than assuming that the entire request arrives in one operation.
 
-**3:15 PM to 3:30 PM**
+##### 6:25 PM to 6:40 PM
 
-Driver: Vanesha Hari  
-Navigator: Raushan Gouredddy
+- **Driver:** Vanesha Hari
+- **Navigator:** Raushan Gouredddy
 
-Vanesha reviewed how Remote Add interacts with the workspace and corpus-building logic while Raushan checked the socket behavior, including invalid file paths and cleanup when the application exits.
+Vanesha went through the workspace integration and expected behavior when a document arrives during a build. Raushan's navigator contribution was reviewing invalid-path handling and whether the server socket is removed on Exit.
 
-#### Testing and Verification
+#### Testing and Challenges
 
-Testing covered adding documents through `aiws_send`, adding documents during a corpus build, handling filenames with spaces and special characters, reconstructing a request sent one byte at a time, removing the socket file on Exit, and returning exit code `2` when the server was unavailable.
+The Remote Add tests cover valid and invalid document paths, spaces and Unicode in filenames, newlines, split requests, cleanup, and the unavailable-server exit code. During Docker testing, the default socket was `/tmp/aiws-0.sock` because the container ran as UID 0 without `USER` set. Using the correct path allowed the client to connect.
 
-#### Technical Challenges
+### Reflection
 
-One issue during Docker testing was identifying the correct socket path. Since the container ran as UID 0 without a `USER` environment variable, the default path was `/tmp/aiws-0.sock`. Using the correct path allowed the client to connect.
-
-We also had to make sure Remote Add followed the same workspace rules as manually adding a document, especially when the corpus was building.
-
-### Overall Reflection
-
-The two sessions covered different parts of M4 that needed to work together. The first focused on background threading and keeping the corpus consistent with the workspace. The second focused on socket communication and adding documents remotely.
-
-Switching between driver and navigator was useful because it gave us different ways to look at the implementation. When driving, we focused on the code and testing steps. When navigating, we could think more about possible errors and edge cases.
-
-We found that discussing expected behavior while reviewing the code was the most helpful part. It made us consider situations beyond normal testing, such as adding a document during a build, resetting the workspace, or receiving a socket request in multiple pieces.
-
-Overall, this helped us understand that keeping the GUI responsive is only one part of the problem. We also have to make sure background operations and remote requests do not leave the application in an inconsistent state.
+Working through the code together was most helpful when the driver explained the current change and the navigator suggested a concrete edge case to test. On the background-build side, we focused on keeping results consistent after workspace changes. On the socket side, we focused on correctly reading requests and getting them into the Qt GUI without blocking it. Switching roles made it easier to see both the implementation details and the cases that could go wrong.
