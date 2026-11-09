@@ -1,0 +1,2 @@
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc libaiws_app.a CMakeFiles/aiws_app.dir/aiws_app_autogen/mocs_compilation.cpp.obj CMakeFiles/aiws_app.dir/src/main_window.cpp.obj CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.obj CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.obj CMakeFiles/aiws_app.dir/src/search_widget.cpp.obj CMakeFiles/aiws_app.dir/src/context_widget.cpp.obj CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.obj CMakeFiles/aiws_app.dir/src/search_result_model.cpp.obj
+C:\Qt\Tools\mingw1310_64\bin\ranlib.exe libaiws_app.a

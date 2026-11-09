@@ -1,0 +1,2 @@
+C:\Qt\Tools\mingw1310_64\bin\ar.exe qc libaiws_m2.a CMakeFiles/aiws_m2.dir/aiws_m2_autogen/mocs_compilation.cpp.obj CMakeFiles/aiws_m2.dir/src/document.cpp.obj CMakeFiles/aiws_m2.dir/src/workspace.cpp.obj CMakeFiles/aiws_m2.dir/src/text_processor.cpp.obj CMakeFiles/aiws_m2.dir/src/chunker.cpp.obj CMakeFiles/aiws_m2.dir/src/corpus_index.cpp.obj CMakeFiles/aiws_m2.dir/src/retrieval_engine.cpp.obj CMakeFiles/aiws_m2.dir/src/context_builder.cpp.obj CMakeFiles/aiws_m2.dir/src/processing_core.cpp.obj
+C:\Qt\Tools\mingw1310_64\bin\ranlib.exe libaiws_m2.a

@@ -1,0 +1,94 @@
+Start testing: Nov 09 03:26 UTC
+----------------------------------------------------------
+1/1 Testing: student_tests
+1/1 Test: student_tests
+Command: "/workspace/build/student_tests"
+Directory: /workspace/build
+"student_tests" start time: Nov 09 03:26 UTC
+Output:
+----------------------------------------------------------
+
+Testing Add Document...
+PASS: Unreadable file is rejected
+PASS: Invalid file does not change corpus status
+PASS: Valid document is added
+PASS: New document requires a corpus build
+
+Testing Background Build...
+PASS: Document added
+PASS: Build request accepted
+PASS: Building state appears immediately
+PASS: Background build finishes
+PASS: Completed build displays chunk count
+
+Testing Stale Build...
+PASS: First document added
+PASS: Build started
+PASS: Second document added during build
+PASS: Old build finishes
+PASS: Outdated build is rejected
+
+Testing Reset During Build...
+PASS: Document added
+PASS: Build started
+PASS: Reset invoked
+PASS: Old build completes after Reset
+PASS: Reset prevents old corpus from becoming current
+
+Testing Build Failure...
+PASS: First document added
+PASS: Duplicate document added to trigger build failure
+PASS: Build started
+PASS: Failed build leaves Building state
+PASS: Build failure is reported to GUI
+
+Testing GUI Responsiveness...
+PASS: Document added
+PASS: Delayed build started
+PASS: GUI input exists
+PASS: GUI input remains editable during build
+PASS: Delayed background build completes
+
+Testing Remote Add...
+PASS: Remote add server starts
+PASS: Remote socket exists
+PASS: Readable document is accepted remotely
+PASS: Remote document appears in the workspace
+PASS: Unreadable remote document is rejected
+PASS: Rejected request does not change the workspace
+PASS: Background build starts before remote add
+PASS: Remote add succeeds during a build
+PASS: Remote document is added during the build
+PASS: Build finishes after remote workspace change
+PASS: Remote add invalidates the old corpus
+
+Testing Special Remote Paths...
+PASS: Special-path server starts
+PASS: Special filename test file created
+PASS: Split request with special filename is accepted
+PASS: Special filename test file created
+PASS: Split request with special filename is accepted
+PASS: Special filename test file created
+PASS: Split request with special filename is accepted
+PASS: All special filenames appear in the workspace
+
+Testing aiws_send Client...
+PASS: Client test server starts
+PASS: aiws_send accepts a relative filename from its working directory
+PASS: aiws_send request updates the workspace
+
+Testing Remote Server Cleanup...
+PASS: Cleanup test server starts
+PASS: Socket is present while running
+PASS: Server removes the socket file on shutdown
+
+Total failures: 0
+<end of output>
+Test time =   2.67 sec
+----------------------------------------------------------
+Test Passed.
+"student_tests" end time: Nov 09 03:26 UTC
+"student_tests" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Nov 09 03:26 UTC

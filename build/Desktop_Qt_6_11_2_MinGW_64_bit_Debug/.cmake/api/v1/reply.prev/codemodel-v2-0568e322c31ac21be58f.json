@@ -1,0 +1,159 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ai_workspace_m4",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ai_workspace_m4::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ai_workspace_m4-Debug-28eef7a4ea1bffae5a03.json",
+					"name" : "ai_workspace_m4",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ai_workspace_m4_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ai_workspace_m4_autogen-Debug-91814d8ced2fd6e6d281.json",
+					"name" : "ai_workspace_m4_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ai_workspace_m4_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ai_workspace_m4_autogen_timestamp_deps-Debug-aec0a9ad298210eb2923.json",
+					"name" : "ai_workspace_m4_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "aiws_app::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-aiws_app-Debug-18e50d8f7bbedf8b8825.json",
+					"name" : "aiws_app",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "aiws_app_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-aiws_app_autogen-Debug-ac9ad790d7a8c35ba764.json",
+					"name" : "aiws_app_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "aiws_app_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-aiws_app_autogen_timestamp_deps-Debug-96d43e56406fda1a99cd.json",
+					"name" : "aiws_app_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "aiws_m2::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-aiws_m2-Debug-466a747f55a96df176a5.json",
+					"name" : "aiws_m2",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "aiws_m2_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-aiws_m2_autogen-Debug-29344d17c095912c3348.json",
+					"name" : "aiws_m2_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "aiws_m2_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-aiws_m2_autogen_timestamp_deps-Debug-1f4e77042e078375cbb0.json",
+					"name" : "aiws_m2_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "student_tests::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-student_tests-Debug-2eda76452616191be56d.json",
+					"name" : "student_tests",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "student_tests_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-student_tests_autogen-Debug-2a41c935848d5bd2b6a4.json",
+					"name" : "student_tests_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "student_tests_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-student_tests_autogen_timestamp_deps-Debug-e4a1166c54ea287c8deb.json",
+					"name" : "student_tests_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/ECE3574/ece3574-fl26-m4-vanesha2025s/build/Desktop_Qt_6_11_2_MinGW_64_bit_Debug",
+		"source" : "C:/ECE3574/ece3574-fl26-m4-vanesha2025s"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}
