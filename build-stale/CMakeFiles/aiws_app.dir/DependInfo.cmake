@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/workspace/build-stale/aiws_app_autogen/mocs_compilation.cpp" "CMakeFiles/aiws_app.dir/aiws_app_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/aiws_app.dir/aiws_app_autogen/mocs_compilation.cpp.o.d"
   "/workspace/src/context_widget.cpp" "CMakeFiles/aiws_app.dir/src/context_widget.cpp.o" "gcc" "CMakeFiles/aiws_app.dir/src/context_widget.cpp.o.d"
   "/workspace/src/main_window.cpp" "CMakeFiles/aiws_app.dir/src/main_window.cpp.o" "gcc" "CMakeFiles/aiws_app.dir/src/main_window.cpp.o.d"
+  "/workspace/src/remote_add_server.cpp" "CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o" "gcc" "CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o.d"
   "/workspace/src/search_result_model.cpp" "CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o" "gcc" "CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o.d"
   "/workspace/src/search_widget.cpp" "CMakeFiles/aiws_app.dir/src/search_widget.cpp.o" "gcc" "CMakeFiles/aiws_app.dir/src/search_widget.cpp.o.d"
   "/workspace/src/term_inspector_widget.cpp" "CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o" "gcc" "CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o.d"

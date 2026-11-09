@@ -1,10 +1,10 @@
-Start testing: Nov 08 21:08 UTC
+Start testing: Nov 08 22:29 UTC
 ----------------------------------------------------------
 1/1 Testing: student_tests
 1/1 Test: student_tests
 Command: "/workspace/build-stale/student_tests"
 Directory: /workspace/build-stale
-"student_tests" start time: Nov 08 21:08 UTC
+"student_tests" start time: Nov 08 22:29 UTC
 Output:
 ----------------------------------------------------------
 
@@ -32,7 +32,7 @@ Testing Reset During Build...
 PASS: Document added
 PASS: Build started
 PASS: Reset invoked
-FAIL: Old build completes after Reset
+PASS: Old build completes after Reset
 FAIL: Reset prevents old corpus from becoming current
 
 Testing Build Failure...
@@ -49,13 +49,46 @@ PASS: GUI input exists
 PASS: GUI input remains editable during build
 PASS: Delayed background build completes
 
+Testing Remote Add...
+PASS: Remote add server starts
+PASS: Remote socket exists
+PASS: Readable document is accepted remotely
+PASS: Remote document appears in the workspace
+PASS: Unreadable remote document is rejected
+PASS: Rejected request does not change the workspace
+PASS: Background build starts before remote add
+PASS: Remote add succeeds during a build
+PASS: Remote document is added during the build
+PASS: Build finishes after remote workspace change
+FAIL: Remote add invalidates the old corpus
+
+Testing Special Remote Paths...
+PASS: Special-path server starts
+PASS: Special filename test file created
+PASS: Split request with special filename is accepted
+PASS: Special filename test file created
+PASS: Split request with special filename is accepted
+PASS: Special filename test file created
+PASS: Split request with special filename is accepted
+PASS: All special filenames appear in the workspace
+
+Testing aiws_send Client...
+PASS: Client test server starts
+PASS: aiws_send accepts a relative filename from its working directory
+PASS: aiws_send request updates the workspace
+
+Testing Remote Server Cleanup...
+PASS: Cleanup test server starts
+PASS: Socket is present while running
+PASS: Server removes the socket file on shutdown
+
 Total failures: 3
 <end of output>
-Test time =   3.24 sec
+Test time =   2.46 sec
 ----------------------------------------------------------
 Test Failed.
-"student_tests" end time: Nov 08 21:08 UTC
-"student_tests" time elapsed: 00:00:03
+"student_tests" end time: Nov 08 22:29 UTC
+"student_tests" time elapsed: 00:00:02
 ----------------------------------------------------------
 
-End testing: Nov 08 21:08 UTC
+End testing: Nov 08 22:29 UTC

@@ -26,27 +26,29 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 namespace {
 struct qt_meta_stringdata_aiws__gui__MainWindow_t {
-    uint offsetsAndSizes[40];
+    uint offsetsAndSizes[44];
     char stringdata0[22];
     char stringdata1[15];
     char stringdata2[1];
-    char stringdata3[13];
-    char stringdata4[13];
-    char stringdata5[18];
-    char stringdata6[4];
-    char stringdata7[17];
-    char stringdata8[6];
-    char stringdata9[2];
-    char stringdata10[14];
-    char stringdata11[24];
-    char stringdata12[13];
-    char stringdata13[26];
-    char stringdata14[12];
+    char stringdata3[20];
+    char stringdata4[5];
+    char stringdata5[13];
+    char stringdata6[13];
+    char stringdata7[18];
+    char stringdata8[4];
+    char stringdata9[17];
+    char stringdata10[6];
+    char stringdata11[2];
+    char stringdata12[14];
+    char stringdata13[24];
+    char stringdata14[13];
     char stringdata15[26];
-    char stringdata16[5];
-    char stringdata17[9];
-    char stringdata18[18];
-    char stringdata19[17];
+    char stringdata16[12];
+    char stringdata17[26];
+    char stringdata18[5];
+    char stringdata19[9];
+    char stringdata20[18];
+    char stringdata21[17];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(sizeof(qt_meta_stringdata_aiws__gui__MainWindow_t::offsetsAndSizes) + ofs), len 
@@ -55,27 +57,31 @@ Q_CONSTINIT static const qt_meta_stringdata_aiws__gui__MainWindow_t qt_meta_stri
         QT_MOC_LITERAL(0, 21),  // "aiws::gui::MainWindow"
         QT_MOC_LITERAL(22, 14),  // "build_finished"
         QT_MOC_LITERAL(37, 0),  // ""
-        QT_MOC_LITERAL(38, 12),  // "add_document"
-        QT_MOC_LITERAL(51, 12),  // "build_corpus"
-        QT_MOC_LITERAL(64, 17),  // "document_selected"
-        QT_MOC_LITERAL(82, 3),  // "row"
-        QT_MOC_LITERAL(86, 16),  // "search_requested"
-        QT_MOC_LITERAL(103, 5),  // "query"
-        QT_MOC_LITERAL(109, 1),  // "k"
-        QT_MOC_LITERAL(111, 13),  // "query_changed"
-        QT_MOC_LITERAL(125, 23),  // "build_context_requested"
-        QT_MOC_LITERAL(149, 12),  // "token_budget"
-        QT_MOC_LITERAL(162, 25),  // "source_document_requested"
-        QT_MOC_LITERAL(188, 11),  // "document_id"
-        QT_MOC_LITERAL(200, 25),  // "term_inspection_requested"
-        QT_MOC_LITERAL(226, 4),  // "term"
-        QT_MOC_LITERAL(231, 8),  // "chunk_id"
-        QT_MOC_LITERAL(240, 17),  // "reset_application"
-        QT_MOC_LITERAL(258, 16)   // "exit_application"
+        QT_MOC_LITERAL(38, 19),  // "remote_add_document"
+        QT_MOC_LITERAL(58, 4),  // "path"
+        QT_MOC_LITERAL(63, 12),  // "add_document"
+        QT_MOC_LITERAL(76, 12),  // "build_corpus"
+        QT_MOC_LITERAL(89, 17),  // "document_selected"
+        QT_MOC_LITERAL(107, 3),  // "row"
+        QT_MOC_LITERAL(111, 16),  // "search_requested"
+        QT_MOC_LITERAL(128, 5),  // "query"
+        QT_MOC_LITERAL(134, 1),  // "k"
+        QT_MOC_LITERAL(136, 13),  // "query_changed"
+        QT_MOC_LITERAL(150, 23),  // "build_context_requested"
+        QT_MOC_LITERAL(174, 12),  // "token_budget"
+        QT_MOC_LITERAL(187, 25),  // "source_document_requested"
+        QT_MOC_LITERAL(213, 11),  // "document_id"
+        QT_MOC_LITERAL(225, 25),  // "term_inspection_requested"
+        QT_MOC_LITERAL(251, 4),  // "term"
+        QT_MOC_LITERAL(256, 8),  // "chunk_id"
+        QT_MOC_LITERAL(265, 17),  // "reset_application"
+        QT_MOC_LITERAL(283, 16)   // "exit_application"
     },
     "aiws::gui::MainWindow",
     "build_finished",
     "",
+    "remote_add_document",
+    "path",
     "add_document",
     "build_corpus",
     "document_selected",
@@ -103,7 +109,7 @@ Q_CONSTINIT static const uint qt_meta_data_aiws__gui__MainWindow[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -111,28 +117,30 @@ Q_CONSTINIT static const uint qt_meta_data_aiws__gui__MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   80,    2, 0x08,    1 /* Private */,
-       3,    0,   81,    2, 0x08,    2 /* Private */,
-       4,    0,   82,    2, 0x08,    3 /* Private */,
-       5,    1,   83,    2, 0x08,    4 /* Private */,
-       7,    2,   86,    2, 0x08,    6 /* Private */,
-      10,    1,   91,    2, 0x08,    9 /* Private */,
-      11,    1,   94,    2, 0x08,   11 /* Private */,
-      13,    1,   97,    2, 0x08,   13 /* Private */,
-      15,    2,  100,    2, 0x08,   15 /* Private */,
-      18,    0,  105,    2, 0x08,   18 /* Private */,
-      19,    0,  106,    2, 0x08,   19 /* Private */,
+       1,    0,   86,    2, 0x08,    1 /* Private */,
+       3,    1,   87,    2, 0x08,    2 /* Private */,
+       5,    0,   90,    2, 0x08,    4 /* Private */,
+       6,    0,   91,    2, 0x08,    5 /* Private */,
+       7,    1,   92,    2, 0x08,    6 /* Private */,
+       9,    2,   95,    2, 0x08,    8 /* Private */,
+      12,    1,  100,    2, 0x08,   11 /* Private */,
+      13,    1,  103,    2, 0x08,   13 /* Private */,
+      15,    1,  106,    2, 0x08,   15 /* Private */,
+      17,    2,  109,    2, 0x08,   17 /* Private */,
+      20,    0,  114,    2, 0x08,   20 /* Private */,
+      21,    0,  115,    2, 0x08,   21 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    4,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    6,
-    QMetaType::Void, QMetaType::QString, QMetaType::Int,    8,    9,
-    QMetaType::Void, QMetaType::QString,    8,
-    QMetaType::Void, QMetaType::Int,   12,
-    QMetaType::Void, QMetaType::QString,   14,
-    QMetaType::Void, QMetaType::QString, QMetaType::QString,   16,   17,
+    QMetaType::Void, QMetaType::Int,    8,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,   10,   11,
+    QMetaType::Void, QMetaType::QString,   10,
+    QMetaType::Void, QMetaType::Int,   14,
+    QMetaType::Void, QMetaType::QString,   16,
+    QMetaType::Void, QMetaType::QString, QMetaType::QString,   18,   19,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -150,6 +158,9 @@ Q_CONSTINIT const QMetaObject aiws::gui::MainWindow::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<MainWindow, std::true_type>,
         // method 'build_finished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'remote_add_document'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
         // method 'add_document'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'build_corpus'
@@ -189,16 +200,17 @@ void aiws::gui::MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         (void)_t;
         switch (_id) {
         case 0: _t->build_finished(); break;
-        case 1: _t->add_document(); break;
-        case 2: _t->build_corpus(); break;
-        case 3: _t->document_selected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 4: _t->search_requested((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
-        case 5: _t->query_changed((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 6: _t->build_context_requested((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 7: _t->source_document_requested((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 8: _t->term_inspection_requested((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 9: _t->reset_application(); break;
-        case 10: _t->exit_application(); break;
+        case 1: _t->remote_add_document((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 2: _t->add_document(); break;
+        case 3: _t->build_corpus(); break;
+        case 4: _t->document_selected((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 5: _t->search_requested((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[2]))); break;
+        case 6: _t->query_changed((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 7: _t->build_context_requested((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 8: _t->source_document_requested((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 9: _t->term_inspection_requested((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 10: _t->reset_application(); break;
+        case 11: _t->exit_application(); break;
         default: ;
         }
     }
@@ -223,13 +235,13 @@ int aiws::gui::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }

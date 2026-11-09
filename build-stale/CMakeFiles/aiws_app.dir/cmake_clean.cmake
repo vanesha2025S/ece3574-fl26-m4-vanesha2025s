@@ -8,6 +8,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aiws_app.dir/src/context_widget.cpp.o.d"
   "CMakeFiles/aiws_app.dir/src/main_window.cpp.o"
   "CMakeFiles/aiws_app.dir/src/main_window.cpp.o.d"
+  "CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o"
+  "CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o.d"
   "CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o"
   "CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o.d"
   "CMakeFiles/aiws_app.dir/src/search_widget.cpp.o"

@@ -103,10 +103,24 @@ CMakeFiles/aiws_app.dir/src/main_window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aiws_app.dir/src/main_window.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/src/main_window.cpp -o CMakeFiles/aiws_app.dir/src/main_window.cpp.s
 
+CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o: CMakeFiles/aiws_app.dir/flags.make
+CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o: /workspace/src/remote_add_server.cpp
+CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o: CMakeFiles/aiws_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o -MF CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o.d -o CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o -c /workspace/src/remote_add_server.cpp
+
+CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /workspace/src/remote_add_server.cpp > CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.i
+
+CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /workspace/src/remote_add_server.cpp -o CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.s
+
 CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o: CMakeFiles/aiws_app.dir/flags.make
 CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o: /workspace/src/workspace_widget.cpp
 CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o: CMakeFiles/aiws_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o -MF CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o.d -o CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o -c /workspace/src/workspace_widget.cpp
 
 CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.i: cmake_force
@@ -120,7 +134,7 @@ CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.s: cmake_force
 CMakeFiles/aiws_app.dir/src/search_widget.cpp.o: CMakeFiles/aiws_app.dir/flags.make
 CMakeFiles/aiws_app.dir/src/search_widget.cpp.o: /workspace/src/search_widget.cpp
 CMakeFiles/aiws_app.dir/src/search_widget.cpp.o: CMakeFiles/aiws_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/aiws_app.dir/src/search_widget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/aiws_app.dir/src/search_widget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aiws_app.dir/src/search_widget.cpp.o -MF CMakeFiles/aiws_app.dir/src/search_widget.cpp.o.d -o CMakeFiles/aiws_app.dir/src/search_widget.cpp.o -c /workspace/src/search_widget.cpp
 
 CMakeFiles/aiws_app.dir/src/search_widget.cpp.i: cmake_force
@@ -134,7 +148,7 @@ CMakeFiles/aiws_app.dir/src/search_widget.cpp.s: cmake_force
 CMakeFiles/aiws_app.dir/src/context_widget.cpp.o: CMakeFiles/aiws_app.dir/flags.make
 CMakeFiles/aiws_app.dir/src/context_widget.cpp.o: /workspace/src/context_widget.cpp
 CMakeFiles/aiws_app.dir/src/context_widget.cpp.o: CMakeFiles/aiws_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/aiws_app.dir/src/context_widget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/aiws_app.dir/src/context_widget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aiws_app.dir/src/context_widget.cpp.o -MF CMakeFiles/aiws_app.dir/src/context_widget.cpp.o.d -o CMakeFiles/aiws_app.dir/src/context_widget.cpp.o -c /workspace/src/context_widget.cpp
 
 CMakeFiles/aiws_app.dir/src/context_widget.cpp.i: cmake_force
@@ -148,7 +162,7 @@ CMakeFiles/aiws_app.dir/src/context_widget.cpp.s: cmake_force
 CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o: CMakeFiles/aiws_app.dir/flags.make
 CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o: /workspace/src/term_inspector_widget.cpp
 CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o: CMakeFiles/aiws_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o -MF CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o.d -o CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o -c /workspace/src/term_inspector_widget.cpp
 
 CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.i: cmake_force
@@ -162,7 +176,7 @@ CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.s: cmake_force
 CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o: CMakeFiles/aiws_app.dir/flags.make
 CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o: /workspace/src/search_result_model.cpp
 CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o: CMakeFiles/aiws_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o -MF CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o.d -o CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o -c /workspace/src/search_result_model.cpp
 
 CMakeFiles/aiws_app.dir/src/search_result_model.cpp.i: cmake_force
@@ -177,6 +191,7 @@ CMakeFiles/aiws_app.dir/src/search_result_model.cpp.s: cmake_force
 aiws_app_OBJECTS = \
 "CMakeFiles/aiws_app.dir/aiws_app_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/aiws_app.dir/src/main_window.cpp.o" \
+"CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o" \
 "CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o" \
 "CMakeFiles/aiws_app.dir/src/search_widget.cpp.o" \
 "CMakeFiles/aiws_app.dir/src/context_widget.cpp.o" \
@@ -188,6 +203,7 @@ aiws_app_EXTERNAL_OBJECTS =
 
 libaiws_app.a: CMakeFiles/aiws_app.dir/aiws_app_autogen/mocs_compilation.cpp.o
 libaiws_app.a: CMakeFiles/aiws_app.dir/src/main_window.cpp.o
+libaiws_app.a: CMakeFiles/aiws_app.dir/src/remote_add_server.cpp.o
 libaiws_app.a: CMakeFiles/aiws_app.dir/src/workspace_widget.cpp.o
 libaiws_app.a: CMakeFiles/aiws_app.dir/src/search_widget.cpp.o
 libaiws_app.a: CMakeFiles/aiws_app.dir/src/context_widget.cpp.o
@@ -195,7 +211,7 @@ libaiws_app.a: CMakeFiles/aiws_app.dir/src/term_inspector_widget.cpp.o
 libaiws_app.a: CMakeFiles/aiws_app.dir/src/search_result_model.cpp.o
 libaiws_app.a: CMakeFiles/aiws_app.dir/build.make
 libaiws_app.a: CMakeFiles/aiws_app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libaiws_app.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/build-stale/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX static library libaiws_app.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/aiws_app.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aiws_app.dir/link.txt --verbose=$(VERBOSE)
 

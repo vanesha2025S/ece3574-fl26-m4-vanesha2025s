@@ -357,9 +357,8 @@ CMakeFiles/student_tests.dir/tests/student_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qinputmethod.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QElapsedTimer \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QDir \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qfiledevice.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
@@ -384,6 +383,15 @@ CMakeFiles/student_tests.dir/tests/student_tests.cpp.o: \
  /usr/include/c++/13/bits/istream.tcc \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QElapsedTimer \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qelapsedtimer.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QFile \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QFileInfo \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
@@ -396,15 +404,30 @@ CMakeFiles/student_tests.dir/tests/student_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QListWidget \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistwidget.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlistview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemview.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qitemselectionmodel.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractitemdelegate.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyleoption.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractspinbox.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtGui/qvalidator.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qslider.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractslider.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qstyle.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtabbar.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qrubberband.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaObject \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qobjectdefs.h \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QProcess \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qprocess.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QTemporaryDir \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtemporarydir.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdir.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfile.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qfileinfo.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatetime.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qcalendar.h \
  /usr/include/x86_64-linux-gnu/qt6/QtTest/QTest \
  /usr/include/x86_64-linux-gnu/qt6/QtTest/qtest.h \
  /usr/include/x86_64-linux-gnu/qt6/QtTest/qttestglobal.h \
@@ -431,10 +454,8 @@ CMakeFiles/student_tests.dir/tests/student_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcborarray.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcborvalue.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcborcommon.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qregularexpression.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/quuid.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcbormap.h \
- /usr/include/x86_64-linux-gnu/qt6/QtCore/qabstractitemmodel.h \
  /usr/include/x86_64-linux-gnu/qt6/QtTest/qtestsystem.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qtestsupport_core.h \
  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtestsupport_gui.h \
@@ -483,4 +504,29 @@ CMakeFiles/student_tests.dir/tests/student_tests.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QMetaEnum \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qmetaobject.h \
- /usr/include/c++/13/iostream
+ /usr/include/arpa/inet.h /usr/include/netinet/in.h \
+ /usr/include/x86_64-linux-gnu/sys/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
+ /usr/include/x86_64-linux-gnu/bits/socket.h \
+ /usr/include/x86_64-linux-gnu/bits/socket_type.h \
+ /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
+ /usr/include/x86_64-linux-gnu/asm/socket.h \
+ /usr/include/asm-generic/socket.h /usr/include/linux/posix_types.h \
+ /usr/include/linux/stddef.h \
+ /usr/include/x86_64-linux-gnu/asm/posix_types.h \
+ /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
+ /usr/include/asm-generic/posix_types.h \
+ /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
+ /usr/include/asm-generic/bitsperlong.h \
+ /usr/include/x86_64-linux-gnu/asm/sockios.h \
+ /usr/include/asm-generic/sockios.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
+ /usr/include/x86_64-linux-gnu/bits/in.h \
+ /usr/include/x86_64-linux-gnu/sys/un.h /usr/include/unistd.h \
+ /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+ /usr/include/x86_64-linux-gnu/bits/environments.h \
+ /usr/include/x86_64-linux-gnu/bits/confname.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
+ /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
+ /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
+ /usr/include/linux/close_range.h /usr/include/c++/13/iostream

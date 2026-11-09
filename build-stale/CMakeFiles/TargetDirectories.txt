@@ -2,6 +2,7 @@
 /workspace/build-stale/CMakeFiles/aiws_app.dir
 /workspace/build-stale/CMakeFiles/ai_workspace_m4.dir
 /workspace/build-stale/CMakeFiles/student_tests.dir
+/workspace/build-stale/CMakeFiles/aiws_send.dir
 /workspace/build-stale/CMakeFiles/test.dir
 /workspace/build-stale/CMakeFiles/edit_cache.dir
 /workspace/build-stale/CMakeFiles/rebuild_cache.dir
@@ -13,3 +14,5 @@
 /workspace/build-stale/CMakeFiles/ai_workspace_m4_autogen.dir
 /workspace/build-stale/CMakeFiles/student_tests_autogen_timestamp_deps.dir
 /workspace/build-stale/CMakeFiles/student_tests_autogen.dir
+/workspace/build-stale/CMakeFiles/aiws_send_autogen_timestamp_deps.dir
+/workspace/build-stale/CMakeFiles/aiws_send_autogen.dir

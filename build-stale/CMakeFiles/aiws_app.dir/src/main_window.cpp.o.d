@@ -355,6 +355,9 @@ CMakeFiles/aiws_app.dir/src/main_window.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/QString \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qstring.h \
  /workspace/include/aiws/gui/context_widget.hpp \
+ /workspace/include/aiws/gui/remote_add_server.hpp \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+ /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QApplication \
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qapplication.h \
  /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication.h \
