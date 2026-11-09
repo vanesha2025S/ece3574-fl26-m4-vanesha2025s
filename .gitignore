@@ -1,3 +1,6 @@
 build/
+build-*/
+.qtcreator/
+*.user
 *.o
 .DS_Store
