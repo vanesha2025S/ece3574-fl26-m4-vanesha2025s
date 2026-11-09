@@ -1,3 +1,13 @@
+commit e7b4eab9347f2a04ba29dbc39c519b12e6546c0c
+Author: Vanesha Hari <pid@vt.edu>
+Date:   2026-11-08 23:00:09 -0500
+
+    edited my DESIGN.md
+
+ DESIGN.md   |  135 +++----
+ HISTORY.txt | 1208 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 1253 insertions(+), 90 deletions(-)
+
 commit 56711e689be8e40522d2967fa48d75d54966581d
 Author: Vanesha Hari <pid@vt.edu>
 Date:   2026-11-08 22:38:52 -0500
