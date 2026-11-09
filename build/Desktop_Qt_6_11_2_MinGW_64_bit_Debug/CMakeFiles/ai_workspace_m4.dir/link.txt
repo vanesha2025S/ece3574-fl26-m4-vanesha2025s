@@ -1,3 +1,0 @@
-C:\Qt\Tools\CMake_64\bin\cmake.exe -E rm -f CMakeFiles\ai_workspace_m4.dir/objects.a
-C:\Qt\Tools\mingw1310_64\bin\ar.exe qc CMakeFiles\ai_workspace_m4.dir/objects.a @CMakeFiles\ai_workspace_m4.dir\objects1.rsp
-C:\Qt\Tools\mingw1310_64\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\ai_workspace_m4.dir/objects.a -Wl,--no-whole-archive -o ai_workspace_m4.exe -Wl,--out-implib,libai_workspace_m4.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\ai_workspace_m4.dir\linkLibs.rsp

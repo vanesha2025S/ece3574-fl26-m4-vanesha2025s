@@ -1,7 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"/mnt/c/ECE3574/ece3574-fl26-m4-vanesha2025s/build-wsl/cmake_install.cmake"
-	],
-	"Parallel" : false
-}
