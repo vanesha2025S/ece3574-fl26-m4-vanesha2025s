@@ -52,7 +52,7 @@ Other tests cover a normal successful build, GUI responsiveness during a delayed
 
 ## 6. AI Tool Use
 
-I used ChatGPT to help understand the requirements, discuss the threading and socket design, draft and review parts of the code and tests, troubleshoot the Linux Qt and Docker setup, and improve the wording of this document. I reviewed the suggestions against the assignment and ran the builds and tests myself. I am responsible for understanding and explaining the code I submit.
+I used ChatGPT to help understand the requirements, discuss the threading and socket design, review parts of the code and tests, troubleshoot the Linux Qt and Docker setup, and improve the wording of this document. I reviewed the suggestions against the assignment and ran the builds and tests myself. I am responsible for understanding and explaining the code I submit.
 
 ## 7. Partner Programming Work
 
@@ -61,8 +61,8 @@ I used ChatGPT to help understand the requirements, discuss the threading and so
 
 ### Session 1: Responsive Corpus Building
 
-**Date:** Friday, November 6, 2026  
-**Time:** 3:00 PM to 3:30 PM  
+**Date:** Sunday, November 8, 2026  
+**Time:** 2:30 PM to 3:00 PM  
 **Codebase:** Vanesha Hari's M4 project
 
 #### Work Completed
@@ -75,13 +75,15 @@ We also reviewed how build results and errors get passed back to the main Qt thr
 
 #### Driver and Navigator Roles
 
-**3:00 PM to 3:15 PM**  
+**2:30 PM to 2:45 PM**
+
 Driver: Vanesha Hari  
 Navigator: Raushan Gouredddy
 
-Vanesha reviewed the background-building and generation-check code while Raushan focused on cases where the workspace changes during a build. A useful point to check was what should happen if another document is added before the worker finishes.
+Vanesha reviewed the background-building and generation-check code while Raushan focused on cases where the workspace changes during a build. One important edge case was what should happen if another document is added before the worker finishes.
 
-**3:15 PM to 3:30 PM**  
+**2:45 PM to 3:00 PM**
+
 Driver: Raushan Gouredddy  
 Navigator: Vanesha Hari
 
@@ -89,54 +91,58 @@ Raushan reviewed the delayed-build and Reset testing cases while Vanesha checked
 
 #### Testing and Verification
 
-The test cases for this part covered normal builds, delayed builds, adding a document during processing, and resetting during a build. The automated fault configurations also checked whether the tests could catch an outdated result being accepted or a failed build not being reported.
+The testing for this part covered normal builds, delayed builds, adding a document during processing, and resetting during a build. We also checked the automated fault configurations to see whether the tests could detect outdated results being accepted or a build failure not being reported.
 
 #### Technical Challenges
 
-The main challenge was making sure the GUI stayed responsive without using outdated data. Moving the build to another thread fixed the blocking problem, but the workspace could still change before the worker finished. Generation checks were important for keeping the result consistent with the current documents.
+The main challenge was making sure the GUI stayed responsive without using outdated data. Moving the build to another thread helped with responsiveness, but the workspace could still change before the worker finished. Using generation counters helped keep the results consistent with the current documents.
 
 ### Session 2: Remote Add Document IPC
 
-**Date:** Saturday, November 7, 2026  
+**Date:** Sunday, November 8, 2026  
 **Time:** 3:00 PM to 3:30 PM  
 **Codebase:** Raushan Gouredddy's M4 project
 
 #### Work Completed
 
-For this session, we focused on Remote Add Document. The goal was to let the `aiws_send` command-line program send a document path to the running application without using the Add Document button.
+For this session, we focused on the Remote Add Document feature. The goal was to allow the `aiws_send` command-line program to send a document path to the running AI Workspace without using the Add Document button.
 
-We reviewed the Unix-domain socket connection between the client and the server. The request uses a four-byte length followed by the UTF-8 document path, which allows the program to handle filenames with spaces, Unicode characters, and newlines. The socket server reads the complete request, checks the file, and queues the addition to the GUI thread.
+We reviewed the Unix-domain socket communication between the client and server. The request uses a four-byte length followed by the UTF-8 document path, which allows the program to handle filenames containing spaces, Unicode characters, and newlines.
 
-We also looked at how Remote Add uses the same document-addition logic as the normal GUI. This matters when a remote document arrives during an active corpus build because that build should become outdated.
+The socket server reads the complete request, checks the file, and queues the document addition to the main Qt thread. We also reviewed how Remote Add uses the same document-addition logic as the normal GUI so that a remotely added document invalidates any outdated corpus build.
 
 #### Driver and Navigator Roles
 
-**3:00 PM to 3:15 PM**  
+**3:00 PM to 3:15 PM**
+
 Driver: Raushan Gouredddy  
 Navigator: Vanesha Hari
 
-Raushan reviewed the server and `aiws_send` implementation while Vanesha focused on the message format. One important edge case was testing a request that arrived in small pieces rather than in a single read.
+Raushan reviewed the socket server and `aiws_send` implementation while Vanesha focused on the message format and how requests are received. One important edge case was testing a request sent in small pieces rather than assuming the entire message would arrive at once.
 
-**3:15 PM to 3:30 PM**  
+**3:15 PM to 3:30 PM**
+
 Driver: Vanesha Hari  
 Navigator: Raushan Gouredddy
 
-Vanesha reviewed the workspace integration and Remote Add tests while Raushan looked at the socket behavior, including invalid paths and cleanup when the application exits.
+Vanesha reviewed how Remote Add interacts with the workspace and corpus-building logic while Raushan checked the socket behavior, including invalid file paths and cleanup when the application exits.
 
 #### Testing and Verification
 
-Remote Add testing covered adding a document through `aiws_send`, adding a document while the corpus was building, handling special filenames, reconstructing a request sent one byte at a time, removing the socket file on Exit, and returning exit code `2` when the server was unavailable.
+Testing covered adding documents through `aiws_send`, adding documents during a corpus build, handling filenames with spaces and special characters, reconstructing a request sent one byte at a time, removing the socket file on Exit, and returning exit code `2` when the server was unavailable.
 
 #### Technical Challenges
 
-One issue during Docker testing was identifying the correct socket path. The container ran as UID 0 without a `USER` environment variable, so the default socket path was `/tmp/aiws-0.sock`. Using that path allowed the socket communication test to connect.
+One issue during Docker testing was identifying the correct socket path. Since the container ran as UID 0 without a `USER` environment variable, the default path was `/tmp/aiws-0.sock`. Using the correct path allowed the client to connect.
 
-We also had to make sure Remote Add would not bypass the workspace validity checks. Sending the path to the same `add_document_file()` function kept remote additions consistent with manual additions.
+We also had to make sure Remote Add followed the same workspace rules as manually adding a document, especially when the corpus was building.
 
-### Overall Pair Programming Reflection
+### Overall Reflection
 
-The two sessions covered different parts of M4 that needed to work together. The first focused on background threads and preventing outdated corpus results. The second focused on socket communication and getting remote document requests safely into the GUI.
+The two sessions covered different parts of M4 that needed to work together. The first focused on background threading and keeping the corpus consistent with the workspace. The second focused on socket communication and adding documents remotely.
 
-The most useful kind of interaction was discussing expected behavior and edge cases while one person reviewed or tested the code. Being the navigator made it easier to think about things that could go wrong, like Reset during a build or a socket request arriving in multiple pieces. Switching roles also gave both of us a chance to explain the implementation and review the other person's work.
+Switching between driver and navigator was useful because it gave us different ways to look at the implementation. When driving, we focused on the code and testing steps. When navigating, we could think more about possible errors and edge cases.
 
-The main thing we learned was that making the GUI responsive is not enough by itself. The application also has to keep workspace state consistent and handle incoming requests and shutdown correctly.
+We found that discussing expected behavior while reviewing the code was the most helpful part. It made us consider situations beyond normal testing, such as adding a document during a build, resetting the workspace, or receiving a socket request in multiple pieces.
+
+Overall, this helped us understand that keeping the GUI responsive is only one part of the problem. We also have to make sure background operations and remote requests do not leave the application in an inconsistent state.
