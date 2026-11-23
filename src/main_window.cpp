@@ -134,7 +134,14 @@ MainWindow::~MainWindow() {
         remote_add_server_->stop();
     }
 
+    {
+        std::lock_guard<std::mutex> lock(build_mutex_);
+        stop_worker_ = true;
+        pending_build_.reset();
+    }
+
     build_cancelled_.store(true);
+    build_ready_.notify_one();
 
     if (build_thread_.joinable()) {
         build_thread_.join();
@@ -229,6 +236,22 @@ bool MainWindow::add_document_file(const QString& path) {
     return true;
 }
 
+
+std::optional<MainWindow::BuildRequest> MainWindow::wait_for_build() {
+    std::unique_lock<std::mutex> lock(build_mutex_);
+
+    build_ready_.wait(lock, [this]() {
+        return stop_worker_ || pending_build_.has_value();
+    });
+
+    if (stop_worker_) {
+        return std::nullopt;
+    }
+
+    auto request = std::move(pending_build_);
+    pending_build_.reset();
+    return request;
+}
 
 void MainWindow::build_corpus() {
     if (workspace_.documents().empty() || build_running_) {

@@ -5,6 +5,9 @@
 #include <cstdint>
 #include <memory>
 #include <thread>
+#include <condition_variable>
+#include <mutex>
+#include <optional>
 
 #include "aiws/processing_core.hpp"
 #include "aiws/workspace.hpp"
@@ -132,6 +135,7 @@ private slots:
      */
     void exit_application();
 
+
 private:
     /**
      * @brief Updates availability of actions that depend on current application state.
@@ -155,6 +159,19 @@ private:
     ProcessingCore processing_core_;
     bool corpus_current_{false};
     ExitCallback exit_callback_{nullptr};
+
+    
+    struct BuildRequest {
+        Workspace snapshot;
+        std::uint64_t generation;
+        int delay_ms;
+    };
+
+    std::mutex build_mutex_;
+    std::condition_variable build_ready_;
+    std::optional<BuildRequest> pending_build_;
+    bool stop_worker_{false};
+    std::optional<BuildRequest> wait_for_build();
 
     std::thread build_thread_;
     std::atomic<bool> build_cancelled_{false};
