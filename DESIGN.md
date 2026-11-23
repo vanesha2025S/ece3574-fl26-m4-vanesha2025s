@@ -24,7 +24,7 @@ CR-1 added `RemoteAddServer`, `start_remote_add_server()`, `remote_add_document(
 
 ## 5. Tests and Fault Switches
 
-`student_tests` covers background builds, responsiveness, stale builds, Reset, failures, and CR-1 requests including unusual filenames, split writes, rejection, and cleanup. Normal Docker CTest passed. `AIWS_FAULT_ACCEPT_STALE` changes the generation decision in `MainWindow::build_finished()`; stale-build/Reset tests detect it. `AIWS_FAULT_LOSE_FAILURE` suppresses the failed-build completion notification in `build_corpus()`; failure-state tests detect it. Both faulted configurations failed within 60 seconds.
+`student_tests` covers background builds, GUI responsiveness, stale builds, Reset, build failures, and CR-1 requests with unusual filenames, split writes, rejection, and cleanup. `test_repeated_builds()` builds one document, adds a second document in the same window, and checks that the rebuilt corpus contains two chunks. `AIWS_FAULT_ACCEPT_STALE` bypasses the generation check in `MainWindow::build_finished()`. `test_stale_build()` catches it after a local add, `test_reset_during_build()` catches it after Reset, and `test_remote_add()` catches it after a remote add. Each test checks that the outdated build cannot become current. `AIWS_FAULT_LOSE_FAILURE` suppresses the failure notification in `MainWindow::build_corpus()`. `test_build_failure()` triggers a build error by adding the same document twice and checks that the GUI changes from `Corpus: Building...` to `Corpus: Failed`. The original M4 test suite passed in Docker. With each fault switch enabled separately, the suite failed within 60 seconds. 
 
 ## 6. AI Use
 

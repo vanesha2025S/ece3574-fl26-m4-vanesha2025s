@@ -175,6 +175,30 @@ void test_successful_build(const QString& path) {
     );
 }
 
+void test_repeated_builds(const QString& first, const QString& second) {
+    MainWindow window;
+
+    check(window.add_document_file(first), "First document added");
+    check(start_build(window), "First build requested");
+
+    bool first_finished = wait_until([&window]() {
+        return corpus_status(window) == "Corpus: 1 chunks";
+    });
+    check(first_finished, "First build produces one chunk");
+    if (!first_finished) {
+        return;
+    }
+
+    check(window.add_document_file(second), "Second document added");
+    check(corpus_status(window) == "Corpus: Not built",
+          "Adding a document invalidates the first build");
+
+    check(start_build(window), "Second build requested on the same window");
+    check(wait_until([&window]() {
+        return corpus_status(window) == "Corpus: 2 chunks";
+    }), "Second build includes both documents");
+}
+
 // tests whether an outdated build is rejected after adding a document
 void test_stale_build(const QString& first,
                       const QString& second) {
@@ -578,6 +602,7 @@ int main(int argc, char* argv[]) {
 
     test_add_document(first);
     test_successful_build(first);
+    test_repeated_builds(first, second);
     test_stale_build(first, second);
     test_reset_during_build(first);
     test_build_failure(first);
