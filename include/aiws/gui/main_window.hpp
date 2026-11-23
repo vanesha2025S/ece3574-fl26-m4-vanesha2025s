@@ -9,6 +9,7 @@
 #include <mutex>
 #include <optional>
 
+#include "aiws/gui/corpus_lifecycle.hpp"
 #include "aiws/processing_core.hpp"
 #include "aiws/workspace.hpp"
 
@@ -77,6 +78,9 @@ public:
 
     // Everything below this line is the M3 design. In M4 it is yours to
     // change: add, remove, or redesign private members, slots, and helpers.
+
+signals:
+    void worker_started_build();
 
 private slots:
     void remote_add_document(const QString& path);
@@ -156,7 +160,7 @@ private:
 
     Workspace workspace_;
     ProcessingCore processing_core_;
-    bool corpus_current_{false};
+    CorpusLifecycle lifecycle_;
     ExitCallback exit_callback_{nullptr};
 
     
@@ -175,7 +179,6 @@ private:
     std::thread build_thread_;
     std::atomic<std::uint64_t> workspace_generation_{0};
     int build_delay_ms_{0};
-    bool build_running_{false};
     void worker_loop();
     void build_finished(std::uint64_t generation, std::unique_ptr<ProcessingCore> core,
                         const std::string& error);

@@ -15,6 +15,7 @@
 #include <QListWidget>
 #include <QMetaObject>
 #include <QProcess>
+#include <QSignalSpy>
 #include <QTemporaryDir>
 #include <QTest>
 
@@ -570,6 +571,51 @@ void test_remote_cleanup(const QString& directory) {
           "Server removes the socket file on shutdown");
 }
 
+// Reset a running multi-document build, then time a one-document replacement.
+void test_replacement_build(const QString& directory, const QString& first) {
+    MainWindow window;
+    for (int i = 0; i < 12; ++i) {
+        const auto path = create_file(directory, QString("slow-%1.txt").arg(i), "slow document");
+        if (!window.add_document_file(path)) {
+            check(false, "Slow build fixture created");
+            return;
+        }
+    }
+
+    QSignalSpy started(&window, &MainWindow::worker_started_build);
+    window.set_build_delay_ms(300);
+    start_build(window);
+    if (!wait_until([&]() { return started.count() > 0; })) {
+        check(false, "Worker started the long build");
+        return;
+    }
+    QMetaObject::invokeMethod(&window, "reset_application", Qt::DirectConnection);
+    window.set_build_delay_ms(0);
+    check(window.add_document_file(first), "Replacement document added");
+    start_build(window);
+    check(wait_until([&]() { return corpus_status(window).endsWith(" chunks"); }, 1300),
+          "Replacement finishes before the obsolete 3.6-second build would finish");
+}
+
+// Run destruction in a child so a stuck join produces a bounded test failure.
+bool test_idle_shutdown() {
+    QProcess child;
+    child.start(QCoreApplication::applicationFilePath(), QStringList{"--idle-exit-child"});
+    if (!child.waitForStarted(3000)) {
+        check(false, "Idle shutdown child starts");
+        return false;
+    }
+    const bool finished = child.waitForFinished(5000);
+    if (!finished) {
+        child.kill();
+        child.waitForFinished(2000);
+    }
+    const bool passed = finished && child.exitStatus() == QProcess::NormalExit
+                                 && child.exitCode() == 0;
+    check(passed, "Idle build worker wakes and joins on shutdown");
+    return passed;
+}
+
 // creates the test files and runs all the tests
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
@@ -600,6 +646,18 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    if (app.arguments().contains("--idle-exit-child")) {
+        MainWindow window;
+        if (!window.add_document_file(first) || !start_build(window)) {
+            return 1;
+        }
+        return wait_until([&]() { return corpus_status(window).endsWith(" chunks"); }) ? 0 : 1;
+    }
+
+    if (!test_idle_shutdown()) {
+        return 1;
+    }
+    test_replacement_build(directory.path(), first);
     test_add_document(first);
     test_successful_build(first);
     test_repeated_builds(first, second);

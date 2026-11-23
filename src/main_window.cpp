@@ -46,9 +46,11 @@ public:
 
 private:
     void check_generation() const {
+#ifndef AIWS_FAULT_NO_CANCEL
         if (current_.load() != generation_) {
             throw BuildCancelled{};
         }
+#endif
     }
 
     const std::atomic<std::uint64_t>& current_;
@@ -274,8 +276,15 @@ bool MainWindow::add_document_file(const QString& path) {
 std::optional<MainWindow::BuildRequest> MainWindow::wait_for_build() {
     std::unique_lock<std::mutex> lock(build_mutex_);
 
+    if (stop_worker_) {
+        return std::nullopt;
+    }
     build_ready_.wait(lock, [this]() {
+#ifdef AIWS_FAULT_SILENT_SHUTDOWN
+        return pending_build_.has_value();
+#else
         return stop_worker_ || pending_build_.has_value();
+#endif
     });
 
     if (stop_worker_) {
@@ -288,7 +297,7 @@ std::optional<MainWindow::BuildRequest> MainWindow::wait_for_build() {
 }
 
 void MainWindow::build_corpus() {
-    if (workspace_.documents().empty() || build_running_) {
+    if (workspace_.documents().empty() || !lifecycle_.request_build()) {
         return;
     }
 
@@ -303,8 +312,6 @@ void MainWindow::build_corpus() {
     }
     build_ready_.notify_one();
 
-    build_running_ = true;
-    corpus_current_ = false;
     clear_processing_outputs();
     workspace_widget_->set_corpus_status("Building...");
     status_label_->setText("Building corpus...");
@@ -318,6 +325,7 @@ void MainWindow::worker_loop() {
             continue;
         }
 
+        QMetaObject::invokeMethod(this, &MainWindow::worker_started_build, Qt::QueuedConnection);
         std::unique_ptr<ProcessingCore> core;
         std::string error;
         try {
@@ -346,13 +354,15 @@ void MainWindow::build_finished(std::uint64_t generation, std::unique_ptr<Proces
         return;
     }
 
-    build_running_ = false;
-    if (!error.empty() || !core) {
+    const bool success = error.empty() && core != nullptr;
+    if (!lifecycle_.finish(success)) {
+        return;
+    }
+    if (!success) {
         workspace_widget_->set_corpus_status("Failed");
         status_label_->setText(QString::fromStdString(error));
     } else {
         processing_core_ = std::move(*core);
-        corpus_current_ = true;
         clear_processing_outputs();
         workspace_widget_->set_corpus_status(
             QString::number(processing_core_.chunk_count()) + " chunks");
@@ -380,7 +390,7 @@ void MainWindow::document_selected(int row) {
 }
 
 void MainWindow::search_requested(const QString& query, int k) {
-     if (!corpus_current_ || query.trimmed().isEmpty()) {
+     if (!lifecycle_.can_process() || query.trimmed().isEmpty()) {
         return;
     }
 
@@ -401,7 +411,7 @@ void MainWindow::query_changed(const QString& query) {
 }
 
 void MainWindow::build_context_requested(int token_budget) {
-    if (!corpus_current_ || !search_widget_->has_query()) {
+    if (!lifecycle_.can_process() || !search_widget_->has_query()) {
         return;
     }
 
@@ -435,7 +445,7 @@ void MainWindow::source_document_requested(const QString& document_id) {
 
 void MainWindow::term_inspection_requested(const QString& term,
                                            const QString& chunk_id) {
-    if (!corpus_current_ || term.trimmed().isEmpty()) {
+    if (!lifecycle_.can_process() || term.trimmed().isEmpty()) {
         return;
     }
 
@@ -488,15 +498,15 @@ void MainWindow::exit_application() {
 
 void MainWindow::update_action_states() {
     bool has_documents = !workspace_.documents().empty();
-    bool can_process = corpus_current_ && search_widget_->has_query();
+    bool can_process = lifecycle_.can_process() && search_widget_->has_query();
 
     workspace_widget_->set_build_corpus_enabled(
-    has_documents && !build_running_);
+    has_documents && lifecycle_.can_build());
 
     search_widget_->set_search_enabled(can_process);
 
     term_inspector_widget_->set_inspection_enabled(
-        corpus_current_
+        lifecycle_.can_process()
     );
 
     context_widget_->set_build_context_enabled(
@@ -505,17 +515,16 @@ void MainWindow::update_action_states() {
 }
 
 void MainWindow::invalidate_corpus() {
-    corpus_current_ = false;
+    const bool interrupted = lifecycle_.invalidate();
     ++workspace_generation_;
 
     {
         std::lock_guard<std::mutex> lock(build_mutex_);
         pending_build_.reset();
     }
-    if (build_running_) {
+    if (interrupted) {
         status_label_->setText("Workspace changed. Rebuild required.");
     }
-    build_running_ = false;
     workspace_widget_->set_corpus_status("Not built");
 
     clear_processing_outputs();
