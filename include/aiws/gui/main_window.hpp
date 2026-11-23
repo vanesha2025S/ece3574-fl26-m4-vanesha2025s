@@ -79,7 +79,6 @@ public:
     // change: add, remove, or redesign private members, slots, and helpers.
 
 private slots:
-    void build_finished();
     void remote_add_document(const QString& path);
     /** @brief Handles a request to select and add a document to the workspace. */
     void add_document();
@@ -174,13 +173,12 @@ private:
     std::optional<BuildRequest> wait_for_build();
 
     std::thread build_thread_;
-    std::atomic<bool> build_cancelled_{false};
-    std::uint64_t workspace_generation_{0};
-    std::uint64_t build_generation_{0};
+    std::atomic<std::uint64_t> workspace_generation_{0};
     int build_delay_ms_{0};
     bool build_running_{false};
-    std::unique_ptr<ProcessingCore> pending_core_;
-    std::string pending_error_;
+    void worker_loop();
+    void build_finished(std::uint64_t generation, std::unique_ptr<ProcessingCore> core,
+                        const std::string& error);
     std::unique_ptr<RemoteAddServer> remote_add_server_;
 
     WorkspaceWidget* workspace_widget_{nullptr};
