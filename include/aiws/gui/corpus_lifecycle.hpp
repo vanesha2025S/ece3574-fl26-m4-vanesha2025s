@@ -9,7 +9,8 @@ class CorpusLifecycle {
         virtual bool can_process() const { return false; }
         virtual bool request_build(CorpusLifecycle& life) const;
         virtual bool invalidate(CorpusLifecycle& life) const;
-        virtual bool finish(CorpusLifecycle&, bool) const { return false; }
+        virtual bool succeed(CorpusLifecycle&) const { return false; }
+        virtual bool fail(CorpusLifecycle&) const { return false; }
     };
 
     struct NotBuilt final : State {};
@@ -25,12 +26,12 @@ class CorpusLifecycle {
             State::invalidate(life);
             return true;
         }
-        bool finish(CorpusLifecycle& life, bool success) const override {
-            if (success) {
-                life.state_ = &life.current_;
-            } else {
-                life.state_ = &life.failed_;
-            }
+        bool succeed(CorpusLifecycle& life) const override {
+            life.state_ = &life.current_;
+            return true;
+        }
+        bool fail(CorpusLifecycle& life) const override {
+            life.state_ = &life.failed_;
             return true;
         }
     };
@@ -52,7 +53,8 @@ public:
     // Returns true when the workspace change interrupted an active build.
     bool invalidate() { return state_->invalidate(*this); }
     // Only Building accepts a completion.
-    bool finish(bool success) { return state_->finish(*this, success); }
+    bool finish_succeeded() { return state_->succeed(*this); }
+    bool finish_failed() { return state_->fail(*this); }
 };
 
 inline bool CorpusLifecycle::State::request_build(CorpusLifecycle& life) const {

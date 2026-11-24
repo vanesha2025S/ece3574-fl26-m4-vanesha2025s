@@ -9,9 +9,6 @@ find_package(Threads REQUIRED)
 find_package(Qt6 REQUIRED COMPONENTS Widgets Test)
 set(CMAKE_AUTOMOC ON)
 
-# M4 starts from your own M3 project: copy your M3 src/ files here first.
-# Add your new M4 source files to the target where they belong.
-
 add_library(aiws_m2
     src/document.cpp
     src/workspace.cpp
@@ -36,6 +33,7 @@ add_library(aiws_app STATIC
     src/term_inspector_widget.cpp
     src/search_result_model.cpp
     include/aiws/gui/main_window.hpp
+    include/aiws/gui/corpus_lifecycle.hpp
     include/aiws/gui/remote_add_server.hpp
     include/aiws/gui/resettable.hpp
     include/aiws/gui/workspace_widget.hpp

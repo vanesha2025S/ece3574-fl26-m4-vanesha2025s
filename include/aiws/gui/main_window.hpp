@@ -76,11 +76,8 @@ public:
     void set_build_delay_ms(int ms_per_document);
     bool start_remote_add_server(const QString& socket_path);
 
-    // Everything below this line is the M3 design. In M4 it is yours to
-    // change: add, remove, or redesign private members, slots, and helpers.
-
 signals:
-    void worker_started_build();
+    void worker_started_build(quint64 worker_id);
 
 private slots:
     void remote_add_document(const QString& path);

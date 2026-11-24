@@ -1,7 +1,4 @@
-// Your M4 tests (specification, Section 6).
-
-
- // Your M4 tests (specification, Section 6).
+// M3, M4, CR-1 and M5 tests.
 
 #include "aiws/gui/main_window.hpp"
 
@@ -31,6 +28,7 @@
 #include <functional>
 #include <future>
 #include <iostream>
+#include <memory>
 #include <string>
 #include <thread>
 
@@ -251,14 +249,10 @@ void test_reset_during_build(const QString& path) {
         "Reset invoked"
     );
 
-    bool finished = wait_until([&window]() {
-        return has_status_message(
-            window, "Workspace changed. Rebuild required."
-        ) || corpus_status(window).endsWith(" chunks") ||
-            corpus_status(window) == "Corpus: Failed";
-    });
+    check(has_status_message(window, "Ready."), "Reset shows the startup status");
 
-    check(finished, "Old build completes after Reset");
+    // wait longer than one document's build time so a stale result would have arrived
+    QTest::qWait(600);
 
     check(
         corpus_status(window) == "Corpus: Not built" &&
@@ -616,6 +610,76 @@ bool test_idle_shutdown() {
     return passed;
 }
 
+// R1: three builds in a row run on one worker thread, and it is not the GUI thread.
+void test_one_worker(const QString& path) {
+    std::cout << "\nTesting One Build Worker..." << std::endl;
+
+    MainWindow window;
+    QSignalSpy started(&window, &MainWindow::worker_started_build);
+    check(window.add_document_file(path), "One-worker document added");
+
+    for (int i = 0; i < 3; ++i) {
+        start_build(window);
+        wait_until([&]() {
+            return started.count() > i && corpus_status(window).endsWith(" chunks");
+        });
+    }
+
+    if (started.count() != 3) {
+        check(false, "Three builds each reached the worker");
+        return;
+    }
+    const auto first_id = started.at(0).at(0).toULongLong();
+    const auto gui_id =
+        static_cast<quint64>(std::hash<std::thread::id>{}(std::this_thread::get_id()));
+    check(started.at(1).at(0).toULongLong() == first_id
+              && started.at(2).at(0).toULongLong() == first_id,
+          "Every build runs on the same worker thread");
+    check(first_id != gui_id, "Builds do not run on the GUI thread");
+}
+
+// R4: Exit during a long build. The child times its own shutdown, so a build
+// that keeps running for several documents makes this fail.
+void test_busy_shutdown() {
+    std::cout << "\nTesting Exit During a Long Build..." << std::endl;
+
+    QProcess child;
+    child.start(QCoreApplication::applicationFilePath(), QStringList{"--busy-exit-child"});
+    if (!child.waitForStarted(3000)) {
+        check(false, "Busy shutdown child starts");
+        return;
+    }
+    const bool finished = child.waitForFinished(15000);
+    if (!finished) {
+        child.kill();
+        child.waitForFinished(2000);
+    }
+    check(finished && child.exitStatus() == QProcess::NormalExit && child.exitCode() == 0,
+          "Exit during a long build stops within about one document");
+}
+
+// A multi-word term must be reported, not crash the application, and Reset
+// returns the status line to its startup text even during a build.
+void test_inspector_and_reset_status(const QString& path) {
+    std::cout << "\nTesting Term Inspector Input and Reset Status..." << std::endl;
+
+    MainWindow window;
+    check(window.add_document_file(path), "Inspector document added");
+    start_build(window);
+    check(wait_until([&]() { return corpus_status(window).endsWith(" chunks"); }),
+          "Inspector corpus built");
+
+    QMetaObject::invokeMethod(&window, "term_inspection_requested", Qt::DirectConnection,
+                              Q_ARG(QString, QString("two words")), Q_ARG(QString, QString()));
+    check(has_status_message(window, "Enter a single term to inspect."),
+          "Multi-word term is reported instead of crashing");
+
+    window.set_build_delay_ms(300);
+    start_build(window);
+    QMetaObject::invokeMethod(&window, "reset_application", Qt::DirectConnection);
+    check(has_status_message(window, "Ready."), "Reset during a build shows Ready.");
+}
+
 // creates the test files and runs all the tests
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
@@ -654,10 +718,33 @@ int main(int argc, char* argv[]) {
         return wait_until([&]() { return corpus_status(window).endsWith(" chunks"); }) ? 0 : 1;
     }
 
+    if (app.arguments().contains("--busy-exit-child")) {
+        auto window = std::make_unique<MainWindow>();
+        for (int i = 0; i < 12; ++i) {
+            const auto path = create_file(directory.path(), QString("busy-%1.txt").arg(i),
+                                          "slow document");
+            if (!window->add_document_file(path)) {
+                return 1;
+            }
+        }
+        QSignalSpy started(window.get(), &MainWindow::worker_started_build);
+        window->set_build_delay_ms(500);
+        if (!start_build(*window) || !wait_until([&]() { return started.count() > 0; })) {
+            return 1;
+        }
+        QElapsedTimer timer;
+        timer.start();
+        window.reset();
+        return timer.elapsed() < 1500 ? 0 : 2;
+    }
+
     if (!test_idle_shutdown()) {
         return 1;
     }
     test_replacement_build(directory.path(), first);
+    test_one_worker(first);
+    test_busy_shutdown();
+    test_inspector_and_reset_status(first);
     test_add_document(first);
     test_successful_build(first);
     test_repeated_builds(first, second);

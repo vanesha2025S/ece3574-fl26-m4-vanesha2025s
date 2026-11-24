@@ -24,6 +24,7 @@
 #include <algorithm>
 #include <chrono>
 #include <exception>
+#include <functional>
 #include <string>
 #include <QMetaObject>
 #include <utility>
@@ -319,13 +320,17 @@ void MainWindow::build_corpus() {
 }
 
 void MainWindow::worker_loop() {
+    const auto worker_id =
+        static_cast<quint64>(std::hash<std::thread::id>{}(std::this_thread::get_id()));
     while (auto request = wait_for_build()) {
         const auto generation = request->generation;
         if (generation != workspace_generation_.load()) {
             continue;
         }
 
-        QMetaObject::invokeMethod(this, &MainWindow::worker_started_build, Qt::QueuedConnection);
+        QMetaObject::invokeMethod(this, [this, worker_id]() {
+            emit worker_started_build(worker_id);
+        }, Qt::QueuedConnection);
         std::unique_ptr<ProcessingCore> core;
         std::string error;
         try {
@@ -354,14 +359,16 @@ void MainWindow::build_finished(std::uint64_t generation, std::unique_ptr<Proces
         return;
     }
 
-    const bool success = error.empty() && core != nullptr;
-    if (!lifecycle_.finish(success)) {
-        return;
-    }
-    if (!success) {
+    if (!error.empty() || core == nullptr) {
+        if (!lifecycle_.finish_failed()) {
+            return;
+        }
         workspace_widget_->set_corpus_status("Failed");
         status_label_->setText(QString::fromStdString(error));
     } else {
+        if (!lifecycle_.finish_succeeded()) {
+            return;
+        }
         processing_core_ = std::move(*core);
         clear_processing_outputs();
         workspace_widget_->set_corpus_status(
@@ -449,32 +456,39 @@ void MainWindow::term_inspection_requested(const QString& term,
         return;
     }
 
-    std::size_t df =
-        processing_core_.document_frequency(
-            term.toStdString()
+    // the backend throws when the text is more than one term, so report it instead of crashing
+    try {
+        std::size_t df =
+            processing_core_.document_frequency(
+                term.toStdString()
+            );
+
+        bool has_chunk = !chunk_id.isEmpty();
+        std::size_t tf = 0;
+
+        if (has_chunk) {
+            tf = processing_core_.term_frequency(
+                term.toStdString(),
+                chunk_id.toStdString()
+            );
+        }
+
+        term_inspector_widget_->set_statistics(
+            df, has_chunk, tf
         );
 
-    bool has_chunk = !chunk_id.isEmpty();
-    std::size_t tf = 0;
-
-    if (has_chunk) {
-        tf = processing_core_.term_frequency(
-            term.toStdString(),
-            chunk_id.toStdString()
-        );
+        status_label_->setText("Term inspected.");
+    } catch (const std::exception&) {
+        term_inspector_widget_->clear_statistics();
+        status_label_->setText("Enter a single term to inspect.");
     }
-
-    term_inspector_widget_->set_statistics(
-        df, has_chunk, tf
-    );
-
-    status_label_->setText("Term inspected.");
 }
 
 void MainWindow::reset_application() {
     workspace_.clear();
-    status_label_->setText("Application reset.");
     invalidate_corpus();
+    // set after invalidate_corpus(), which may report an interrupted build
+    status_label_->setText("Ready.");
 
     std::array<Resettable*, 4> components = {
         workspace_widget_,
